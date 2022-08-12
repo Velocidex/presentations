@@ -6,11 +6,11 @@
 
         <title>Digging Deeper ...</title>
 
-        <link rel="stylesheet" href="./dist/reveal.css">
-        <link rel="stylesheet" href="./dist/theme/serif.css" id="theme">
-        <link rel="stylesheet" href="./velo.css">
+        <link rel="stylesheet" href="../dist/reveal.css">
+        <link rel="stylesheet" href="../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../css/velo.css">
 
-        <link rel="stylesheet" href="./plugin/highlight/monokai.css">
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css">
     </head>
     <body>
         <div class="reveal">
@@ -20,17 +20,18 @@
                          data-separator-vertical="^>+\n\n"></section>
             </div>
         </div>
-        <script src="./dist/reveal.js"></script>
-        <script src="./plugin/markdown/markdown.js"></script>
-        <script src="./plugin/highlight/highlight.js"></script>
-        <script src="./plugin/notes/notes.js"></script>
-        <script src="./plugin/zoom/zoom.js"></script>
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/zoom/zoom.js"></script>
         <script>
             Reveal.initialize({
                 controls: true,
                 progress: true,
                 history: true,
                 center: false,
+                slideNumber: true,
 
                 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
             });
