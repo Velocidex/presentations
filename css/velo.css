@@ -1,3 +1,8 @@
+:root {
+  --r-link-color: #3c8ea8;
+  --r-link-color-hover: #2640c0;
+}
+
 .title h1 {
     color: #eeeeeed0;
     text-shadow: 10px 10px 10px #000000d0;
@@ -80,6 +85,14 @@
     text-shadow: 10px 10px 10px #00000060;
 }
 
+.full_screen_diagram h3 {
+    color: black;
+    margin-top: 1ex;
+    text-align: left;
+    font-size: 2ex;
+    text-shadow: 10px 10px 10px #00000060;
+}
+
 .full_screen_diagram hr {
     display: none;
 }
@@ -94,4 +107,8 @@
 
 .col {
     font-size: 2ex;
+}
+
+.reveal table.noborder td {
+    border: none;
 }
