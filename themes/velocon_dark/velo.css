@@ -1,0 +1,168 @@
+:root {
+  --r-link-color: #3c8ea8;
+  --r-color: #41aa13;
+  --r-main-color: #ffffff;
+  --r-color-shadow: #41aa1360;
+  --bullet-color: #41aa13;
+  --subtitle-color: #ffffff;
+  --subtitle-shadow: #ffffff;
+  --r-link-color-hover: #2640c0;
+  --r-background-color: black;
+}
+
+img {
+    filter: invert(1);
+}
+
+.reveal ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--bullet-color); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  /* font-size: 1.4em; */
+  /* display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+  padding-right: 0.5em;
+}
+
+ul li::after {
+    margin-top: 0.0em;
+}
+
+section.title {
+    background-image: url(/themes/velocon_light/velocon_logo_dark.png);
+    background-size: 187px 98px;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-origin:  content-box;
+}
+
+section.content {
+    background-image: url(/themes/velocon_light/velocon_logo_dark.png);
+    background-size: 187px 98px;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-origin:  content-box;
+}
+
+.title h1 {
+    color: var(--r-color);
+    text-shadow: 5px 5px 5px var(--r-color-shadow);
+    text-align: left;
+    width: 100%;
+    font-size: 5ex;
+    margin-top: 20%;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.title h2 {
+    color: var(--subtitle-color);
+    text-shadow: 5px 5px 5px var(--subtitle-shadow);
+    margin-top: 10%;
+    text-align: left;
+    width: 100%;
+    font-size: 3ex;
+}
+
+.title h3 {
+    color: var(--subtitle-color);
+    text-shadow: 5px 5px 5px var(--subtitle-shadow);
+    margin-top: 0%;
+    text-align: left;
+    width: 100%;
+    font-size: 2ex;
+}
+
+.title .inset {
+    border-left: solid;
+    border-width: 5px;
+    border-color: var(--r-color);
+    padding-left: 20px;
+}
+
+.content h1 {
+    color: var(--r-color);
+}
+
+.content h2 {
+    color: var(--r-color);
+    text-align: left;
+    margin-bottom: 70px;
+    font-size: 3ex;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.content h3 {
+    color: var(--r-color);
+    text-align: left;
+    text-shadow: 10px 10px 10px #00000060;
+    transform: rotate(-5deg);
+    margin-top: -70px;
+    margin-bottom: 70px;
+    font-size: 2ex;
+    margin-left: 20px;
+}
+
+.content ul li ul {
+    font-size: 1.7ex;
+}
+
+.content p {
+    text-align: left;
+}
+
+.content ul {
+    display: block;
+}
+
+.content pre {
+    width: 100%;
+    margin: 0;
+}
+.content code {
+    overflow: hidden;
+}
+
+.full_screen_diagram h2 {
+    color: var(--r-color);
+    text-align: left;
+    font-size: 3ex;
+}
+
+.full_screen_diagram h3 {
+    color: black;
+    margin-top: 1ex;
+    text-align: left;
+    font-size: 2ex;
+    text-shadow: 10px 10px 10px #00000060;
+}
+
+.full_screen_diagram hr {
+    display: none;
+}
+
+.full_screen_diagram a {
+    font-size: 1ex;
+}
+
+.content .container {
+    display: flex;
+}
+
+.content .col {
+    flex: 1;
+}
+
+.col {
+    font-size: 2ex;
+}
+
+.reveal table.noborder td {
+    border: none;
+}

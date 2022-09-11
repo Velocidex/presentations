@@ -3,6 +3,18 @@
   --r-link-color-hover: #2640c0;
 }
 
+.slide-background.title {
+    background-image: url(/themes/default_velo/title.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+.slide-background.content {
+    background-image: url(/themes/default_velo/content_slide.svg);
+    background-size: cover;
+    background-position: center;
+}
+
 .title h1 {
     color: #eeeeeed0;
     text-shadow: 10px 10px 10px #000000d0;
@@ -95,6 +107,10 @@
 
 .full_screen_diagram hr {
     display: none;
+}
+
+.full_screen_diagram a {
+    font-size: 1ex;
 }
 
 .content .container {
