@@ -9,6 +9,64 @@
 
 </div>
 
+<img src="velo_bike.gif" style=" position: fixed; display: inline; right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
+
+---
+
+<!-- .slide: class="content" -->
+## Overview
+
+* Don't we already deploy Velociraptor in the cloud?
+* Why do we mean by cloud native Velociraptor?
+
+Cloud Velociraptor is mainly about **Scalability** and **Cloud
+Native** technologies.
+
+
+* Move away from local file storage
+* An experimental project to explore future directions.
+* **NOT** a replacement for Velociraptor
+
+---
+
+<!-- .slide: class="content" -->
+## Velociraptor's design goals
+
+Velociraptor was designed to be **easy** and **cheap** to deploy to
+smaller scale organizations.
+
+* Design goal was 10-15k endpoints.
+* No external dependencies makes it easy to deploy.
+* Using local file storage is cheaper and easier.
+* Mainly catering for ephemeral consultancy type deployments.
+
+---
+
+<!-- .slide: class="content" -->
+## New use cases for Velociraptor
+
+Velociraptor has grown a lot in the past few years and it is now an
+enterprise grade application.
+
+* Permanent monitoring and response solution.
+* Large number of endpoints
+* Multi-Tennancy is important for large deployments.
+* Needs to be horizontally scalable!
+
+Horizontally scaling means deployment size can change quickly
+balancing cost and capacity dynamically.
+
+---
+
+<!-- .slide: class="content" -->
+## Take a trip down memory lane...
+
+To understand where we are headed we should look at the history of
+Velociraptor.
+
+<img src="history_velo.gif" style=" position: initial; display: inline; left: 0px; height: 300px; z-index: -10;"/>
+
+
 ---
 
 <!-- .slide: class="content" -->
@@ -51,27 +109,47 @@ systems.
 
 ---
 
-<!-- .slide: class="full_screen_diagram" -->
-## Velociraptor Architecture
+<!-- .slide: class="content" -->
+## Going small to go big!!
 
-<img style="height: 400px"
-    src="https://docs.velociraptor.app/blog/html/2018/08/10/design_differences_between_velociraptor_and_grr/image1.png">
-<div>
-    <a href="https://docs.velociraptor.app/blog/html/2018/08/10/design_differences_between_velociraptor_and_grr/">Design Differences Between Velociraptor And Grr</a>
-</div>
+By restricting our goals to a small scale deployment we can really
+simplify the whole design!
 
+* Using file storage is really really fast!
+* Throwing away the data model makes everything very efficient!
+* Monolithic binary makes deployment really simple!
+* Rethinking availability requirements makes everything more stable!
+
+<img src="small_velo.gif" style=" position: fixed; display: inline; right: 0px;  bottom: -150px; height: 200px; z-index: -10;"/>
+
+---
+
+<!-- .slide: class="content" -->
+## But we want to go bigger!
+
+Single server limits reached at about 20k endpoints. What are the
+limiting factors?
+
+* TLS encryption is CPU intensive
+* IO bandwidth is saturated
+* GUI can consume a lot of resources because it runs notebook queries.
+
+<img src="velo_no_2.gif" style=" position: fixed; display: inline; right: 100px;  bottom: -250px; height: 200px; z-index: -10;"/>
 
 ---
 
 <!-- .slide: class="content" -->
 ## Multi Frontend Velociraptor
 
-To scale larger than one server we support multi-frontend architecture
+To scale larger than one server we support multi-frontend architecture.
 
-* Uses distributed filesystem (EFS)
-* Multiple server in a Master-Minion architecture
-* Message passing between servers ensures conherency.
+* Retain the **Everything is a file** philosophy: Uses distributed filesystem (EFS)
+* Multiple servers in a Master-Minion architecture
+* Message passing between servers ensures coherency.
 * Still no additional dependency on cloud infrastructure
+
+Cloud technology introduce a lot of IO latency challenges. We have
+`MemcacheFileDataStore`, `RemoteDatastore` etc.
 
 ---
 
@@ -86,12 +164,16 @@ To scale larger than one server we support multi-frontend architecture
 ## Velociraptor in the cloud
 
 To scale even more we need to replace the backend with cloud centric
-services
+services.
 
 * Horizontally auto-scale servers
 * Use cloud managed storage
 * Remove need for state on the server
-* Not for everyone! More complexity and cost involed...
+* Can we use a database backed?
+
+Not for everyone! More complexity and cost involved...
+
+Are we going back full circle?
 
 ---
 
@@ -100,7 +182,9 @@ services
 
 * We do not want to remove the current architecture!
 * Cloud Velociraptor is a separate project with different goals!
-* Previously code abstracted at the storage layer
+
+* Previously code was abstracted at the storage layer allowing us to
+  substiture EFS with attached storage but retaining all the code.
 * Now code is abstracted at a higher layer we call services.
 
 ---
@@ -108,14 +192,14 @@ services
 <!-- .slide: class="content" -->
 ## Velociraptor Services
 
-Velociraptor services are swappable high level utilities that are used
-in the codebase. e.g.
+Velociraptor services are interchangeable high level utilities that
+are used in the codebase. e.g.
 
-* Indexing service: Used to search for clients.
-* Label service: Used to label a client.
-* ClientInfo service: Used to manage information about clients.
-* Repository service: Used to manage artifacts
-* Launcher service: Used to compile and launch collections
+* `Indexing` service: Used to search for clients.
+* `Label` service: Used to label a client.
+* `ClientInfo` service: Used to manage information about clients.
+* `Repository` service: Used to manage artifacts
+* `Launcher` service: Used to compile and launch collections
 
 ---
 
@@ -135,8 +219,9 @@ and compose Velociraptor around different backend architectures
 
 * This is a much more flexible abstraction than around data storage
   alone.
-* Allows us to use a separate project to manager different
+* Allows us to use a separate project to manage different
   implementations
+* Much safer to experiment with different compositions of services.
 
 ---
 
@@ -149,6 +234,8 @@ A new experimental GitHub Project https://github.com/Velocidex/cloudvelo
 * Opensearch for structured storage
 * Stateless servers (can be horizontally scaled)
 * Not all features are possible in this architecture.
+
+<img src="cloudvelo-logo.svg" style=" display: inline; right: 100px;  bottom: -250px; height: 200px; z-index: -10;"/>
 
 ---
 
@@ -175,6 +262,8 @@ A new experimental GitHub Project https://github.com/Velocidex/cloudvelo
 <!-- .slide: class="content" -->
 <h1 style="margin-top: 20vh">Demo Time</h1>
 
+<img src="velo_no.gif" style=" display: inline; right: 100px;  bottom: -250px; height: 300px; z-index: -10;"/>
+
 ---
 
 <!-- .slide: class="content" -->
@@ -197,6 +286,9 @@ The Cloud Velociraptor implementation has some limitations currently
 * Currently we only use OpenSearch as a simple database - maybe a more performant database?
 * Currently no server event monitoring!
 * Will remain a separate project - an alternative to the standard Velociraptor...
+
+
+<img src="velo_rocks2.webp" style=" position: fixed; display: inline; right: 100px;  bottom: -250px; height: 300px; z-index: -10;"/>
 
 ---
 

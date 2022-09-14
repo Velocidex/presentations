@@ -87,6 +87,7 @@ section.content {
     font-size: 3ex;
     padding-top: 10px;
     padding-left: 20px;
+    margin-right: 230px;
 }
 
 .content h3 {
@@ -119,6 +120,10 @@ section.content {
 .content code {
     overflow: hidden;
 }
+.content li p {
+    display: inline;
+}
+
 
 .full_screen_diagram h2 {
     color: var(--r-color);
