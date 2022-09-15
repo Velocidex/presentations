@@ -43,7 +43,7 @@ smaller scale organizations.
 ---
 
 <!-- .slide: class="content" -->
-## New use cases for Velociraptor
+## New use cases!
 
 Velociraptor has grown a lot in the past few years and it is now an
 enterprise grade application.
@@ -118,9 +118,8 @@ simplify the whole design!
 * Using file storage is really really fast!
 * Throwing away the data model makes everything very efficient!
 * Monolithic binary makes deployment really simple!
-* Rethinking availability requirements makes everything more stable!
 
-<img src="small_velo.gif" style=" position: fixed; display: inline; right: 0px;  bottom: -150px; height: 200px; z-index: -10;"/>
+<img src="small_velo.gif" style="position: fixed; display: inline; right: 0px;  bottom: -150px; height: 200px; z-index: -10;"/>
 
 ---
 
@@ -171,9 +170,10 @@ services.
 * Remove need for state on the server
 * Can we use a database backed?
 
+**This sounds familiar...** Are we going back full circle?
+
 Not for everyone! More complexity and cost involved...
 
-Are we going back full circle?
 
 ---
 
@@ -260,9 +260,8 @@ A new experimental GitHub Project https://github.com/Velocidex/cloudvelo
 ---
 
 <!-- .slide: class="content" -->
-<h1 style="margin-top: 20vh">Demo Time</h1>
-
-<img src="velo_no.gif" style=" display: inline; right: 100px;  bottom: -250px; height: 300px; z-index: -10;"/>
+<h1 style="margin-top: 10vh">Demo Time</h1>
+<img src="velo_no.gif" style=" display: inline; right: 100px;  bottom: -150px; height: 300px; z-index: -10;"/>
 
 ---
 
@@ -295,10 +294,11 @@ The Cloud Velociraptor implementation has some limitations currently
 <!-- .slide: class="content" -->
 ## Conclusions
 
-* Velociraptor in the cloud is a viable alternative.
+* Velociraptor in the cloud is an alternative Velociraptor.
 * We hope it can scale to much larger deployment sizes.
-* It can be a lot more expensive to run though!
+* Use as a test case for further architectural experiments.
 
+<p>
 <table class="noborder">
 <tr>
     <td>Docs</td><td>
@@ -308,16 +308,6 @@ The Cloud Velociraptor implementation has some limitations currently
 <tr>
     <td>Github</td><td>
         <a href="https://github.com/Velocidex/cloudvelo">https://github.com/Velocidex/cloudvelo</a>
-    </td>
-</tr>
-<tr>
-    <td>Discord</td><td>
-        <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
-    </td>
-</tr>
-<tr>
-    <td>Mailing list</td><td>
-        <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
     </td>
 </tr>
 </table>
