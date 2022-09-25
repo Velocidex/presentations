@@ -9,7 +9,7 @@
 
 </div>
 
-<img src="velo_bike.gif" style=" position: fixed; display: inline; right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
+<img src="/resources/velo_bike.gif" style=" position: fixed; display: inline; right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
 
 ---
 
