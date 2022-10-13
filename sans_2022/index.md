@@ -1,4 +1,4 @@
-<!-- .slide: data-background="../assets/title.svg" class="title" -->
+<!-- .slide: data-background="/themes/default_velo/title.svg" class="title" -->
 # Digging Deeper...
 
 <div class="inset">
@@ -11,7 +11,7 @@
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## What is Velociraptor?
 
 Velociraptor is a unique Free and Open Source DFIR tool, giving you power and flexibility through the Velociraptor Query Language
@@ -23,13 +23,13 @@ VQL is used to drive a powerful set of forensic capabilities
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Deployment overview
 ![](deployment_overview.svg)
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Traditional DFIR
 
 * Traditional process
@@ -41,7 +41,7 @@ VQL is used to drive a powerful set of forensic capabilities
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## The Velociraptor way
 
 * Parse and analyze on the endpoint
@@ -52,7 +52,7 @@ VQL is used to drive a powerful set of forensic capabilities
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## VQL - Query Language
 ### Velociraptor's magic source
 
@@ -65,7 +65,7 @@ capabilities to be combined in novel creative ways
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
 ## Incident Response on Linux
 
 ### An example of responding to Linux systems.
@@ -79,7 +79,7 @@ capabilities to be combined in novel creative ways
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 <div class="container">
 <div class="col">
@@ -110,7 +110,7 @@ capabilities to be combined in novel creative ways
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Parsing SSH login events
 
 Linux systems typically use syslog for logging
@@ -128,7 +128,7 @@ Dec 29 07:03:41 devbox sshd[1810143]: Accepted publickey
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
 ## Grok for parsing syslogs
 
 Grok is a way of applying regular expressions to extract structured information from log files.
@@ -142,7 +142,7 @@ from %{IPORHOST:ip} port %{NUMBER:port} ssh2(:
 ```
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
 ## Let's use VQL to parse ssh events
 Read the first 50 lines from the auth log
 
@@ -151,7 +151,7 @@ Read the first 50 lines from the auth log
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Filter lines and apply Grok
 
 * Grok is a way of applying regular expressions to extract structured information from log files.
@@ -163,7 +163,7 @@ Read the first 50 lines from the auth log
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Artifacts: Encapsulating VQL
 
 Once we developed our VQL query - how do we make it easily accessible?
@@ -174,14 +174,14 @@ Once we developed our VQL query - how do we make it easily accessible?
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Linux.Syslog.SSHLogin artifact
 
 ![](artifact_view.png)
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## Collecting the artifact
 ![](ssh_login_artifact.png)
@@ -189,7 +189,7 @@ Once we developed our VQL query - how do we make it easily accessible?
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## The Velociraptor Community
 
 ### The Artifact Exchange
@@ -208,7 +208,7 @@ Notes: The artifact exchange is the place to fetch new artifacts
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
 ## Automatically Import Exchange Artifacts
 
 ![Automatically import exchange artifacts](import_exchange.png)
@@ -216,20 +216,20 @@ Notes: The artifact exchange is the place to fetch new artifacts
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
 ## Hunt and Post Process
 ![](hunt_post_process.png)
 
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
 ## Post process using VQL in Notebook
 ![](notebook_postprocessing.png)
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## Example 2
 ### Unsecured SSH keys
@@ -252,7 +252,7 @@ A common mechanism of privilege escalation is compromise of SSH keys without pas
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 <div class="container">
 <div class="col">
@@ -284,7 +284,7 @@ A common mechanism of privilege escalation is compromise of SSH keys without pas
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## How can I tell if a file is protected?
 ### Parsing SSH private key files.
@@ -307,7 +307,7 @@ A common mechanism of privilege escalation is compromise of SSH keys without pas
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" data-visibility="hidden" -->
 ## Parsing files with VQL
 
 We can read the file using a VQL query.
@@ -316,7 +316,7 @@ We can read the file using a VQL query.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Parsing binary data
 * Much of Digital Forensics is about parsing binary data.
 * Velociraptor comes with a powerful binary parser
@@ -326,7 +326,7 @@ We can read the file using a VQL query.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Binary parser built in VQL
 
 <div class="container">
@@ -346,7 +346,7 @@ We can read the file using a VQL query.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 **Full SSH Private key parser**
 
 *Uses binary parser, regular expression and file search*
@@ -355,14 +355,14 @@ We can read the file using a VQL query.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="full_screen_diagram" -->
 ## Hunting for unprotected keys
 
 ![](private_key_hunt.png)
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## Hunt all systems…
 
@@ -375,7 +375,7 @@ security issue!
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Enriching information
 ### Some data is only available on the endpoint
 
@@ -388,7 +388,7 @@ security issue!
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## PSExec attack
 
 <div class="container">
@@ -410,7 +410,7 @@ SYSTEM.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Suspicious Notepad?
 
 <div class="container">
@@ -432,7 +432,7 @@ Looking at a suspicious `notepad.exe` with Process Hacker
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## Velociraptor's PSTree
 
@@ -443,7 +443,7 @@ see exited processes.
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 ## What lead to this process?
 
@@ -453,7 +453,7 @@ If we could only see the commands before this process launch...
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## The process tracker...
 
 <div class="container">
@@ -475,7 +475,7 @@ If we could only see the commands before this process launch...
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 
 <div class="container">
 <div class="col">
@@ -505,7 +505,7 @@ If we could only see the commands before this process launch...
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Conclusions
 
 * Velociraptor's approach moves more of the analysis logic to the endpoint
@@ -516,7 +516,7 @@ If we could only see the commands before this process launch...
 
 ---
 
-<!-- .slide: data-background="../assets/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
+<!-- .slide: data-background="/themes/default_velo/content_slide.svg" data-background-color="white" data-background-size="contain" class="content" -->
 ## Conclusions
 
 We only scratched the surface of what Velociraptor can do!

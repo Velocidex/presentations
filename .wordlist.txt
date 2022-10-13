@@ -103,3 +103,11 @@ ps
 svchost
 winpmem
 yara
+
+AMCache
+FN
+Locard
+Malfind
+Pstree
+eg
+runtime
