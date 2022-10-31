@@ -108,6 +108,14 @@ section.content {
     margin-left: 20px;
 }
 
+.content h4 {
+    color: var(--r-color);
+    text-align: left;
+    text-shadow: 10px 10px 10px #00000060;
+    font-size: 2ex;
+    margin-left: 20px;
+}
+
 .content ul li ul {
     font-size: 1.7ex;
 }
