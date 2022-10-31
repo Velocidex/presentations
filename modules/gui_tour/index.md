@@ -39,7 +39,7 @@ The "gui" command creates an instant temporary server/client with self
 <!-- .slide: class="title" -->
 # A Velociraptor GUI tour
 
-<img src="tour-bus.png" class="title-inset">
+<img src="/modules/gui_tour/tour-bus.png" class="title-inset">
 
 ---
 
