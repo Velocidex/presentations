@@ -4,9 +4,10 @@
 
 <div class="inset">
 
-## Digging Deeper
+## Duke University Workshop
 
 ### Mike Cohen, Digital Paleontologist
+### Rapid 7 Inc
 
 </div>
 
@@ -24,5 +25,6 @@ visibility tool for DFIR.
 * GUI Tour
 * Case study: Search for files.
 * Case study: NTFS analysis.
-* Case study: Tracking processes.
-* Conclusions
+* Artifacts of Autumn: Case study
+* Case study: BITS disable logs.
+* Offline collections
