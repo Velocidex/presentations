@@ -1,0 +1,143 @@
+<!-- .slide: class="content" -->
+## Artifact of Autumn 77
+### PAM abuse
+
+https://infosec.exchange/@weslambert/109475612494526691
+![](/modules/artifacts_of_autumn/77/description.png)
+
+---
+
+<!-- .slide: class="content" -->
+## The artifact exchange
+### Sharing the knowledge
+
+![](/modules/artifacts_of_autumn/77/import_exchange.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+## The artifact exchange
+### Sharing the knowledge
+
+![](/modules/artifacts_of_autumn/77/imported_artifact.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Collecting the artifact
+
+What is normal?
+
+![](/modules/artifacts_of_autumn/77/pam_artifacts.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Hunting
+### Collecting artifacts from many hosts
+
+Hunting is Velociraptor's strength - collect the same artifact from
+thousands of endpoints in minutes!
+
+* Two types of hunts:
+   * Detection hunts are very targeted aimed at yes/no answer
+   * Collection hunts collect a lot more data and can be used to
+     build a baseline.
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise
+### Baseline pam configuration
+
+For this exercise we start a few more clients. Velociraptor's pool
+client can simulate multiple clients easily.
+
+```text
+$ cd /tmp/
+$ velociraptor --config client.config.yaml pool_client --number 100
+```
+
+This starts 100 virtual clients so we can hunt them
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise
+### Stacking hunt results.
+
+For this exercise, we simulate 100 clean machines, and 1 compromised
+machine.
+
+1. Stop the webshell server
+2. Start 100 pool clients
+3. Create a hunt for `Exchange.Linux.System.PAM`
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise
+### Hunting
+
+![](/modules/artifacts_of_autumn/77/hunting.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise
+### Stacking hunt results.
+
+When the hunt completes:
+
+4. Stop the pool client
+5. Add the following line to `/etc/pam/su-l`
+
+```
+auth sufficient pam_succeed_if.so uid >= 0
+```
+
+6. Start the pool client again with 101 clients.
+  * This causes the new client to join the hunt and detect the webshell.
+
+---
+
+<!-- .slide: class="content" -->
+## Identifying anomalies.
+
+* Anomalies are things that are not usual compared to the rest of the
+  network.
+* One tool for detecting anomalies is called `Stacking` - in VQL done
+  using the `GROUP BY` keyword.
+* Stacking is useful when looking at something that should be common
+  across most systems (e.g. OS configuration)
+
+---
+
+<!-- .slide: class="content" -->
+## Identifying anomalies.
+### Count and group by PAM config lines
+
+```sql
+SELECT *, count() AS Count
+FROM source(artifact="Exchange.Linux.System.PAM")
+GROUP BY Record
+ORDER BY Count DESC
+```
+---
+
+<!-- .slide: class="content" -->
+## Identifying anomalies.
+### Count and group by PAM config lines
+
+![](/modules/artifacts_of_autumn/77/stacking.png)
+
+
+---
+
+
+<!-- .slide: class="content" -->
+## Stacking
+### Identify the suspicious entries
+
+![](/modules/artifacts_of_autumn/77/suspicious.png)
