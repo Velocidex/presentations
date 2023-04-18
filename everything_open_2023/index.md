@@ -26,3 +26,11 @@ visibility tool for DFIR.
 
   1. SSH key compromise leading to lateral movement and privilege escalation.
   2. Webshell detection.
+
+---
+
+<!-- .slide: class="content" -->
+## Requirements
+
+This workshop will use Linux!
+You should run on a Linux VM or system.
