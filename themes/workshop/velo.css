@@ -139,6 +139,9 @@ section.content {
     display: inline;
 }
 
+.mid-height {
+    height: 400px;
+}
 
 .full_screen_diagram h2 {
     color: var(--r-color);
