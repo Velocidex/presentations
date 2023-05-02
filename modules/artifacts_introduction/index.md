@@ -1,0 +1,165 @@
+
+<!-- .slide: class="title" -->
+# Velociraptor Artifacts
+
+## Fast, Efficient, Surgical
+
+<img src="/modules/artifacts_introduction/surgical.png" style="bottom: -200px" class="title-inset">
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Why a query language?
+* Able to dynamically adapt to changing requirements - without needing to rebuild clients or servers.
+* For example, a new IOC is released for detection of a specific threat
+    * Immediately write a VQL artifact for the threat, upload the artifact and hunt everywhere for it.
+    * Turn around from IOC to full hunt: A few minutes.
+    * Share artifacts with the community
+* VQL Artifacts are simply YAML files with VQL queries.
+    * Can be easily shared and cross pollinate other Artifacts
+    * Can be customized by callers.
+    * [Public Artifact Reference](https://docs.velociraptor.app/artifact_references/)
+
+
+---
+
+
+<!-- .slide: class="content" -->
+
+## What is VQL?
+
+```sql
+SELECT X, Y, Z FROM plugin(arg=1) WHERE X = 1
+```
+
+* `X, Y, Z` are called Column Selectors
+* `plugin(arg=1)` is termed a VQL Plugin with Args
+* `X = 1` is the Filter Condition
+
+
+---
+
+
+<!-- .slide: class="content" -->
+## Velociraptor artifacts
+
+Velociraptor is just a VQL engine!
+
+* We package VQL queries in Artifacts:
+    * YAML files
+    * Include human description
+    * Package related VQL queries into “Sources”
+    * Take parameters for customization
+    * Can in turn be used in VQL as well...
+
+---
+
+<!-- .slide: class="content" -->
+
+## What does the VFS view do under the cover?
+
+* Refreshing the VFS simply schedules new artifacts to be collected - it is just a GUI convenience.
+
+![](/modules/artifacts_introduction/vfs_collections.png)
+
+---
+
+
+<!-- .slide: class="content" -->
+## Velociraptor uses expert knowledge to find the evidence
+
+A key objective of Velociraptor is encapsulating DFIR knowledge into
+the platform, so you don’t need to be a DFIR expert.  We have high
+level questions to answer We know where to look for evidence of user /
+system activities
+
+We build artifacts to collect and analyze the evidence in order to answer our investigative questions.
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Anatomy of an artifact
+
+![](/modules/artifacts_introduction/artifacts.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Collecting new artifacts
+
+To collect a new artifact, from the Collected Artifacts screen,
+click Collect new artifact and search for it. Select Add to add it to
+this collection. When finished, click Next.
+
+<img src="/modules/artifacts_introduction/new-collections.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Configuring the artifact collection
+
+* Many artifacts take parameters that can control the way they work.
+
+<img src="/modules/artifacts_introduction/configure_artifacts.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Configuring collection resource limits
+
+There are many safety limits implemented into the client to control endpoint impact.
+
+<img src="/modules/artifacts_introduction/configure_resources.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## What do artifacts return?
+
+* All artifacts produce rows since they are just queries.
+* Some artifacts also upload files. You can create a download zip to export all the uploaded files.
+
+![](/modules/artifacts_introduction/artifact-results.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Uploaded files
+
+* The uploads tab shows the file's location on the server.
+* You can download or preview each one individually.
+
+![](/modules/artifacts_introduction/artifact-uploads.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Artifact query logs
+
+* As the query is running on the endpoint any log messages are sent to the server.
+* Click the log tab to see if there were any errors and how many rows are expected.
+
+![](/modules/artifacts_introduction/artifact-logs.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Artifacts return multiple tables (sources)
+* `Source Selector`: Viewing the result tab shows the rows sent from
+  every artifact and source.
+
+![](/modules/artifacts_introduction/artifact-sources.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Exporting artifact collections
+
+* Use the GUI to create a zip export of the collection
+* Set a password in user preferences to export an encrypted Zip File
+
+![](/modules/artifacts_introduction/export-collection.png)

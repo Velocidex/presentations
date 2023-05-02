@@ -132,3 +132,11 @@ FileFinder
 
 opensource
 webshell
+
+Auscert
+
+MSI
+RBAC
+
+hostname
+hostnames
