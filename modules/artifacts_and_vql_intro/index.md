@@ -56,6 +56,16 @@ community to publish useful VQL artifacts for reuse
 
 ---
 
+<!-- .slide: class="content small-font" -->
+
+## Manually importing artifact packs
+
+You can manually upload an artifact pack as well (A zip file
+containing artifact definitions).
+
+![](/modules/artifacts_and_vql_intro/import_pack.png)
+
+---
 
 <!-- .slide: class="content" -->
 ## Finding files
@@ -135,17 +145,10 @@ Handle file reading errors gracefully
 
 ![](/modules/artifacts_and_vql_intro/hide-columns.png)
 
-
 ---
 
 <!-- .slide: class="content small-font" -->
 ## Inspect the data with the table widget
 * Filter or sort using the table widget
 
-![](/modules/artifacts_and_vql_intro/table-filter.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Inspect the data with the table widget
-![](/modules/artifacts_and_vql_intro/transform-table.png)
+![](/modules/artifacts_and_vql_intro/filtering_tables.png)

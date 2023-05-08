@@ -164,7 +164,7 @@ Sysmon provides enhanced visibility into process creation
 <!-- .slide: class="full_screen_diagram" -->
 ## Exercise: Enable the process tracker
 
-![](../dfrws_apac_2022/enable-process-tracker.png)
+![](/modules/tracking_processes/enable-process-tracker.png)
 
 ---
 
@@ -183,21 +183,21 @@ notepad.exe
 <!-- .slide: class="full_screen_diagram" -->
 ## Inspect the notepad process
 
-<img src="../dfrws_apac_2022/process_hacker.png" style="height: 600px" class="inset">
+<img src="/modules/tracking_processes/process_hacker.png" style="height: 600px" class="inset">
 
 ---
 
 <!-- .slide: class="content" -->
 ## Using Generic.System.Pstree
 
-![](../dfrws_apac_2022/collecting_pstree.png)
+![](/modules/tracking_processes/collecting_pstree.png)
 
 ---
 
 <!-- .slide: class="content" -->
 ## View process tree
 
-![](../dfrws_apac_2022/pstree.png)
+![](/modules/tracking_processes/pstree.png)
 
 
 ---
@@ -205,7 +205,7 @@ notepad.exe
 <!-- .slide: class="content" -->
 ## Inspect the process call chain
 
-![](../dfrws_apac_2022/powershell_pstree.png)
+![](/modules/tracking_processes/powershell_pstree.png)
 
 
 ---
@@ -226,7 +226,7 @@ notepad.exe
 * Enable the Windows.Detection.USN artifact - target paths of
   interest.
 
-![](../dfrws_apac_2022/Windows.Detection.USN.png)
+![](/modules/event_monitoring/Windows.Detection.USN.png)
 
 ---
 

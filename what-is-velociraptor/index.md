@@ -62,7 +62,7 @@ Digital forensic plugins turn VQL into a high quality DFIR tool
 
 Artifacts encode VQL into user sharable code snippets
 
-![](/modules/gui_tour/artifacts.png)
+![](/modules/artifacts_introduction/artifacts.png)
 
 ---
 
