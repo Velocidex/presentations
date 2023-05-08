@@ -139,16 +139,13 @@ endpoint identity
   do this!
     * Actions are logged and audited
 
-![](/modules/gui_tour/shell_commands.png)
-
-Note:
-
 ```powershell
 Get-LocalGroupMember -Group "Administrators"
 ```
 
----
+![](/modules/gui_tour/shell_commands.png)
 
+---
 
 <!-- .slide: class="title" -->
 # Interactively fetching files from the endpoint
