@@ -9,7 +9,7 @@
 
 </div>
 
-<img src="/resources/velo_bike.gif" style=" position: fixed; display: inline; right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
+<img src="/resources/velo_bike.gif" class="fixed" style="right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
 
 ---
 
@@ -119,7 +119,7 @@ simplify the whole design!
 * Throwing away the data model makes everything very efficient!
 * Monolithic binary makes deployment really simple!
 
-<img src="small_velo.gif" style="position: fixed; display: inline; right: 0px;  bottom: -150px; height: 200px; z-index: -10;"/>
+<img src="small_velo.gif" class="fixed" style="right: 0px;  bottom: -150px; height: 200px; z-index: -10;"/>
 
 ---
 
@@ -133,7 +133,7 @@ limiting factors?
 * IO bandwidth is saturated
 * GUI can consume a lot of resources because it runs notebook queries.
 
-<img src="velo_no_2.gif" style=" position: fixed; display: inline; right: 100px;  bottom: -250px; height: 200px; z-index: -10;"/>
+<img src="velo_no_2.gif" class="fixed" style=" right: 100px;  bottom: -250px; height: 200px; z-index: -10;"/>
 
 ---
 
@@ -287,7 +287,7 @@ The Cloud Velociraptor implementation has some limitations currently
 * Will remain a separate project - an alternative to the standard Velociraptor...
 
 
-<img src="velo_rocks2.webp" style=" position: fixed; display: inline; right: 100px;  bottom: -250px; height: 300px; z-index: -10;"/>
+<img src="velo_rocks2.webp" class="fixed" style=" right: 100px;  bottom: -250px; height: 300px; z-index: -10;"/>
 
 ---
 

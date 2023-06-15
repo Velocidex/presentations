@@ -81,7 +81,7 @@ section.content {
     padding-left: 20px;
 }
 
-.content .inset, .title-inset {
+.content .inset, .title-inset, .full_screen_diagram .inset {
     position: absolute;
     right: 0;
     width: 40%;
@@ -161,6 +161,11 @@ section.content {
     display: none;
 }
 
+section.full_screen_diagram {
+    overflow-y: hidden;
+    max-height: 90vh;
+}
+
 .full_screen_diagram a {
     font-size: 1ex;
 }
@@ -193,4 +198,14 @@ section.content {
 
 .over-height pre {
     height: 800px;
+}
+
+
+.fixed {
+    display: inline;
+    position: fixed;
+}
+
+html.print-pdf .fixed {
+    display: none;
 }
