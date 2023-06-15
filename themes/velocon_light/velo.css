@@ -162,3 +162,11 @@ section.content {
 .reveal table.noborder td {
     border: none;
 }
+
+.fixed {
+    position: fixed;
+}
+
+html.print-pdf .fixed {
+    display: none;
+}
