@@ -209,3 +209,7 @@ section.full_screen_diagram {
 html.print-pdf .fixed {
     display: none;
 }
+
+html.print-pdf pre.code-wrapper code {
+    text-wrap: balance;
+}

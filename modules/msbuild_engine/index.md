@@ -1,3 +1,9 @@
+<!-- .slide: class="title" -->
+
+# MSBuild based attacks
+
+---
+
 <!-- .slide: class="content" -->
 ## Microsoft Build Engine
 
