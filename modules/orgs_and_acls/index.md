@@ -4,7 +4,7 @@
 
 ## Securing Access
 
-<img src="/modules/orgs_and_acls/security.png" style="bottom: 00px" class="title-inset">
+<img src="security.png" style="bottom: 00px" class="title-inset">
 
 ---
 
@@ -30,7 +30,7 @@ Velociraptor supports multiple orgs in a fully multi tenancy configuration.
 By default the `Velociraptor gui` command creates two orgs. Switch to
 the second org sing the GUI's user preferences tab.
 
-![](/modules/orgs_and_acls/selecting_orgs.png)
+![](selecting_orgs.png)
 
 
 ---
@@ -40,7 +40,7 @@ the second org sing the GUI's user preferences tab.
 
 You can use the Server.Orgs.NewOrg artifact to create a new org
 
-![](/modules/orgs_and_acls/new_org.png)
+![](new_org.png)
 
 ---
 
@@ -82,7 +82,7 @@ The default roles:
 If using basic authentication you can change the user's password here
 as well.
 
-![](/modules/orgs_and_acls/add_new_user.png)
+![](add_new_user.png)
 
 
 ---
@@ -94,7 +94,7 @@ as well.
 By default the initial role assigned is `reader`
 
 
-![](/modules/orgs_and_acls/assign_user_to_org.png)
+![](assign_user_to_org.png)
 
 
 ---
@@ -108,19 +108,19 @@ user can have different roles in different orgs.
 
 To delete a user, simply remove all their roles from an org.
 
-![](/modules/orgs_and_acls/adjust_user_permissions.png)
+![](adjust_user_permissions.png)
 
 ---
 
-<!-- .slide: class="content small-font" -->
+<!-- .slide: class="full_screen_diagram" -->
 
-## Preparing a deployment for the new org
+### Preparing a deployment for the new org
 
-Clients are provisioned for their respective orgs.  You can prepare an
-MSI for deployment using the `Server.Utils.CreateMSI` artifact.
+* Clients are provisioned for their respective orgs.
+   * You can prepare an MSI for deployment using the
+     `Server.Utils.CreateMSI` artifact.
 
-![](/modules/orgs_and_acls/preparing_msi.png)
-
+<img src="preparing_msi.png" class="mid-height">
 
 ---
 
@@ -131,7 +131,7 @@ MSI for deployment using the `Server.Utils.CreateMSI` artifact.
 The prepared MSI contains the relevant embedded config and is ready
 for installation.
 
-![](/modules/orgs_and_acls/download_msi.png)
+![](download_msi.png)
 
 ---
 
@@ -141,7 +141,7 @@ for installation.
 
 Velociraptor is a very powerful platform and requires strong auditing.
 
-![](/modules/orgs_and_acls/viewing_audit_log.png)
+![](viewing_audit_log.png)
 
 ---
 
@@ -152,4 +152,4 @@ Velociraptor is a very powerful platform and requires strong auditing.
 It is also possible to forward audit events off system (remote syslog
 or Open Search server)
 
-![](/modules/orgs_and_acls/inspecting_audit_log.png)
+![](inspecting_audit_log.png)

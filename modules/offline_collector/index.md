@@ -22,7 +22,7 @@
 <div class="container">
 <div class="col">
 
-![](/modules/offline_collector/offline_builder.png)
+![](offline_builder.png)
 
 </div>
 <div class="col">
@@ -41,7 +41,7 @@
 
 ### Selecting the Windows.KapeFiles.Targets artifact
 
-![](/modules/offline_collector/offline_kape_targets.png)
+![](offline_kape_targets.png)
 
 ---
 
@@ -49,7 +49,7 @@
 
 ### Configuring the collector to encrypt output
 
-![](/modules/offline_collector/offline_configure.png)
+![](offline_configure.png)
 
 ---
 
@@ -57,7 +57,7 @@
 
 ### Downloading the prepared binary
 
-![](/modules/offline_collector/offline_download_binary.png)
+![](offline_download_binary.png)
 
 ---
 
@@ -75,7 +75,7 @@
 
 ### Acquire data!
 
-![](/modules/offline_collector/offline_acquire.png)
+![](offline_acquire.png)
 
 ---
 
@@ -98,7 +98,7 @@
 
 ## Acquired file is encrypted
 
-![](/modules/offline_collector/offline_encrypted.png)
+![](offline_encrypted.png)
 
 ---
 
@@ -119,7 +119,7 @@
 
 ### Import the collection into the Velociraptor server
 
-![](/modules/offline_collector/offline_import.png)
+![](offline_import.png)
 
 ---
 
@@ -127,7 +127,7 @@
 
 ### Inspect the import process
 
-![](/modules/offline_collector/offline_import_inspect.png)
+![](offline_import_inspect.png)
 
 ---
 
@@ -135,4 +135,4 @@
 
 ### Inspect the collected data
 
-![](/modules/offline_collector/offline_import_inspect_data.png)
+![](offline_import_inspect_data.png)
