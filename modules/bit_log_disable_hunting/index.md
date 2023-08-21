@@ -36,7 +36,7 @@
 <!-- .slide: class="full_screen_diagram" -->
 ## What is BITS? Why should we care?
 
-![](/modules/bit_log_disable_hunting/bits-mitre.png)
+![](bits-mitre.png)
 
 ---
 
@@ -57,7 +57,7 @@ bitsadmin.exe /transfer
 
 </div>
 <div class="col">
-<img src="/modules/bit_log_disable_hunting/bits-log.png" style="width: 50%" class="title-inset">
+<img src="bits-log.png" style="width: 50%" class="title-inset">
 </div>
 </div>
 
@@ -66,7 +66,7 @@ bitsadmin.exe /transfer
 <!-- .slide: class="full_screen_diagram" -->
 ## Disable event logs
 
-![](/modules/bit_log_disable_hunting/disable-bits-log.png)
+![](disable-bits-log.png)
 
 Note:
 It is easy to disable log collections - from the GUI or programmatically
@@ -86,7 +86,7 @@ Try this yourself - disable the Bits-Client logs, clear the logs and repeat the 
 <!-- .slide: class="content" -->
 ## We can get a snapshot of all event logs
 
-![](/modules/bit_log_disable_hunting/log-enable-snapshot.png)
+![](log-enable-snapshot.png)
 
 ---
 
@@ -103,7 +103,7 @@ Try this yourself - disable the Bits-Client logs, clear the logs and repeat the 
 
 </div>
 <div class="col">
-<img src="/modules/bit_log_disable_hunting/bits-targeted-collection.png" class="title-inset">
+<img src="bits-targeted-collection.png" class="title-inset">
 </div>
 </div>
 
@@ -114,7 +114,7 @@ Try this yourself - disable the Bits-Client logs, clear the logs and repeat the 
 * Treat the endpoint as the ultimate source of truth - need more
   data? go back and re-fetch it from the endpoint.
 
-![](/modules/bit_log_disable_hunting/Windows.EventLogs.Modifications.png)
+![](Windows.EventLogs.Modifications.png)
 
 ---
 
@@ -124,7 +124,7 @@ Try this yourself - disable the Bits-Client logs, clear the logs and repeat the 
 * Another alternative is to collect all the data and then post-process using the GUI
     * Helps us drill into the data and understand what is going on.
 
-![](/modules/bit_log_disable_hunting/bits-post-process.png)
+![](bits-post-process.png)
 
 ---
 
@@ -167,7 +167,7 @@ This starts 100 virtual clients so we can hunt them
 ## Pool clients
 Simply multiple instances of the same client
 
-![](/modules/bit_log_disable_hunting/pool_clients.png)
+![](pool_clients.png)
 
 ---
 
@@ -175,7 +175,7 @@ Simply multiple instances of the same client
 <!-- .slide: class="full_screen_diagram" -->
 ## Create a hunt
 
-![](/modules/bit_log_disable_hunting/create-hunt_2.png)
+![](create-hunt_2.png)
 
 ---
 
@@ -183,14 +183,14 @@ Simply multiple instances of the same client
 <!-- .slide: class="full_screen_diagram" -->
 ## Select hunt artifacts
 
-![](/modules/bit_log_disable_hunting/create-hunt_3.png)
+![](create-hunt_3.png)
 ---
 
 
 <!-- .slide: class="full_screen_diagram" -->
 ## Collect results
 
-![](/modules/bit_log_disable_hunting/create-hunt.png)
+![](create-hunt.png)
 
 ---
 
@@ -214,4 +214,4 @@ Velociraptor.exe --config client.config.yaml pool_client --number 110
 <!-- .slide: class="full_screen_diagram" -->
 ## Stacking can reveal results that stand out
 
-![](/modules/bit_log_disable_hunting/stacking-a-hunt.png)
+![](stacking-a-hunt.png)

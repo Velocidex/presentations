@@ -2,7 +2,7 @@
 ## Artifacts Of Autumn #37
 
 <a href="https://twitter.com/therealwlambert/status/1586010158848622592" target="_blank">
- <img src="/modules/artifacts_of_autumn/37/tweet.png">
+ <img src="tweet.png">
 </a>
 
 ---
@@ -34,4 +34,4 @@ Download the sample ISO file from the [Atomic Red Team](https://github.com/redca
 
 We can check the event logs for mounting of the ISO.
 
-![](/modules/artifacts_of_autumn/37/artifact.jpeg)
+![](artifact.jpeg)

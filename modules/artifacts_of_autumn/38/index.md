@@ -2,7 +2,7 @@
 ## Artifacts Of Autumn #38
 
 <a href="https://twitter.com/therealwlambert/status/1586742178063286273" target="_blank">
- <img src="/modules/artifacts_of_autumn/38/tweet.png">
+ <img src="tweet.png">
 </a>
 
 ---
@@ -24,7 +24,7 @@
 
 Work through the examples from the [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1197/T1197.md#atomic-test-2---bitsadmin-download-powershell)
 
-![](/modules/artifacts_of_autumn/38/atomic_red_team.png)
+![](atomic_red_team.png)
 
 ---
 

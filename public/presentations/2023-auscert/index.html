@@ -1,0 +1,1539 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="title" -->
+
+<h1 style="font-size: 4ex">Velociraptor: Digging Deeper</h1>
+
+<div class="inset">
+
+## Auscert Conference 2023
+
+### Mike Cohen, Digital Paleontologist
+### Rapid 7 Inc
+
+</div>
+
+<img src="/resources/velo_bike.gif" style=" position: fixed; display: inline; right: 0px;  bottom: 00px; height: 300px; z-index: -10;"/>
+
+---
+
+<!-- .slide: class="content" -->
+## Overview
+
+This workshop introduces Velociraptor - an advanced endpoint
+visibility tool for DFIR.
+
+* We focus on Windows systems
+* We cover some of the basic topics to get you started
+* It is a hands on workshop - try it out on your own VM!
+* There is too much content to go through in this session!
+
+---
+
+<!-- .slide: class="content" -->
+## Requirements
+
+This workshop will use a Windows VM or system.
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="content" -->
+## What is Velociraptor?
+* Velociraptor is a unique Free and Open Source DFIR tool, giving you
+  power and flexibility through the Velociraptor Query Language
+* VQL is used to drive a powerful set of forensic capabilities:
+* Using VQL we can write custom "Artifacts" to identify emerging threats quickly and safely
+* Hunt for artifacts at scale over thousands of end points within
+  minutes!
+
+
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Deployment overview
+![](../../modules/overview/deployment_overview.svg)
+
+---
+
+
+<!-- .slide: class="content" -->
+## Typical deployments
+
+* Support Linux, Windows, MacOS, FreeBSD …
+* Server simply collects the results of queries - clients do all the heavy lifting.
+* Client memory and CPU usage is controlled via throttling and active cancellations.
+* Server is optimized for speed and scalability
+* Concurrency control ensures stability
+* Bandwidth limits ensure network stability
+
+---
+
+
+<!-- .slide: class="content" -->
+## Typical deployments
+
+Current recommendations
+* 10k-15k clients - single server with file based data store (usually cloud VM).
+* SSL load is the biggest load - TLS offloading helps a lot!
+* 8 GB RAM/8 cores is generous towards the top of the range.
+* We recommend Ubuntu/Debian server
+    * 15-20k to 150k endpoints we recommend a multi-frontend setup.
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+
+# Velociraptor Installation and GUI tour
+
+---
+
+
+<!-- .slide: class="content" -->
+## Create a local server
+
+* Create a local server on your windows system.
+* We will use this server's notebook feature to learn about windows artifacts
+* Run Velociraptor on your machine
+    * Download Velociraptor from GitHub (.msi or .exe)
+
+```
+velociraptor-v0.6.6-2-windows-amd64.exe gui
+```
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+
+The "gui" command creates an instant temporary server/client with self
+  signed SSL and a hard coded admin/password.
+
+![](../../modules/gui_tour/velociraptor-gui.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Your Velociraptor is ready to use!
+
+![](../../modules/gui_tour/GUI.png)
+---
+
+<!-- .slide: class="title" -->
+# A Velociraptor GUI tour
+
+<img src="../../modules/gui_tour/tour-bus.png" class="title-inset">
+
+---
+
+<!-- .slide: class="content" -->
+
+## The Dashboard
+
+* The Dashboard shows the current state of the installation:
+    * How many clients are connected
+    * Current CPU load and memory footprint on the server.
+    * When running hunts or intensive processing, memory and CPU requirements will increase but not too much.
+    * You can customize the dashboard - it’s also just an artifact.
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+## The Dashboard
+
+![](../../modules/gui_tour/dashboard.png)
+
+---
+
+<!-- .slide: class="content" -->
+## User Preferences
+
+You can customize the interface to your liking
+
+
+<div class="container small-font">
+<div class="col">
+
+* Themes
+
+</div>
+<div class="col">
+
+* Languages
+* Timezones
+
+</div>
+</div>
+
+<img src="../../modules/gui_tour/user_preferences.png" style="bottom: inherit" class="" />
+
+---
+
+<!-- .slide: class="title" -->
+
+# Interactively investigate individual clients
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Searching for a client
+
+To work with a specific client we need to search for it.  Press the
+**Search** or **Show All** button to see some clients. You can also
+use the **Show recent hosts** to see your own clients.
+
+![](../../modules/gui_tour/search_clients.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Search for clients
+
+### hostname, label, or client ID.
+
+* You can start typing the hostname to auto-complete
+* Some common terms:
+   * `host`: search by hostnames
+   * `mac`: Mac addresses
+   * `ip`: last seen IP address
+   * `label`: Search by labels
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Client Overview
+
+* Internally the client id is considered the most accurate source of
+endpoint identity
+
+![](../../modules/gui_tour/client_overview.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Shell commands
+
+* Velociraptor allows running shell commands on the endpoint using
+  `Powershell`/`Cmd`/`Bash`
+    * Only Velociraptor users with the administrator role are allowed to
+  do this!
+    * Actions are logged and audited
+
+```powershell
+Get-LocalGroupMember -Group "Administrators"
+```
+
+![](../../modules/gui_tour/shell_commands.png)
+
+---
+
+<!-- .slide: class="title" -->
+# Interactively fetching files from the endpoint
+
+<img src="../../modules/gui_tour/fetch.png" class="title-inset">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## The VFS View
+
+Remember that the VFS view is simply a server side cache of
+information we know about the endpoint - it is usually out of date!
+
+![](../../modules/gui_tour/vfs_view.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Navigating the interface
+
+* Click the “Refresh this directory” will schedule a directory listing
+  artifact and wait for the results (usually very quick if the
+  endpoint is online).
+* The “Recursively refresh this directory” will schedule a recursive
+  refresh - this may take some time! After this operation a lot of the
+  VFS will be pre-populated already.
+* “Collect from client” will retrieve the file data to the
+  server. After which, the floppy disk sign indicates that we have
+  file data available and you can click the “Download” link to get a
+  copy of the file.
+
+
+---
+
+<!-- .slide: class="content small-font" -->
+## The VFS interface
+
+Previewing a file after download.
+
+![](../../modules/gui_tour/vfs_view_2.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Previewing files
+
+The GUI allows close inpection of binary files
+* Viewing in hex or text
+* Paging - skipping to offset
+* Searching using regex or hex strings
+
+<img src="../../modules/gui_tour/vfs_view_3.png" class="title-inset">
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+# Velociraptor Artifacts
+
+## Fast, Efficient, Surgical
+
+<img src="../../modules/artifacts_introduction/surgical.png" style="bottom: -200px" class="title-inset">
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Why a query language?
+* Able to dynamically adapt to changing requirements - without needing to rebuild clients or servers.
+* For example, a new IOC is released for detection of a specific threat
+    * Immediately write a VQL artifact for the threat, upload the artifact and hunt everywhere for it.
+    * Turn around from IOC to full hunt: A few minutes.
+    * Share artifacts with the community
+* VQL Artifacts are simply YAML files with VQL queries.
+    * Can be easily shared and cross pollinate other Artifacts
+    * Can be customized by callers.
+    * [Public Artifact Reference](https://docs.velociraptor.app/artifact_references/)
+
+
+---
+
+
+<!-- .slide: class="content" -->
+
+## What is VQL?
+
+```sql
+SELECT X, Y, Z FROM plugin(arg=1) WHERE X = 1
+```
+
+* `X, Y, Z` are called Column Selectors
+* `plugin(arg=1)` is termed a VQL Plugin with Args
+* `X = 1` is the Filter Condition
+
+
+---
+
+
+<!-- .slide: class="content" -->
+## Velociraptor artifacts
+
+Velociraptor is just a VQL engine!
+
+* We package VQL queries in Artifacts:
+    * YAML files
+    * Include human description
+    * Package related VQL queries into “Sources”
+    * Take parameters for customization
+    * Can in turn be used in VQL as well...
+
+---
+
+<!-- .slide: class="content" -->
+
+## What does the VFS view do under the cover?
+
+* Refreshing the VFS simply schedules new artifacts to be collected - it is just a GUI convenience.
+
+![](../../modules/artifacts_introduction/vfs_collections.png)
+
+---
+
+
+<!-- .slide: class="content" -->
+## Velociraptor uses expert knowledge to find the evidence
+
+A key objective of Velociraptor is encapsulating DFIR knowledge into
+the platform, so you don’t need to be a DFIR expert.  We have high
+level questions to answer We know where to look for evidence of user /
+system activities
+
+We build artifacts to collect and analyze the evidence in order to answer our investigative questions.
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Anatomy of an artifact
+
+![](../../modules/artifacts_introduction/artifacts.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Collecting new artifacts
+
+To collect a new artifact, from the Collected Artifacts screen,
+click Collect new artifact and search for it. Select Add to add it to
+this collection. When finished, click Next.
+
+<img src="../../modules/artifacts_introduction/new-collections.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Configuring the artifact collection
+
+* Many artifacts take parameters that can control the way they work.
+
+<img src="../../modules/artifacts_introduction/configure_artifacts.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Configuring collection resource limits
+
+There are many safety limits implemented into the client to control endpoint impact.
+
+<img src="../../modules/artifacts_introduction/configure_resources.png" class="mid-height">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## What do artifacts return?
+
+* All artifacts produce rows since they are just queries.
+* Some artifacts also upload files. You can create a download zip to export all the uploaded files.
+
+![](../../modules/artifacts_introduction/artifact-results.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Uploaded files
+
+* The uploads tab shows the file's location on the server.
+* You can download or preview each one individually.
+
+![](../../modules/artifacts_introduction/artifact-uploads.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Artifact query logs
+
+* As the query is running on the endpoint any log messages are sent to the server.
+* Click the log tab to see if there were any errors and how many rows are expected.
+
+![](../../modules/artifacts_introduction/artifact-logs.png)
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Artifacts return multiple tables (sources)
+* `Source Selector`: Viewing the result tab shows the rows sent from
+  every artifact and source.
+
+![](../../modules/artifacts_introduction/artifact-sources.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Exporting artifact collections
+
+* Use the GUI to create a zip export of the collection
+* Set a password in user preferences to export an encrypted Zip File
+
+![](../../modules/artifacts_introduction/export-collection.png)
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="content" -->
+## VQL - Velociraptor's magic sauce
+
+Rather than having specific analysis modules, VQL allows generic capabilities to be combined in novel creative ways
+* NTFS/MFT/USN/Glob file system analysis
+* File parsers - Grok, Sqlite etc
+* Built in powerful parser framework for novel binary parsers
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## Velociraptor Artifacts
+Velociraptor comes with a large number of artifact types
+* Client Artifacts run on the endpoint
+* Client Event artifacts monitor the endpoint
+* Server Artifacts run on the server
+* Server Event artifacts monitor for events on the server.
+
+---
+
+
+<!-- .slide: class="content" -->
+
+## Velociraptor Query Language
+
+Using a query language we can string together different forensic
+capabilities to create novel analysis
+
+The Power of Open source!
+
+The [Velociraptor artifact
+exchange](https://docs.velociraptor.app/exchange/) is a place for the
+community to publish useful VQL artifacts for reuse
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## The Artifact Exchange
+
+![](../../modules/artifacts_and_vql_intro/artifact-exchange.png)
+
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Automatically import Exchange
+
+![](../../modules/artifacts_and_vql_intro/import-exchange.png)
+
+<!-- .slide: class="title" -->
+# Searching for files
+## Let's start at the beginning….
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Manually importing artifact packs
+
+You can manually upload an artifact pack as well (A zip file
+containing artifact definitions).
+
+![](../../modules/artifacts_and_vql_intro/import_pack.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Finding files
+
+DFIR is often about finding files on the endpoint
+* Filename is sometimes an indicator
+* Word documents in a temp folder may contain macros
+* Sometimes we need to filter by file content
+* File has signature of malicious macro/script
+
+
+---
+
+
+<!-- .slide: class="content" -->
+## Windows.Search.FileFinder
+
+<div class="container">
+<div class="col">
+
+* Glob based
+* Time filters
+* Yara for Content
+
+</div>
+<div class="col">
+
+![](../../modules/artifacts_and_vql_intro/file-finder-args.png)
+
+</div>
+</div>
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise
+
+Find all executables in the user's home directory
+
+---
+
+
+<!-- .slide: class="content" -->
+## Automate file collection+parsing
+
+The goal of VQL is to automate as much of the routine DFIR work as possible
+
+* Example: Collect all browser artifacts
+
+---
+
+
+<!-- .slide: class="content small-font" -->
+## Generic.Collectors.SQLECmd
+
+* Use Generic.Collectors.SQLECmd to automatically locate and parse SQLite files.
+* SQLECmd is an open source project to document location of SQLite files
+used by various programs (like browsers)
+
+![](../../modules/artifacts_and_vql_intro/sqlite-parsing.png)
+
+
+<!-- .slide: class="content" -->
+## Velociraptor's plugins are robust
+
+Handle file reading errors gracefully
+
+![](../../modules/artifacts_and_vql_intro/sqlite-error-recovery.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Inspect the data with the table widget
+* Show or hide columns
+    * Export the modified table to CSV or JSON
+
+![](../../modules/artifacts_and_vql_intro/hide-columns.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Inspect the data with the table widget
+* Filter or sort using the table widget
+
+![](../../modules/artifacts_and_vql_intro/filtering_tables.png)
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+
+# Querying the registry
+
+## Detecting event log modifications
+
+---
+
+
+<!-- .slide: class="content" -->
+## The Windows Registry
+
+* Windows uses the registry to store configuration data.
+* Many attackers modify system configuration to achieve persistence
+* It is very useful to be able to query the registry!
+* Velociraptor has two types of registry accessors:
+    * "registry" uses the APIs
+    * "raw_reg" parses the registry hives themselves
+
+
+---
+
+
+<!-- .slide: class="content" -->
+## Example: Disable event logs
+
+* Windows event logs are crucial for detection
+* Many detection solutions rely on forwarding event logs to a backend
+* It is trivial to enable/disable event log collection
+* Let's look at disabling the BITS client events
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## What is BITS? Why should we care?
+
+![](bits-mitre.png)
+
+---
+
+<!-- .slide: class="content" -->
+## What is BITS?
+
+<div class="container">
+<div class="col">
+
+BITS activity is visible in the logs
+
+```text
+bitsadmin.exe /transfer
+  /download /priority
+  foreground https://www.google.com
+  c:\Users\test\test.ps1
+```
+
+</div>
+<div class="col">
+<img src="bits-log.png" style="width: 50%" class="title-inset">
+</div>
+</div>
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Disable event logs
+
+![](disable-bits-log.png)
+
+Note:
+It is easy to disable log collections - from the GUI or programmatically
+Try this yourself - disable the Bits-Client logs, clear the logs and repeat the previous step
+
+---
+
+<!-- .slide: class="content" -->
+## Query the registry for event log config
+
+* Disabling the event logs actually results in a configuration change in the registry.
+    * The relevant keys are discussed in [Disabled Event Log Files](https://docs.velociraptor.app/blog/2021/2021-01-29-disabled-event-log-files-a3529a08adbe/)
+    * We can use `Windows.EventLogs.Modifications` to query log state
+
+---
+
+<!-- .slide: class="content" -->
+## We can get a snapshot of all event logs
+
+![](log-enable-snapshot.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Being more targeted in collection
+
+<div class="container">
+<div class="col">
+
+* Most artifacts have parameters that allow us to be more targeted in
+  collection
+* Being targeted is good because it reduces the amount of data we
+  collect!
+
+</div>
+<div class="col">
+<img src="bits-targeted-collection.png" class="title-inset">
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## More targeted in collection
+* Treat the endpoint as the ultimate source of truth - need more
+  data? go back and re-fetch it from the endpoint.
+
+![](Windows.EventLogs.Modifications.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Post processing with notebooks
+
+* Another alternative is to collect all the data and then post-process using the GUI
+    * Helps us drill into the data and understand what is going on.
+
+![](bits-post-process.png)
+
+---
+
+<!-- .slide: class="title" -->
+# Hunting at scale
+
+---
+
+<!-- .slide: class="content" -->
+## Hunting - mass collections
+
+Hunting is Velociraptor's strength - collect the same artifact from thousands of endpoints in minutes!
+
+* Two types of hunts:
+   * Detection hunts are very targeted aimed at yes/no answer
+   * Collection hunts collect a lot more data and can be used to
+     build a baseline.
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise - baseline event logs
+
+For this exercise we start a few more clients.
+
+```text
+c:\Users\test>cd c:\Users\test\AppData\Local\Temp\
+
+c:\Users\test\AppData\Local\Temp>Velociraptor.exe
+   --config client.config.yaml pool_client --number 100
+```
+
+This starts 100 virtual clients so we can hunt them
+* We use pool clients to simulate load on the server
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Pool clients
+Simply multiple instances of the same client
+
+![](pool_clients.png)
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Create a hunt
+
+![](create-hunt_2.png)
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Select hunt artifacts
+
+![](create-hunt_3.png)
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Collect results
+
+![](create-hunt.png)
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise - Stacking
+
+* The previous collection may be considered the baseline
+* For this exercise we want to create a few different clients.
+    * Stop the pool client
+    * Disable a log channel
+    * Start the pool client with an additional number of clients
+
+```
+Velociraptor.exe --config client.config.yaml pool_client --number 110
+```
+
+---
+
+
+<!-- .slide: class="full_screen_diagram" -->
+## Stacking can reveal results that stand out
+
+![](stacking-a-hunt.png)
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="title" -->
+
+# Offline collection
+
+## Collecting artifacts without Velociraptor clients
+
+---
+
+<!-- .slide: class="content" -->
+## Why Offline collection?
+
+* I want to collect artifacts from an endpoint
+* But Velociraptor is not installed on the endpoint!
+* Or the endpoint is inaccessible to the Velociraptor server (no egress, firewalls etc).
+* But Velociraptor is just a VQL engine!  It does not really need a server anyway
+
+---
+
+<!-- .slide: class="content" -->
+## Create an offline collector
+
+<div class="container">
+<div class="col">
+
+![](../../modules/offline_collector/offline_builder.png)
+
+</div>
+<div class="col">
+
+#### Let's select two artifacts to collect:
+
+1. Windows.KapeFiles.Targets
+    * Select the Basic Collection to get many forensic artifacts
+2. Generic.Collectors.SQLECmd
+
+</div>
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Selecting the Windows.KapeFiles.Targets artifact
+
+![](../../modules/offline_collector/offline_kape_targets.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Configuring the collector to encrypt output
+
+![](../../modules/offline_collector/offline_configure.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Downloading the prepared binary
+
+![](../../modules/offline_collector/offline_download_binary.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Offline collector binaries
+
+* Preconfigured to collect the required artifacts
+* No user interaction needed - just run with no command line args
+* Prepare armoured Zip file with all the results in them
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Acquire data!
+
+![](../../modules/offline_collector/offline_acquire.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Acquired file is encrypted
+
+* Due to limitations in the Zip format, file names can not be encrypted.
+* Therefore, Velociraptor creates a second protected Zip file inside
+  the outer container.
+* Several encryption schemes supported:
+    1. Regular password
+    2. X509 - random password generated and encrypted with the server's certificate.
+    3. GPG - random password generated and encrypted with the GPG public key.
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## Acquired file is encrypted
+
+![](../../modules/offline_collector/offline_encrypted.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Importing into Velociraptor
+
+* Velociraptor can automatically decrypted offline containers when
+  importing.
+* Use the Server.Utils.ImportCollection artifact to import collections
+* The server uses its private key to unlock the container automatically.
+* This preserves PII and confidential information in transit!
+
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Import the collection into the Velociraptor server
+
+![](../../modules/offline_collector/offline_import.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Inspect the import process
+
+![](../../modules/offline_collector/offline_import_inspect.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+### Inspect the collected data
+
+![](../../modules/offline_collector/offline_import_inspect_data.png)
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="content" -->
+## NTFS Overview
+
+* NTFS is the file system in all modern Windows operating systems.
+* Feature packed with a design focused on storage optimization and resilience.
+* NTFS implements Journalling to record metadata changes to track state and integrity of the file system.
+* Allows for recovery after system crashes to avoid data loss
+* File System objects referenced in a Master File Table (MFT)
+
+---
+
+
+<!-- .slide: class="content" -->
+## New Technology File System
+
+* In NTFS, the Master File Table (MFT) is at the heart of the file
+  system. A structured database that stores metadata entries for every
+  file and folder.
+* Every object gets an entry within the MFT. Each entry is usually
+  1024 bytes long.  Contains a series of attributes that fully
+  describe the object.
+
+---
+
+<!-- .slide: class="content" -->
+
+## MFT entries contain attributes
+
+<div class="container small-font">
+<div class="col">
+
+## File entry examples
+* $STANDARD_INFORMATION
+* $FILE_NAME (Windows long name)
+* $FILE_NAME (short name)
+* $DATA
+* $DATA  (alternate data stream sometimes)
+
+</div>
+<div class="col">
+
+## Folder entry examples
+* $STANDARD_INFORMATION
+* $FILE_NAME (Windows long name)
+* $FILE_NAME (short name)
+* $INDEX_ROOT
+* $INDEX_ALLOCATION (sometimes)
+
+</div>
+
+---
+
+
+<!-- .slide: class="content" -->
+## Finding suspicious files
+
+* Common DFIR use case is finding files
+    * File name
+    * Path
+    * File type
+    * Content
+* Velociraptor plugins
+    * glob
+    * parse_mft
+    * yara
+    * other content based plugins
+
+<img src="../../modules/ntfs_forensics/MFT_artifact.png" style="bottom: 0px" class="inset" />
+
+---
+
+
+<!-- .slide: class="content" -->
+## Windows.Forensics. FilenameSearch
+
+* Apply yara on the MFT
+    * fast yara
+    * simple string based
+    * filename / top level folder only
+    * comma separated
+* Crude and less control
+* Verbose results
+
+<img src="../../modules/ntfs_forensics/Windows.Forensics.FilenameSearch.png" style="bottom: 0px" class="inset" />
+
+---
+
+<!-- .slide: class="content" -->
+## Windows.NTFS.MFT
+
+<div class="container small-font">
+<div class="col">
+
+* Parses MFT
+* Easy to use
+* Filters
+    * Path
+    * File name
+    * Drive
+    * Time bounds
+    * Size
+* Performance optimised
+
+</div>
+<div class="col">
+
+<img src="../../modules/ntfs_forensics/Windows.NTFS.MFT.png" style="bottom: inherit" class="inset" />
+
+</div>
+</div>
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise - Generate test data
+
+To automatically prep your machine run this script:
+```powershell
+### NTFS exercise setup
+
+## 1. download some files to test various content and add ADS to simulate manual download from a browser
+
+$downloads = (
+    "https://live.sysinternals.com/PsExec64.exe",
+    "https://live.sysinternals.com/procdump64.exe",
+    "https://live.sysinternals.com/sdelete64.exe",
+)
+
+foreach ( $url in $downloads){
+    "Downloading " + $Url
+    $file = Split-Path $Url -Leaf
+    $dest = "C:\PerfLogs\" +$file
+    $ads =  "[ZoneTransfer]`r`nZoneId=3`r`nReferrerUrl=https://18.220.58.123/yolo/`r`nHostUrl=https://18.220.58.123/yolo/" + $file + "`r`n"
+
+    Remove-Item -Path $dest -force -ErrorAction SilentlyContinue
+    Invoke-WebRequest -Uri $Url -OutFile $dest -UseBasicParsing
+    Set-Content -Path $dest":Zone.Identifier" $ads
+}
+```
+
+Note:
+
+* Download and copy to staging folder C:\PerfLogs\
+    * https://live.sysinternals.com/procdump64.exe
+    * https://live.sysinternals.com/sdelete64.exe
+    * https://live.sysinternals.com/psexec64.exe
+* Add ADS to simulate Mark of the Web
+
+Create a PS1 file in staging folder (any text will do but this is powershell extension)
+```
+echo "Write-Host ‘this is totally a resident file’" > C:\Perflogs\test.ps1
+```
+
+Modify short name on a file
+```
+fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
+```
+
+Create a process dump Open calculator (`calc.exe`)
+```
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+```
+
+Create a zip file in staging folder - open `C:\Perflogs in Explorer`
+highlight and select: Send to > Compressed (zipped) folder.
+Delete `dmp.zip` and `ps1` files - deleted file discovery is important for later!
+```
+Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
+```
+
+---
+
+
+<!-- .slide: class="content" -->
+## More setup
+
+```powershell
+## 2.Create a PS1 file in staging folder (any text will do but this is powershell extension)
+echo "Write-Host ‘this is totally a resident file’" > C:\Perflogs\test.ps1
+
+## 3.Modify shortname on a file
+fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
+
+## 4. Create a process dumpOpen calculator (calc.exe)
+calc.exe ; start-sleep 2
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
+
+## 5. Create a zip file in staging folder
+Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
+
+## 6. Delete dmp,zip and ps1 files - deleted file discovery is important for later!
+Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
+```
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise
+
+<div class="container small-font">
+<div class="col">
+
+* Find contents of `C:\Perflogs`
+* Review metadata of objects
+* Explore leveraging filters
+    * to target specific files or file types
+    * to find files limited to a time frame
+
+* Can you find the deleted files?
+    * You may get lucky and have an unallocated file show.
+    * Try `Windows.Forensics.Usn` with filters looking for suspicious
+      extensions in our staging location!
+
+</div>
+<div class="col">
+  <img src="../../modules/ntfs_forensics/MFT_exercise1.png" style="bottom: inherit" class="inset" />
+</div>
+</div>
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise - UsnJ solution
+
+<div class="container small-font">
+<div class="col">
+
+Target C:\PerfLogs with PathRegex field.
+
+
+* typically USN journal only records filename and MFTId and
+  ParentMFTId record. Velociraptor automatically parses our
+  expected path so the user can filter on path.
+* This artifact uses FullPath results with “/”.
+
+</div>
+<div class="col">
+  <img src="../../modules/ntfs_forensics/Windows.Forensics.USN.png" style="bottom: inherit" class="inset" />
+</div>
+</div>
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Exercise - UsnJ solution
+
+* There are many entries even for a simple file action like download to disk.
+
+![](../../modules/ntfs_forensics/USN_results.png)
+
+---
+
+
+<!-- .slide: class="content" -->
+## Exercise - UsnJ solution
+
+<div class="small-font">
+
+* But these are simple to detect when you know what to look for!
+
+<div class="container">
+<div class="col">
+
+![](../../modules/ntfs_forensics/USN_groupby.png)
+
+</div>
+<div class="col">
+
+![](../../modules/ntfs_forensics/USN_delete.png)
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## Advanced NTFS: Alternate Data Stream
+
+<div class="container small-font">
+<div class="col">
+
+* Most browsers attach an ADS to files downloaded from the internet.
+* Use the VFS viewer to view the ADS of downloaded files.
+* Use ADS Hunter to discover more interesting ADS
+* Use `Windows.Analysis. EvidenceOfDownload` to identify downloaded
+  files and unpacked ZIP files.
+
+</div>
+<div class="col">
+
+<img src="../../modules/ntfs_forensics/ADS_grupby.png" style="bottom: inherit" class="inset" />
+
+</div>
+</div>
+
+Note:
+ The inset shows typical frequency analysis of ADS naturally occurring
+
+ What is the `Wof` stuff? https://devblogs.microsoft.com/oldnewthing/20190618-00/?p=102597
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+# The process tracker
+
+## Complimenting forensic analysis with monitoring...
+
+---
+
+<!-- .slide: class="content" -->
+## What is the point of Forensics?
+
+* Forensics is used to reconstruct past events from artifacts left on
+  the system.
+* We are at the mercy of lucky accidents and side effects of system
+  behavior!
+* When Velociraptor is running permanently on the endpoint, we can
+  deliberately monitor the endpoint and record a more accurate
+  timeline of events!
+
+---
+
+<!-- .slide: class="content" -->
+## Tracking processes
+
+* One of the critical questions we ask is `Where did this process come
+  from?`
+
+* Context of where the process came from is important in establishing
+  initial access vector!
+
+* We could collect all process execution from all endpoints, but:
+    * This will generate a large volume of events.
+    * Vast majority of events are not interesting.
+    * Often we determine which process is interesting is determined by
+      context.
+
+---
+
+<!-- .slide: class="content" -->
+## The process tracker
+
+* Velociraptor can track processes locally on the endpoint at runtime.
+* If the need arises, we can enrich with process execution information.
+* This can be done **EVEN IF THE PROCESS EXITED**
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Exercise: Enable the process tracker
+
+![](enable-process-tracker.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Emulate a typical attack
+
+```powershell
+psexec.exe /s powershell
+ping.exe www.google.com
+curl.exe -o script.ps1 https://www.google.com/
+notepad.exe
+```
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Inspect the notepad process
+
+<img src="process_hacker.png" style="height: 600px">
+
+---
+
+<!-- .slide: class="content" -->
+## Using Generic.System.Pstree
+
+![](collecting_pstree.png)
+
+---
+
+<!-- .slide: class="content" -->
+## View process tree
+
+![](pstree.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Inspect the process call chain
+
+![](powershell_pstree.png)
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="content small-font" -->
+
+## What did we not cover?
+
+* Velociraptor has a lot more than we were able to cover here:
+* Many more sources of data: Event logs, ETW, WMI eventing
+* Multi-Platform: Linux, MacOS, Windows, FreeBSD
+* Endpoint monitoring in real time: Detect and identify compromises in real time!
+* Automatic remediation: Apply active remediation to remove the driver and ensure all endpoints are clean.
+* Server automation and monitoring in real time with a python API.
+
+---
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+* In this workshop we introduced Velociraptor - a powerful endpoint
+  visibility solution, as used in a typical DFIR exercise.
+
+* We introduced VQL and gave some examples…
+    * Searching for files,
+    * registry keys and other endpoint state Hunting everywhere
+
+---
+
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+We only scratched the surface of what Velociraptor can do!
+
+Check out the following links and join our community…
+
+<table class="noborder">
+<tr>
+    <td>Docs</td><td>
+        <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+    </td>
+</tr>
+<tr>
+    <td>Github</td><td>
+        <a href="https://github.com/Velocidex/velociraptor">https://github.com/Velocidex/velociraptor</a>
+    </td>
+</tr>
+<tr>
+    <td>Discord</td><td>
+        <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+    </td>
+</tr>
+<tr>
+    <td>Mailing list</td><td>
+        <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+    </td>
+</tr>
+</table>
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>

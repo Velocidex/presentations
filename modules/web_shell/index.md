@@ -3,7 +3,7 @@
 ## Web shell
 ###  A hacker's favorite backdoor
 
-![](/modules/web_shell/webshell.jpg)
+![](webshell.jpg)
 
 ---
 
@@ -71,7 +71,7 @@ ports.
 ## Detection
 ### Listening ports
 
-![](/modules/web_shell/netstat_enriched.png)
+![](netstat_enriched.png)
 
 ---
 
@@ -79,7 +79,7 @@ ports.
 ## Detection
 ### Listening ports
 
-![](/modules/web_shell/netstat_enriched_results.png)
+![](netstat_enriched_results.png)
 
 ---
 
@@ -87,7 +87,7 @@ ports.
 ## Detection
 ### Process Tree
 
-![](/modules/web_shell/process_tree.png)
+![](/process_tree.png)
 
 ---
 
@@ -108,7 +108,7 @@ Scan in memory!  *Yara scan*
 ## Detection
 ### Yara scan in memory
 
-![](/modules/web_shell/yara_scan_memory.png)
+![](yara_scan_memory.png)
 
 ---
 
@@ -116,7 +116,7 @@ Scan in memory!  *Yara scan*
 ## Detection
 ### Yara scan in memory
 
-![](/modules/web_shell/yara_scan_hits.png)
+![](yara_scan_hits.png)
 
 ---
 
@@ -125,7 +125,7 @@ Scan in memory!  *Yara scan*
 ## Custom Detection
 ### Developing custom detection artifacts
 
-<img src="/modules/web_shell/detection.jpg" style="height: 400px" >
+<img src="detection.jpg" style="height: 400px" >
 
 ---
 
@@ -195,7 +195,7 @@ WHERE ListeningProcess
 ## Writing custom artifacts
 ### Testing in a notebook
 
-![](/modules/web_shell/create_notebook.png)
+![](create_notebook.png)
 
 ---
 
@@ -203,7 +203,7 @@ WHERE ListeningProcess
 ## Writing custom artifacts
 ### Add a new VQL Cell
 
-![](/modules/web_shell/add_vql_cell.png)
+![](add_vql_cell.png)
 
 ---
 
@@ -211,7 +211,7 @@ WHERE ListeningProcess
 ## Writing custom artifacts
 ### Running test VQL on server
 
-![](/modules/web_shell/develop_vql_in_cell.png)
+![](develop_vql_in_cell.png)
 
 ---
 
@@ -219,4 +219,4 @@ WHERE ListeningProcess
 ## Writing custom artifacts
 ### Create a new artifact
 
-![](/modules/web_shell/create_new_artifact.png)
+![](create_new_artifact.png)

@@ -1,0 +1,29 @@
+toc:
+  - path: index.md
+
+  - path: /modules/overview/
+    name: Velociraptor Overview
+
+  - path: /modules/gui_tour/
+    name: GUI Tour
+
+  - path: /modules/artifacts_introduction/
+    name: Introduction To Artifacts
+
+  - path: /modules/ntfs_forensics/
+    name: NTFS Forensics
+
+  - path: /modules/artifacts_of_autumn/37/
+    name: "Exercise: Mounting ISOs in Windowns"
+
+  - path: /modules/offline_collector/
+    name: The offline collector
+
+  - path: /modules/artifacts_of_autumn/38/
+    name: "Exercise: Bitsadmin Service"
+
+  - path: /modules/bit_log_disable_hunting/
+    name: Detecting EventLogs Disabling
+
+  - path: /modules/conclusions/
+    name: Conclusions
