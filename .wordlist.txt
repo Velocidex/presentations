@@ -150,3 +150,13 @@ PrefetchHunter
 shellcode
 teamserver
 windbg
+
+<url-free> ./presentations/sans_apac_2023/index.md
+--------------------------------------------------------------------------------
+EDR
+Locard's
+WEF
+blockquote
+prefetcher
+tradeoff
+Reimagine

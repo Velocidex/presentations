@@ -24,7 +24,7 @@
 ## What is Digital Forensics anyway?
 
 * Trying to reconstruct the past
-  * What occured on this system?
+  * What occurred on this system?
   * When did this occur?
 
 * Locard's exchange principal
@@ -107,7 +107,7 @@
 
 <!-- .slide: class="content" -->
 
-## Reimagining the forensic process
+## Reimagine the forensic process
 
 * Let's re-examine the digital forensic process critically
 
@@ -281,7 +281,7 @@ powershell /c "Enable-MMAgent -OperationAPI"
 ## Using the USN journal in IR
 
 Filtering the USN journal for prefetch file modifications gives
-usefull timestamps related to program execution!
+useful timestamps related to program execution!
 
 <img src="usn_filter_for_pf.png">
 
