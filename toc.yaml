@@ -1,27 +1,27 @@
 toc:
   - name: "Velocon 2022: Cloud Velociraptor by Mike Cohen"
-    path: /presentations/velocon_2022_cloud_velo/
+    path: presentations/velocon_2022_cloud_velo/
 
   - name: "Velocon 2022: Year In Review by Mike Cohen"
-    path: /presentations/velocon_2022_year_in_review/
+    path: presentations/velocon_2022_year_in_review/
 
   - name: "DFRWS Apac 2022: Velociraptor Workshop by Mike Cohen"
-    path: /presentations/dfrws_apac_2022/
+    path: presentations/dfrws_apac_2022/
 
   - name: "SANS DFIR Summit 2022: Digging Deeper... by Mike Cohen"
-    path: /presentations/sans_2022/
+    path: presentations/sans_2022/
 
   - name: "Introduction to Velociraptor by Mike Cohen"
-    path: /presentations/introduction-to-velociraptor/
+    path: presentations/introduction-to-velociraptor/
 
   - name: "Everything Open 2023: Incident Response with Velociraptor by Mike Cohen"
-    path: /presentations/everything_open_2023/
+    path: presentations/everything_open_2023/
 
   - name: "What is Velociraptor: Digging Deeper!"
-    path: /presentations/what-is-velociraptor/
+    path: presentations/what-is-velociraptor/
 
   - name: "Auscert 2023: Velociraptor: Digging Deeper!"
-    path: /presentations/2023-auscert/
+    path: presentations/2023-auscert/
 
   - name: "SANS APAC Summit 2023: The evolving frontier of DFIR readiness"
-    path: /presentations/sans_apac_2023/
+    path: presentations/sans_apac_2023/
