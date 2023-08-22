@@ -74,9 +74,27 @@
 
 ---
 
+<!-- .slide: class="content small-font" -->
 
-<!-- .slide: class="content" -->
+## NTFS Analysis
+
+Velociraptor offers a number of plugins to access detailed information
+about NTFS:
+* `parse_mft()`: parses each MFT entry and returns high level metadata
+  about the entry - including reconstruct the full path of the entry
+  by traversing parent MFT entries.
+* `parse_ntfs()`: Given an MFT ID this function will display
+  information about the various streams (e.g. `$DATA`, `$Filename`
+  etc)
+* `parse_ntfs_i30()`: This scans the `$i30` stream in directories to
+  recover potentially deleted entries.
+
+---
+
+<!-- .slide: class="content small-font" -->
 ## Finding suspicious files
+
+Parse the MFT using `Windows.NTFS.MFT`
 
 * Common DFIR use case is finding files
     * File name
@@ -163,6 +181,31 @@ foreach ( $url in $downloads){
 }
 ```
 
+---
+
+
+<!-- .slide: class="content" -->
+## More setup
+
+```powershell
+## 2.Create a PS1 file in staging folder (any text will do but this is powershell extension)
+echo "Write-Host ‘this is totally a resident file’" > C:\Perflogs\test.ps1
+
+## 3.Modify shortname on a file
+fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
+
+## 4. Create a process dumpOpen calculator (calc.exe)
+calc.exe ; start-sleep 2
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
+
+## 5. Create a zip file in staging folder
+Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
+
+## 6. Delete dmp,zip and ps1 files - deleted file discovery is important for later!
+Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
+```
+
 Note:
 
 * Download and copy to staging folder C:\PerfLogs\
@@ -193,33 +236,8 @@ Delete `dmp.zip` and `ps1` files - deleted file discovery is important for later
 Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
 ```
 
----
-
-
-<!-- .slide: class="content" -->
-## More setup
-
-```powershell
-## 2.Create a PS1 file in staging folder (any text will do but this is powershell extension)
-echo "Write-Host ‘this is totally a resident file’" > C:\Perflogs\test.ps1
-
-## 3.Modify shortname on a file
-fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
-
-## 4. Create a process dumpOpen calculator (calc.exe)
-calc.exe ; start-sleep 2
-C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
-get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
-
-## 5. Create a zip file in staging folder
-Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
-
-## 6. Delete dmp,zip and ps1 files - deleted file discovery is important for later!
-Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
-```
 
 ---
-
 
 <!-- .slide: class="content" -->
 ## Exercise
@@ -246,18 +264,39 @@ Remove-Item -Path C:\PerfLogs\*.zip, C:\PerfLogs\*.dmp, C:\PerfLogs\*.ps1
 
 ---
 
+<!-- .slide: class="content small-font" -->
+
+## The USN journal
+
+* Update Sequence Number Journal or Change journal is maintained by
+  NTFS to record filesystem changes.
+* Records metadata about filesystem changes.
+* Resides in the path $Extend\$UsnJrnl:$J
+
+![](../../modules/ntfs_forensics/usnj.png)
+
+---
 
 <!-- .slide: class="content" -->
-## Exercise - UsnJ solution
+
+## USN Journal
+* Records are appended to the file at the end
+* The file is sparse - periodically NTFS will remove the range at the start of the file to make it sparse
+* Therefore the file will report a huge size but will actually only take about 30-40mb on disk.
+* When collecting the journal file, Velociraptor will collect the sparse file.
+
+---
+
+<!-- .slide: class="content" -->
+## Exercise - Windows.Forensics.Usn
 
 <div class="container small-font">
 <div class="col">
 
-Target C:\PerfLogs with PathRegex field.
+Target `C:\PerfLogs` with the `PathRegex` field.
 
-
-* typically USN journal only records filename and MFTId and
-  ParentMFTId record. Velociraptor automatically parses our
+* typically the USN journal only records filename and MFTId and
+  ParentMFTId record. Velociraptor automatically reconstructs the
   expected path so the user can filter on path.
 * This artifact uses FullPath results with “/”.
 
