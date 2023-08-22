@@ -3,9 +3,9 @@
 
 ## Forensic Readiness
 
-1. Maximising an environment's ability to collect credible digital
+1. Maximizing an environment's ability to collect credible digital
    evidence
-2. Minimising the cost of forensics in an incident response.
+2. Minimizing the cost of forensics in an incident response.
 
 [Forensic Readiness John Tan @Stake (2001)](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.480.6094&rep=rep1&type=pdf)
 
@@ -122,7 +122,7 @@
   * Increases the system's ability to support forensic analysis
 
 * Installation of EDR/Agents/Endpoint visibility software
-  * Increases resillience againt malicious anti-forensics.
+  * Increases resilience against malicious anti-forensics.
 
 ---
 

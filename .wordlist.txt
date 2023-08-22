@@ -162,3 +162,6 @@ tradeoff
 Reimagine
 PowerShell
 WER
+SIEM
+mb
+fsutil
