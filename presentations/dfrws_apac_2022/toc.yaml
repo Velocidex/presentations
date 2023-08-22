@@ -29,5 +29,8 @@ toc:
   - path: /modules/tracking_processes/
     name: Tracking Processes
 
+  - path: /modules/etw/
+    name: "Event Tracing For Windows: Process Spoofing"
+
   - path: /modules/conclusions/
     name: Conclusions

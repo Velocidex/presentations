@@ -17,6 +17,12 @@
 
 ## Forensic Readiness
 
+1. Maximising an environment‟s ability to collect credible digital
+   evidence
+2. Minimising the cost of forensics in an incident response.
+
+[Forensic Readiness John Tan @Stake (2001)](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.480.6094&rep=rep1&type=pdf)
+
 ---
 
 <!-- .slide: class="content" -->
@@ -30,6 +36,31 @@
 * Locard's exchange principal
 
 > "Every contact leaves a trace”
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+<a href="https://www.utica.edu/academic/institutes/ecii/publications/articles/A0AC5A7A-FB6C-325D-BF515A44FDEE7459.pdf">
+
+![](physical_analogy.png)
+
+</a>
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## Enhancing the efficacy of Forensics
+
+* In the physical world:
+
+  * Surveillance CCTV cameras assist in forensic investigation
+  * Procedural methods (registration, auditing etc).
+  * Enhanced tracking - e.g. cell phones, GPS etc
+
+* Better forensics acts as a deterrent!
 
 ---
 
@@ -55,7 +86,8 @@
      us what we want to know.
    * Requires a lot of interpretation to tie unrelated artifacts to
      infer what happened.
-   * We need to be lucky!
+
+* We need to be lucky!
 
 ---
 
@@ -68,7 +100,7 @@
 
   * In a corporate setting we can actually prepare for forensic
     investigation and incident response
-  * This is called preparedness!
+
   * Similar but orthogonal to system hardening
 
 >  Taking steps in advance to increase our chances of successfully
@@ -91,11 +123,14 @@
   * More sophisticated things may involve more efforts
      * Install an agent, EDR etc.
 
+* Consider how likely a forensic investigation will occur?
+  * Tradeoff between cost and completeness
+
 ---
 
 <!-- .slide: class="content" -->
 
-## What types of interventions can be employ?
+## What types of interventions can we employ?
 
 * Configuration change
   * Increases the system's ability to support forensic analysis
@@ -114,6 +149,10 @@
 * Identify the things that can go wrong, the gaps and improvements
 
 * Can we increase our chances of success?
+   * Passive target: No deliberate interference with the DFIR process
+   * Active Adversary: Employing Anti-Forensics to frustrate investigation
+
+
 
 ---
 
@@ -415,7 +454,7 @@ useful timestamps related to program execution!
 <!-- .slide: class="full_screen_diagram" -->
 ## Where did notepad process come from?
 
-<img src="process_hacker.png" style="height: 600px" class="inset">
+<img src="process_hacker.png" style="height: 600px" >
 
 ---
 
@@ -444,10 +483,69 @@ useful timestamps related to program execution!
 
 ## Windows Crash Dumps
 
+* Windows Error Reporting (WER) records important information about an
+  application when it crashes or hangs.
+* This can be extremely important for investigating intrusions
+* Exploit code will often general an application crash (E.g. Buffer
+  Overflow)
+
+    * https://bmcder.com/blog/extracting-cobalt-strike-from-windows-error-reporting
+
+---
+
+<!-- .slide: class="content" -->
+
+## Windows Crash Dumps
+
+* Settings can be applied for each process
+
+<div class="container">
+<div class="col">
+
+    * DumpCount
+    * DumpFolder
+    * DumpType:
+        0. Custom Dump
+        1. Mini Dump
+        2. Full Dump (Process)
+
+</div>
+<div class="col">
+
+![](wer_configuration.png)
+
+</div>
+
 ---
 
 <!-- .slide: class="content" -->
 
 ## Powershell script logging
 
+* Attackers use PowerShell extensively!
+* Script block logging provides visibility into PowerShell activities.
+
+```sh
+New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" -Force
+
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" -Name "EnableScriptBlockLogging" -Value 1 -Force
+```
+
 ---
+
+<!-- .slide: class="content" -->
+
+## Powershell script logging
+
+* Use Group Policy to enable it everywhere
+
+![](powershell_script_logging_gpo.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Powershell script logging
+
+* Logging powershell gives a unique view at of attacker activities.
+
+![](powershell_script_logging.png)

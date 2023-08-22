@@ -1,3 +1,9 @@
 toc:
   - name: "SANS APAC Summit 2023: The evolving frontier of DFIR readiness"
     path: index.md
+
+  - name: "Additional Data sources: ETW"
+    path: /modules/etw/
+
+  - name: Conclusions
+    path: conclusions.md

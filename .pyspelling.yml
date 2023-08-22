@@ -8,7 +8,8 @@ matrix:
       - .wordlist.txt
     output: .wordlist.dict
   sources:
-  - './**/*.md'
+  - './presentations/**/*.md'
+  - './modules/**/*.md'
   pipeline:
     - pyspelling.filters.context:
         context_visible_first: true

@@ -160,3 +160,5 @@ blockquote
 prefetcher
 tradeoff
 Reimagine
+PowerShell
+WER

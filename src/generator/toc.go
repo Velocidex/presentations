@@ -68,6 +68,7 @@ func GenerateSite(
 	output_manager.CopyDirectory("./js", "js")
 	output_manager.CopyFile("./src/generator/README.md", "README.md")
 	output_manager.CopyFile("./CNAME", "CNAME")
+	output_manager.CopyFile("./.nojekyll", ".nojekyll")
 
 	if verbose {
 		Dump(presentation)
