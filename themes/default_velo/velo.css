@@ -128,3 +128,7 @@
 .reveal table.noborder td {
     border: none;
 }
+
+.reveal .code-wrapper code {
+    white-space: break-spaces;
+}

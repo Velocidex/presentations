@@ -1,0 +1,33 @@
+toc:
+  - path: intro.md
+    name: Introduction to Velociraptor...
+
+  - path: /modules/overview/
+    name: Velociraptor Overview
+
+  - path: /modules/gui_tour/
+    name: GUI Tour
+
+  - path: /modules/artifacts_introduction/
+    name: Introduction to Artifacts
+
+  - path: /modules/artifacts_and_vql_intro/
+    name: Introduction to VQL
+
+  - path: /modules/bit_log_disable_hunting/
+    name: "Hunt: Disabling Event Logs"
+
+  - path: /modules/ntfs_forensics/
+    name: NTFS Forensics
+
+  - path: /modules/msbuild_engine/
+    name: Detecting MSBuild based attacks
+
+  - path: /modules/event_monitoring/
+    name: Event Monitoring
+
+  - path: /modules/tracking_processes/
+    name: Tracking Processes
+
+  - path: /modules/conclusions/
+    name: Conclusions

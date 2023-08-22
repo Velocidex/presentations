@@ -11,7 +11,7 @@
 
 * Forensics is used to reconstruct past events from artifacts left on
   the system.
-* We are at the merci of lucky accidents and side effects of system
+* We are at the mercy of lucky accidents and side effects of system
   behavior!
 * When Velociraptor is running permanently on the endpoint, we can
   deliberately monitor the endpoint and record a more accurate
@@ -48,7 +48,7 @@
 <!-- .slide: class="full_screen_diagram" -->
 ## Exercise: Enable the process tracker
 
-![](/modules/tracking_processes/enable-process-tracker.png)
+![](enable-process-tracker.png)
 
 ---
 
@@ -67,25 +67,25 @@ notepad.exe
 <!-- .slide: class="full_screen_diagram" -->
 ## Inspect the notepad process
 
-<img src="/modules/tracking_processes/process_hacker.png" style="height: 600px" class="inset">
+<img src="process_hacker.png" style="height: 600px">
 
 ---
 
 <!-- .slide: class="content" -->
 ## Using Generic.System.Pstree
 
-![](/modules/tracking_processes/collecting_pstree.png)
+![](collecting_pstree.png)
 
 ---
 
 <!-- .slide: class="content" -->
 ## View process tree
 
-![](/modules/tracking_processes/pstree.png)
+![](pstree.png)
 
 ---
 
 <!-- .slide: class="content" -->
 ## Inspect the process call chain
 
-![](/modules/tracking_processes/powershell_pstree.png)
+![](powershell_pstree.png)

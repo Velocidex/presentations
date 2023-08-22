@@ -1,0 +1,23 @@
+toc:
+  - path: index.md
+
+  - path: /modules/overview/
+    name: Velociraptor Overview
+
+  - path: /modules/gui_tour/
+    name: GUI Tour
+
+  - path: /modules/artifacts_introduction/
+    name: Introduction To Artifacts
+
+  - path: /modules/secure_shell/
+    name: Secure Shell
+
+  - path: /modules/web_shell/
+    name: Web Shells
+
+  - path: /modules/artifacts_of_autumn/77/
+    name: "Exercise: Hunting for PAM backdoors"
+
+  - path: /modules/conclusions/
+    name: Conclusions

@@ -3,7 +3,7 @@
 ### PAM abuse
 
 https://infosec.exchange/@weslambert/109475612494526691
-![](/modules/artifacts_of_autumn/77/description.png)
+![](description.png)
 
 ---
 
@@ -11,7 +11,7 @@ https://infosec.exchange/@weslambert/109475612494526691
 ## The artifact exchange
 ### Sharing the knowledge
 
-![](/modules/artifacts_of_autumn/77/import_exchange.png)
+![](import_exchange.png)
 
 
 ---
@@ -20,7 +20,7 @@ https://infosec.exchange/@weslambert/109475612494526691
 ## The artifact exchange
 ### Sharing the knowledge
 
-![](/modules/artifacts_of_autumn/77/imported_artifact.png)
+![](imported_artifact.png)
 
 ---
 
@@ -80,7 +80,7 @@ machine.
 ## Exercise
 ### Hunting
 
-![](/modules/artifacts_of_autumn/77/hunting.png)
+![](hunting.png)
 
 ---
 
@@ -130,7 +130,7 @@ ORDER BY Count DESC
 ## Identifying anomalies.
 ### Count and group by PAM config lines
 
-![](/modules/artifacts_of_autumn/77/stacking.png)
+![](stacking.png)
 
 
 ---
@@ -140,4 +140,4 @@ ORDER BY Count DESC
 ## Stacking
 ### Identify the suspicious entries
 
-![](/modules/artifacts_of_autumn/77/suspicious.png)
+![](suspicious.png)
