@@ -38,13 +38,21 @@ func getHeading(part string) string {
 }
 
 func GenerateSite(
-	output_directory string, verbose bool) error {
+	output_directory string,
+	verbose bool, filterRegex string) error {
 
 	now := time.Now()
 
 	presentation, err := ParsePresentation()
 	if err != nil {
 		return err
+	}
+
+	if filterRegex != "" {
+		err = presentation.Filter(filterRegex)
+		if err != nil {
+			return err
+		}
 	}
 
 	defer func() {

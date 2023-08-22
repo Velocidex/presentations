@@ -1,11 +1,31 @@
 package generator
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 // A Presentation contains modules. Each module represents a
 // directory.
 type Presentation struct {
 	Modules []*Module `yaml:"toc" json:"modules,omitempty"`
+}
+
+func (self *Presentation) Filter(regex string) error {
+	re, err := regexp.Compile(regex)
+	if err != nil {
+		return err
+	}
+
+	modules := make([]*Module, 0, len(self.Modules))
+	for _, m := range self.Modules {
+		if re.MatchString(m.Path) {
+			modules = append(modules, m)
+		}
+	}
+
+	self.Modules = modules
+	return nil
 }
 
 // A Module represents a collection of topics.

@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/windows-hardware/test/weg/instrumenting-your-co
 </div>
 <div class="col">
 
-<img src="ETW-architecture.png" style="bottom: inherit" class="inset" />
+<img src="ETW-architecture.png" style="bottom: inherit"  />
 
 </div>
 </div>
@@ -67,7 +67,7 @@ logman query providers
 </div>
 
 
-![](/modules/etw/ETW-providers.png)
+![](ETW-providers.png)
 
 ---
 
@@ -90,21 +90,21 @@ to explore interesting sources of ETW events.
 <!-- .slide: class="full_screen_diagram" -->
 ## WEP Explorer shows the different events available
 
-![](/modules/etw/WEP-Explorer.png)
+![](WEP-Explorer.png)
 
 ---
 
 <!-- .slide: class="content" -->
 ## Monitoring for DNS sources
 
-![](/modules/etw/DNS-ETW.png)
+![](DNS-ETW.png)
 
 ---
 
 <!-- .slide: class="content" -->
 ## Collecting DNS lookup from the entire fleet
 
-![](/modules/etw/DNS-from-everywhere.png)
+![](DNS-from-everywhere.png)
 
 ---
 
@@ -124,18 +124,20 @@ to explore interesting sources of ETW events.
 
 <!-- .slide: class="full_screen_diagram" -->
 
+## Process Spoofing
+
 * SelectMyParent.exe is a free to tool test this API but any software can use the API
 
 https://blog.didierstevens.com/2009/11/22/quickpost-selectmyparent-or-playing-with-the-windows-process-tree/
 
-![](/modules/etw/select-my-parent.png)
+<img src="select-my-parent.png" style="height: 400px;" />
 
 ---
 
 <!-- .slide: class="content" -->
 ## SelectMyParent.exe
 
-![](/modules/etw/select-my-parent-in-action.png)
+![](select-my-parent-in-action.png)
 
 ---
 
@@ -143,7 +145,8 @@ https://blog.didierstevens.com/2009/11/22/quickpost-selectmyparent-or-playing-wi
 ## Can sysmon detect it?
 ### No unfortunately…
 
-![](/modules/etw/sysmon-process-spoofing.png)
+<img src="sysmon-process-spoofing.png" style="height: 400px;" />
+
 
 ---
 
@@ -153,15 +156,14 @@ https://blog.didierstevens.com/2009/11/22/quickpost-selectmyparent-or-playing-wi
 * Parent Process Spoofing and Session Prepping with Cobalt Strike
 https://www.youtube.com/watch?v=DOe7WTuJ1Ac
 
-![](/modules/etw/cs-training-process-spoof.png)
-
+<img src="cs-training-process-spoof.png" style="height: 400px;" />
 
 ---
 
 <!-- .slide: class="full_screen_diagram" -->
 ## Microsoft-Windows-Kernel-Process provider
 
-![](/modules/etw/Microsoft-Windows-Kernel-Process.png)
+<img src="Microsoft-Windows-Kernel-Process.png" style="height: 400px;" />
 
 ---
 
@@ -170,7 +172,7 @@ https://www.youtube.com/watch?v=DOe7WTuJ1Ac
 
 https://docs.velociraptor.app/exchange/artifacts/pages/windows.etw.detectprocessspoofing/
 
-![](Windows.ETW.DetectProcessSpoofing.png)
+<img src="Windows.ETW.DetectProcessSpoofing.png" style="height: 400px;" />
 
 
 ---
@@ -178,11 +180,11 @@ https://docs.velociraptor.app/exchange/artifacts/pages/windows.etw.detectprocess
 <!-- .slide: class="full_screen_diagram" -->
 ## Installing parent spoofing detection in Velociraptor
 
-![](Windows.ETW.DetectProcessSpoofing_results.png)
+<img src="Windows.ETW.DetectProcessSpoofing_results.png" style="height: 400px;" />
 
 ---
 
 <!-- .slide: class="full_screen_diagram" -->
 ## False positives - UAC elevation
 
-![](Windows.ETW.DetectProcessSpoofing_fp.png)
+<img src="Windows.ETW.DetectProcessSpoofing_fp.png" style="height: 400px;" />
