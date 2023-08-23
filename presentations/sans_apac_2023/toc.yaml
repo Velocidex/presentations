@@ -2,8 +2,26 @@ toc:
   - name: "SANS APAC Summit 2023: The evolving frontier of DFIR readiness"
     path: index.md
 
-  - name: "Additional Data sources: ETW"
-    path: /modules/etw/
+  - name: "Forensic Readiness: Preparing for the unknown"
+    path: readiness.md
+
+  - name: "Windows Event Logs"
+    path: eventlogs.md
+
+  - name: "Filesystem Forensics"
+    path: filebased.md
+
+  - name: "Process based forensics"
+    path: process.md
+
+  - name: Enhancing Visibility
+    path: enhancing_logging.md
+
+  - name: "Sysmon: Enhancing Forensics"
+    path: sysmon.md
+
+#  - name: "Additional Data sources: ETW"
+#    path: /modules/etw/
 
   - name: Conclusions
     path: conclusions.md

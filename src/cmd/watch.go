@@ -25,7 +25,8 @@ var (
 					select {
 					case event := <-w.Event:
 						fmt.Printf("Detected change: %v\n", event)
-						err := generator.GenerateSite(args[0], Verbose)
+						err := generator.GenerateSite(
+							args[0], Verbose, moduleFilterRegex)
 						if err != nil {
 							log.Fatalln(err)
 						}
@@ -55,4 +56,6 @@ var (
 
 func init() {
 	rootCmd.AddCommand(watchCmd)
+	watchCmd.Flags().StringVarP(
+		&moduleFilterRegex, "filter", "", "", "A regex to filter only some modules")
 }
