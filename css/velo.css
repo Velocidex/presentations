@@ -243,3 +243,12 @@ html.print-pdf .solution-closed {
 .reveal .code-wrapper code {
     white-space: break-spaces;
 }
+
+
+.footer {
+    position: fixed;
+    bottom: 40px;
+    font-size: 18pt;
+    left: 20px;
+    z-index: 2000;
+}

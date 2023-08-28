@@ -14,7 +14,7 @@ const (
         <meta charset="utf-8">
 
         <title>Velociraptor Deployment</title>
-
+        <link rel="stylesheet" href="{Base}/css/fontawesome-all.min.css?1688344844">
         <link rel="stylesheet" href="{Base}/dist/reveal.css">
         <link rel="stylesheet" href="{Base}/dist/theme/serif.css" id="theme">
         <link rel="stylesheet" href="{Base}/css/velo.css">
@@ -26,6 +26,7 @@ const (
 %v
             </div>
         </div>
+        <div class="footer"><a href="{Base}/"><i class="fa fa-home"></i></a></div>
         <script src="{Base}/dist/reveal.js"></script>
         <script src="{Base}/plugin/markdown/markdown.js"></script>
         <script src="{Base}/plugin/highlight/highlight.js"></script>

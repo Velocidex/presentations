@@ -4,10 +4,9 @@
 
 * Digital forensics is the best we have when preparation is
   insufficient!
-   * Unpopular Opinion: If we have to resort to forensics, we have
-     already lost!
 
-* We can do some simple and easy things to improve our forensic preparedness.
+* We can do some simple and easy things to improve our forensic
+  preparedness.
 * The real world equivalent: Enhance surveillance in sensitive
   locations to ease deterrence and detection of crime!
 
