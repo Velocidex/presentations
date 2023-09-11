@@ -375,29 +375,17 @@ DFIR tool **YOU** want to use!
 ## Conclusions
 
 * Join all the fun on Discord and Github!
-* If you have not yet played with Velociraptor what are you waiting for?
+* If you have not yet played with Velociraptor what are you waiting
+  for?
 
 <p>
 
-<table class="noborder">
-<tr>
-    <td>Docs</td><td>
-        <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
-    </td>
-</tr>
-<tr>
-    <td>Github</td><td>
-        <a href="https://github.com/Velocidex/cloudvelo">https://github.com/Velocidex/cloudvelo</a>
-    </td>
-</tr>
-<tr>
-    <td>Discord</td><td>
-        <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
-    </td>
-</tr>
-<tr>
-    <td>Mailing list</td><td>
-        <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
-    </td>
-</tr>
-</table>
+<table class="noborder"> <tr> <td>Docs</td><td> <a
+href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+</td> </tr> <tr> <td>Github</td><td> <a
+href="https://github.com/Velocidex/cloudvelo">https://github.com/Velocidex/cloudvelo</a>
+</td> </tr> <tr> <td>Discord</td><td> <a
+href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+</td> </tr> <tr> <td>Mailing list</td><td> <a
+href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+</td> </tr> </table>

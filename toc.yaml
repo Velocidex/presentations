@@ -25,3 +25,6 @@ toc:
 
   - name: "SANS APAC Summit 2023: The evolving frontier of DFIR readiness"
     path: presentations/sans_apac_2023/
+
+  - name: "Velocon 2023: Year In Review by Mike Cohen"
+    path: presentations/velocon_2023_year_in_review/

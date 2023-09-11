@@ -81,6 +81,7 @@ func buildIndexHtml(module *Module) string {
 var (
 	expansions = map[string]string{
 		"<!-- title optional -->":                          `<!-- .slide: class="title optional" data-background-color="antiquewhite" -->`,
+		"<!-- title -->":                                   `<!-- .slide: class="title" -->`,
 		"<!-- content optional -->":                        `<!-- .slide: class="content optional" data-background-color="antiquewhite" -->`,
 		"<!-- content small-font optional -->":             `<!-- .slide: class="content optional small-font" data-background-color="antiquewhite" -->`,
 		"<!-- content -->":                                 `<!-- .slide: class="content" -->`,
