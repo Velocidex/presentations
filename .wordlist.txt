@@ -165,3 +165,11 @@ WER
 SIEM
 mb
 fsutil
+
+<url-free> ./presentations/velocon_2023_year_in_review/year_in_review.md
+--------------------------------------------------------------------------------
+CIDR
+Hexviewer
+Lockdown
+decrypt
+reimported
