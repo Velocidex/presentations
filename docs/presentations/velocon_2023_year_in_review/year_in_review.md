@@ -9,7 +9,7 @@
 
 </div>
 
-<img src="../velocon_2022_year_in_review/velo_walking.gif" class="fixed" style=" right: 0px; bottom: -50px; z-index: -10;"/>
+<img src="velo_walking.gif" class="fixed" style=" right: 0px; bottom: -50px; z-index: -10;"/>
 
 ---
 
@@ -23,7 +23,7 @@
 
 A quick tour of the past year...
 
-<img src="../velocon_2022_year_in_review/velo_walking_2.gif" class="fixed" style=" right: 0px;  bottom: -250px; z-index: -10;"/>
+<img src="velo_walking_2.gif" class="fixed" style=" right: 0px;  bottom: -250px; z-index: -10;"/>
 
 ---
 
@@ -212,7 +212,7 @@ Some security improvements:
    * Prevent the server from issuing new collections, updating
      artifacts etc.
 
-* Plugin allow-listing:
+* Plugin allow listing:
    * On shared servers prevent certain plugins from being registered.
 
 * IP Filtering the GUI:
@@ -310,26 +310,10 @@ opportunities for automation and wider use cases!
 ## Auditing and Compliance
 
 We can apply hardening checks to ensure endpoints are in compliance!
-   * Automatically generate VQL for hunting.
 
 New project to explore Auditing and Compliance Checks
 https://github.com/Velocidex/Audit
 
-
----
-
-<!-- content -->
-## SQLite Hunting
-
-Started of as a consolidated SQLite artifact inspired by SQLECmd
-
-Grew into much more than that! (ESE, Chrome, IECache, MacOS artifacts)
-
-   * Fully automated
-   * Flexible
-   * Extremely fast!
-
-https://github.com/Velocidex/SQLiteHunter
 
 ---
 
