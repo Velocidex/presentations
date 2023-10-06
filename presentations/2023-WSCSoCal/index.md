@@ -29,7 +29,18 @@ visibility tool for DFIR.
 
 ---
 
-<!-- .slide: class="content" -->
+<!-- .slide: class="content small-font" -->
 ## Requirements
 
 This workshop will use a Windows VM or system.
+
+Download installtion media from the [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter)
+
+You can use any of these:
+1. Windows 11 Enterprise
+2. Windows 10 Enterprise or Home
+3. Windows Server 2022
+
+Please only use 64 bit versions
+
+On windows [Enable Virtualization](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1)
