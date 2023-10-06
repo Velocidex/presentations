@@ -34,7 +34,7 @@ visibility tool for DFIR.
 
 This workshop will use a Windows VM or system.
 
-Download installtion media from the [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter)
+Download installation media from the [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter)
 
 You can use any of these:
 1. Windows 11 Enterprise

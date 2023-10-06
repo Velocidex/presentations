@@ -173,3 +173,8 @@ Hexviewer
 Lockdown
 decrypt
 reimported
+
+<url-free> ./presentations/2023-WSCSoCal/index.md
+--------------------------------------------------------------------------------
+Battaglia
+WSC
