@@ -1,0 +1,108 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="content small-font" -->
+
+## What did we not cover?
+
+* Velociraptor has a lot more than we were able to cover here:
+* Many more sources of data: Event logs, ETW, WMI eventing
+* Multi-Platform: Linux, MacOS, Windows, FreeBSD
+* Endpoint monitoring in real time: Detect and identify compromises in real time!
+* Automatic remediation: Apply active remediation to remove the driver and ensure all endpoints are clean.
+* Server automation and monitoring in real time with a python API.
+
+---
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+* In this workshop we introduced Velociraptor - a powerful endpoint
+  visibility solution, as used in a typical DFIR exercise.
+
+* We introduced VQL and gave some examples…
+    * Searching for files,
+    * registry keys and other endpoint state Hunting everywhere
+
+---
+
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+We only scratched the surface of what Velociraptor can do!
+
+Check out the following links and join our community…
+
+<table class="noborder">
+<tr>
+    <td>Docs</td><td>
+        <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+    </td>
+</tr>
+<tr>
+    <td>Github</td><td>
+        <a href="https://github.com/Velocidex/velociraptor">https://github.com/Velocidex/velociraptor</a>
+    </td>
+</tr>
+<tr>
+    <td>Discord</td><td>
+        <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+    </td>
+</tr>
+<tr>
+    <td>Mailing list</td><td>
+        <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+    </td>
+</tr>
+</table>
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>
