@@ -28,3 +28,6 @@ toc:
 
   - name: "Velocon 2023: Year In Review by Mike Cohen"
     path: presentations/velocon_2023_year_in_review/
+
+  - name: "WSC Workshop: Introduction to Velociraptor"
+    path: presentations/2023-WSCSoCal/
