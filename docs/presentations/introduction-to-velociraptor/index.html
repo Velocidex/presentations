@@ -644,7 +644,7 @@ To automatically prep your machine run this script:
 $downloads = (
     "https://live.sysinternals.com/PsExec64.exe",
     "https://live.sysinternals.com/procdump64.exe",
-    "https://live.sysinternals.com/sdelete64.exe",
+    "https://live.sysinternals.com/sdelete64.exe"
 )
 
 foreach ( $url in $downloads){
@@ -674,8 +674,8 @@ fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
 
 ## 4. Create a process dumpOpen calculator (calc.exe)
 calc.exe ; start-sleep 2
-C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
-get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
+C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*calc*" } | Stop-Process
 
 ## 5. Create a zip file in staging folder
 Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
@@ -704,7 +704,7 @@ fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
 
 Create a process dump Open calculator (`calc.exe`)
 ```
-C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
 ```
 
 Create a zip file in staging folder - open `C:\Perflogs in Explorer`
