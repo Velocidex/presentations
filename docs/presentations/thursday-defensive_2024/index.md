@@ -249,7 +249,8 @@ Errored Rules which were rejected:
 
 * [Live Incident Response with Velociraptor](https://www.youtube.com/watch?v=Q1IoGX--814)
 * [VeloCon 2023: Fast DFIR with Velociraptor](https://www.youtube.com/watch?v=ibl4-MzW-KI)
-* [AusCERT2022: Conference Day 1 - I CAN SEE YOU! IMPROVING DETECTION EFFICIENCY ON THE ENDPOINT...](https://youtu.be/lfkHBzXqA1g?si=j6aemdVgbmXbqEfa)
-* [](https://github.com/SigmaHQ/sigma)
+* [AusCERT2022: I CAN SEE YOU! IMPROVING DETECTION EFFICIENCY ON THE ENDPOINT...](https://youtu.be/lfkHBzXqA1g?si=j6aemdVgbmXbqEfa)
+* [Sigma HQ](https://github.com/SigmaHQ/sigma)
 * [Velociraptor Sigma Compiler](https://sigma.velocidex.com/)
+* [Velociraptor Sigma Rules Github](https://github.com/Velocidex/velociraptor-sigma-rules)
 * [Sigma in Velociraptor](https://docs.velociraptor.app/blog/2023/2023-11-15-sigma_in_velociraptor/)
