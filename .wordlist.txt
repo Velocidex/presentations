@@ -178,3 +178,7 @@ reimported
 --------------------------------------------------------------------------------
 Battaglia
 WSC
+
+# /presentations/thursday-defensive_2024/index.md
+EVTX
+Triaging
