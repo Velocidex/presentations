@@ -1,0 +1,183 @@
+
+name: Notebooks.Presentation
+type: NOTEBOOK
+
+sources:
+- notebook:
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       <h1 style="font-size: 4ex">Velociraptor: Digging Deeper</h1>
+       
+       <div class="inset">
+       
+       ## What is Velociraptor?
+       
+       ### Mike Cohen, Digital Paleontologist
+       ### Rapid 7 Inc
+       
+       </div>
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//resources/velo_bike.gif?raw=true" class="fixed" style=" right: 0px;  bottom: -100px; height: 300px; z-index: -10;"/>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## What is Velociraptor?
+       
+       Velociraptor is the premier endpoint visibility tool.
+       
+       * Driven by Velociraptor Query Language artifacts.
+       * Primarily a DFIR tool.
+       * Compliance/Vulnerability management.
+       * Endpoint monitoring.
+       * Open source with a strong community
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Architecture
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/overview/deployment_overview.svg?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Scalable, fast, accurate
+       
+       * Support Linux, Windows, MacOS, FreeBSD …
+       * Server simply collects the results of queries - clients do all the heavy lifting.
+       * Client memory and CPU usage is controlled via throttling and active cancellations.
+       * Server is optimized for speed and scalability
+       * Concurrency control ensures stability
+       * Bandwidth limits ensure network stability
+       * Single or multi-server modes (20k EP/server).
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Interactively investigate clients
+       
+       Digital forensic plugins turn VQL into a high quality DFIR tool
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/vfs_view.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Velociraptor Artifacts
+       
+       Artifacts encode VQL into user sharable code snippets
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifacts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Hunts - Collecting at scale
+       
+       Collecting artifacts at scale from multiple endpoints
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/select_hunt_artifacts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Postprocessing using Notebooks
+       
+       Notebooks are collaborative shared VQL execution environments
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/postprocess_hunt.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Offline collector
+       
+       Pre-programmed binary collecting, packaging and uploading collection
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/offline_collector/offline_acquire.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Acquired file is encrypted
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/offline_collector/offline_encrypted.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Monitoring endpoint autonomously with VQL
+       
+       Event artifacts are never-ending VQL queries that watch for events on
+       clients and stream those events to the server.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/event_monitoring/event-queries.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## System changes relayed to server
+       
+       Detections can be written to alert about suspicious changes to system
+       configuration
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/event_monitoring/Windows.Events.EventLogModifications_results.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Tracking processes on endpoint
+       
+       * One of the critical questions we ask is `Where did this process come
+         from?`
+       * Context of where the process came from is important in establishing
+         initial access vector!
+       * Velociraptor can track processes locally on the endpoint at runtime.
+       * If the need arises, we can enrich with process execution information.
+       * This can be done **EVEN IF THE PROCESS EXITED**
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## View process tree
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/tracking_processes/pstree.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Inspect the process call chain
+       
+       Process tracker maintains historical view so we can see exited
+       processes.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/tracking_processes/powershell_pstree.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Administration through VQL
+       
+       * All server administration tasks can be automated with VQL artifacts
+       * API access available for external automation
+       * Automatic upload of data to Elastic/Slack/Discord
+       * Open ended architecture enables novel use cases.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Conclusions
+       
+       We only scratched the surface of what Velociraptor can do!
+       
+       Check out the following links and join our community…
+       
+       <table class="noborder">
+       <tr>
+           <td>Docs</td><td>
+               <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Github</td><td>
+               <a href="https://github.com/Velocidex/velociraptor">https://github.com/Velocidex/velociraptor</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Discord</td><td>
+               <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Mailing list</td><td>
+               <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+           </td>
+       </tr>
+       </table>
