@@ -89,6 +89,11 @@ func GenerateSite(
 
 	// Copy module directories into the output
 	for _, module := range presentation.Modules {
+		// The artifact is used to create the notebook for the module.
+		output_manager.WriteFile(
+			filepath.Join(module.Path, "artifact.yaml"),
+			module.buildArtifact())
+
 		// Create a HTML for the whole module
 		output_manager.WriteFile(
 			filepath.Join(module.Path, "index.html"),

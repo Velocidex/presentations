@@ -1,0 +1,26 @@
+toc:
+  - path: index.md
+
+  - path: /modules/overview/
+    name: Velociraptor Overview
+
+  - path: /modules/gui_tour/
+    name: GUI Tour
+
+  - path: /modules/artifacts_introduction/
+    name: Introduction To Artifacts
+
+  - path: /modules/artifacts_and_vql_intro/
+    name: "VQL: Our super power"
+
+  - path: /modules/bit_log_disable_hunting/
+    name: Detecting EventLogs Disabling
+
+  - path: /modules/tracking_processes/
+    name: Tracking Processes
+
+  - path: /modules/ntfs_forensics/
+    name: NTFS Forensics
+
+  - path: /modules/conclusions/
+    name: Conclusions
