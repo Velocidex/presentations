@@ -37,3 +37,6 @@ toc:
 
   - name: "Auscert 2024 Workshop: Introduction to Velociraptor"
     path: presentations/2024-auscert-workshop/
+
+  - name: "Auscert 2024: Advances in detection engineering"
+    path: presentations/2024-auscert-detection_engineering/

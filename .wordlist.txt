@@ -182,3 +182,22 @@ WSC
 # /presentations/thursday-defensive_2024/index.md
 EVTX
 Triaging
+
+
+<url-free> ./presentations/2024-auscert-detection_engineering/index.md
+--------------------------------------------------------------------------------
+Authenticode
+CommandLine
+EID
+Logsource
+un
+--------------------------------------------------------------------------------
+
+<url-free> ./modules/triage_artifacts/index.md
+--------------------------------------------------------------------------------
+Evtx
+Hayabusa
+Postprocessing
+foreget
+triaging
+--------------------------------------------------------------------------------

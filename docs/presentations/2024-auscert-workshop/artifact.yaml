@@ -509,44 +509,304 @@ sources:
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
-       ## Automate file collection+parsing
+       ## Triaging at scale
        
-       The goal of VQL is to automate as much of the routine DFIR work as possible
+       * The artifact exchange contains many artifacts
+           * Some are very simple
+           * But we need to remember to collect them all!
        
-       * Example: Collect all browser artifacts
+       * When triaging an endpoint we want to quickly answer some questions
+           * What happened here (Forensics)
+           * What **bad** happened here (Detection)
+       
+       * Ideally a fire and forget approach
+           * Easy to use - lots of impact!
    - type: markdown
      template: |
-       <!-- .slide: class="content small-font" -->
-       ## Generic.Collectors.SQLECmd
-       
-       * Use Generic.Collectors.SQLECmd to automatically locate and parse SQLite files.
-       * SQLECmd is an open source project to document location of SQLite files
-       used by various programs (like browsers)
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_and_vql_intro/sqlite-parsing.png?raw=true)
-       
-       
        <!-- .slide: class="content" -->
-       ## Velociraptor's plugins are robust
        
-       Handle file reading errors gracefully
+       ## Triaging at scale
+       ### VQL Uber artifacts
        
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_and_vql_intro/sqlite-error-recovery.png?raw=true)
+       * VQL Artifacts can be externally managed
+           * Maintain a set of rules which can be managed independently of
+             the main release.
+       
+       * `SQLite Hunter`: Automatically hunt and parse all Browser/OS artifacts
+       * `Registry Hunter`: Automatically parse all registry relevant data.
+       * `Evtx Hunter`: Hunt for event logs.
+       * `Sigma Hayabusa`: Automatically detect suspicious activity in the
+         event logs.
    - type: markdown
      template: |
        <!-- .slide: class="content small-font" -->
-       ## Inspect the data with the table widget
-       * Show or hide columns
-           * Export the modified table to CSV or JSON
        
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_and_vql_intro/hide-columns.png?raw=true)
+       ## SQLite Hunter
+       
+       * Designed for minimal configuration - just click and go!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/sqlitehunter_configure.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## SQLite Hunter
+       
+       * Automatically search for various SQLite files
+       * Rules are based on categories
+       * Maintained in their own open source repository at
+         https://github.com/Velocidex/SQLiteHunter/
+       * Have evolved to parse other files **not only SQLite**
+          * For example Windows Search Index
+          * Firefox/Chrome extensions are JSON
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       ## SQLite Hunter
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/sqlitehunter_rules.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       ## SQLite Hunter
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/sqlitehunter_output.png?raw=true)
    - type: markdown
      template: |
        <!-- .slide: class="content small-font" -->
-       ## Inspect the data with the table widget
-       * Filter or sort using the table widget
        
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_and_vql_intro/filtering_tables.png?raw=true)
+       ## Registry Hunter
+       
+       * The Windows Registry is a treasure trove of information!
+          * Contains critical information about installed software
+          * System configuration
+          * Sometimes has remnants of old activity
+       
+       * Contains thousands of keys and values
+          * Need to know where to look
+          * Sometimes we need to parse the values in some way (e.g. Binary
+            Data or timestamps)
+       
+       * We really need to automate this!
+         * https://github.com/Velocidex/registry_hunter/
+         * https://registry-hunter.velocidex.com/
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Analysis for each key is specified by rules
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_rule.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Registry Hunter
+       ### Importing the latest artifact
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_import.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       
+       * Designed for minimal configuration - just click and go!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_config.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Postprocessing the results
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Stacking on a column
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_stack_category.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Open stacking groups window
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_stack_group.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### View stacking groups
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_stack_view.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Examine hits
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_stack_inspect.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Hunting with VQL
+       
+       * Sometimes we already know what we are looking for...
+       * Lets see if anything mentions the word `Velociraptor`
+       * The `=~` operator means `Regular Expression Match`
+       
+       ```sql
+       SELECT * FROM source()
+       WHERE Details =~ "velociraptor"
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Registry Hunter
+       ### Hunting with VQL
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/reg_hunter_hunting_for_velociraptor.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Evtx Hunter
+       
+       * Event logs are an important source of information.
+       * Many event sources, files and event IDs
+       * Sometimes the best approach is the brute force approach!
+       * Search for any event that happens to mention `Velociraptor`!
+           * We dont need to know in advance what service will log it
+           * Cast a wide net!
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Evtx Hunter
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/evtxhunter.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Evtx Hunter
+       
+       * Clean up the table by removing extra columns
+       
+       ```sql
+       SELECT EventTime, Provider, EventID, EventData, Message
+       FROM source(artifact="Windows.EventLogs.EvtxHunter")
+       ```
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/evtxhunter_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Evtx Hunter
+       
+       ### Extra stacking gives many more event logs
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/evtxhunter_stacking.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Evtx Hunter
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/evtxhunter_defender.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Sigma Hayabusa
+       ### Detecting evil!
+       
+       * So far we saw what happened on the system
+       * But - what **bad** happened on the system?
+           * This is the difference between detection and forensics.
+           * We previously did it manually - can we automate it?
+       
+       * Sigma is a way to write detection rules for event logs
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## What is a Sigma Rule?
+       
+       
+       ```yaml
+       title: PSExec Lateral Movement
+       logsource:
+           product: windows
+           service: system
+       detection:
+           selection:
+               Channel: System
+               EventID: 7045
+           selection_PSEXESVC_in_service:
+               Service: PSEXESVC
+           selection_PSEXESVC_in_path:
+               ImagePath|contains: PSEXESVC
+           condition: selection and (selection_PSEXESVC_in_service or selection_PSEXESVC_in_path)
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Triaging Using Sigma
+       
+       * Endpoint tools can directly evaluate Sigma rules on the event logs
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/velociraptor_sigma_flow.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ##  Collecting the sigma artifact
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/collecting_sigma_rules.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Triaging an endpoint
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/query_logs.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Stacking rules by title
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/stacking_a_column.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Viewing the stacking stats
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/viewing_column_stack.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Viewing common rows
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/viewing_common_rows.png?raw=true)
    - type: markdown
      template: |
        <!-- .slide: class="title" -->

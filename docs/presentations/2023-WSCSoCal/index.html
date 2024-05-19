@@ -623,53 +623,6 @@ DFIR is often about finding files on the endpoint
 
 Find all executables in the user's home directory
 
----
-
-
-<!-- .slide: class="content" -->
-## Automate file collection+parsing
-
-The goal of VQL is to automate as much of the routine DFIR work as possible
-
-* Example: Collect all browser artifacts
-
----
-
-
-<!-- .slide: class="content small-font" -->
-## Generic.Collectors.SQLECmd
-
-* Use Generic.Collectors.SQLECmd to automatically locate and parse SQLite files.
-* SQLECmd is an open source project to document location of SQLite files
-used by various programs (like browsers)
-
-![](../../modules/artifacts_and_vql_intro/sqlite-parsing.png)
-
-
-<!-- .slide: class="content" -->
-## Velociraptor's plugins are robust
-
-Handle file reading errors gracefully
-
-![](../../modules/artifacts_and_vql_intro/sqlite-error-recovery.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Inspect the data with the table widget
-* Show or hide columns
-    * Export the modified table to CSV or JSON
-
-![](../../modules/artifacts_and_vql_intro/hide-columns.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Inspect the data with the table widget
-* Filter or sort using the table widget
-
-![](../../modules/artifacts_and_vql_intro/filtering_tables.png)
-
 </textarea>
 </section>
 
