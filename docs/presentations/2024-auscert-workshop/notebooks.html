@@ -1,0 +1,191 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+# Velociraptor Notebooks
+
+## Post processing
+
+<img src="notebooks.png" style="bottom: 00px" class="title-inset">
+
+---
+
+<!-- .slide: class="content" -->
+
+## What are Velociraptor Notbooks?
+
+* Interactive evaluation environment
+* Collaborative
+* Allows for drilling into data
+* Central place to document investigation
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+
+![](create_new_notebook.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+### Select the initial template
+
+![](create_new_notebook_template.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+
+![](new_notebook.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a custom template
+
+* Notebooks are built from a template
+* Templates are just a special kind of artifact
+* You can get the notebook for this workshop <a href="artifact.yaml">Here</a>
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Add notebook template
+
+* Copy the template for this workshop into the artifact editor.
+* Make sure to save the file and open it in notepad
+    * Sometimes copy/paste does not work because the browser corrupts
+      the text
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Add notebook template
+
+![](add_notebook_template.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Workshop template
+
+![](workshop_template.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+## Exercise - Workshop template
+
+![](workshop.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Types of notebook
+
+1. Global Notebooks: Used to collect finished analysis cells
+    * Usually contains information from multiple hunts/collections.
+
+2. Flow Notebooks: Operate on the result of collections
+3. Hunt Notebooks: Operate on the result of hunts.
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+* Copy a cell from your collection to the global notebook.
+
+![](copy_cell.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+![](copy_cell_2.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+![](copy_cell_3.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Global notebooks
+
+* Use global notebooks as a central place to collate findings
+* Share the notebook with specific collaborators or publically (to all
+  users on the server).
+* When ready, export the notebook for evidentiary storage.
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>

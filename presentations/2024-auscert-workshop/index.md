@@ -11,8 +11,6 @@
 
 </div>
 
-<img src="/resources/velo_bike.gif" class="fixed" style=" right: 0px;  bottom: 00px; height: 300px; z-index: -10;"/>
-
 ---
 
 <!-- .slide: class="content" -->

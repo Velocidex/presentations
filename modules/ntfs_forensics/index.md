@@ -173,8 +173,8 @@ fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
 
 ## 4. Create a process dumpOpen calculator (calc.exe)
 calc.exe ; start-sleep 2
-C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
-get-process | where-object { $_.Name -like "*calc*" } | Stop-Process
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
 
 ## 5. Create a zip file in staging folder
 Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
