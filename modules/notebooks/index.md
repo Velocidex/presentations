@@ -133,6 +133,6 @@
 ## Global notebooks
 
 * Use global notebooks as a central place to collate findings
-* Share the notebook with specific collaborators or publically (to all
+* Share the notebook with specific collaborators or publicly (to all
   users on the server).
 * When ready, export the notebook for evidentiary storage.
