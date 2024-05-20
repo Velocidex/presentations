@@ -506,7 +506,130 @@ sources:
        Find all executables in the user's home directory
    - type: markdown
      template: |
-<<<<<<< HEAD
+       <!-- .slide: class="title" -->
+       # Velociraptor Notebooks
+       
+       ## Post processing
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/notebooks/notebooks.png?raw=true" style="bottom: 00px" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## What are Velociraptor Notbooks?
+       
+       * Interactive evaluation environment
+       * Collaborative
+       * Allows for drilling into data
+       * Central place to document investigation
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       ### Select the initial template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/new_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a custom template
+       
+       * Notebooks are built from a template
+       * Templates are just a special kind of artifact
+       * You can get the notebook for this workshop <a href="artifact.yaml">Here</a>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Add notebook template
+       
+       * Copy the template for this workshop into the artifact editor.
+       * Make sure to save the file and open it in notepad
+           * Sometimes copy/paste does not work because the browser corrupts
+             the text
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Add notebook template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/add_notebook_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Workshop template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       ## Exercise - Workshop template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Types of notebook
+       
+       1. Global Notebooks: Used to collect finished analysis cells
+           * Usually contains information from multiple hunts/collections.
+       
+       2. Flow Notebooks: Operate on the result of collections
+       3. Hunt Notebooks: Operate on the result of hunts.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       * Copy a cell from your collection to the global notebook.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_2.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_3.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Global notebooks
+       
+       * Use global notebooks as a central place to collate findings
+       * Share the notebook with specific collaborators or publically (to all
+         users on the server).
+       * When ready, export the notebook for evidentiary storage.
+   - type: markdown
+     template: |
        <!-- .slide: class="content" -->
        ## Triaging at scale
        
@@ -806,132 +929,6 @@ sources:
        ## Viewing common rows
        
        ![](https://github.com/Velocidex/presentations/blob/master//modules/triage_artifacts/viewing_common_rows.png?raw=true)
-   - type: markdown
-     template: |
-=======
->>>>>>> 9a016e5 (more changes)
-       <!-- .slide: class="title" -->
-       # Velociraptor Notebooks
-       
-       ## Post processing
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master//modules/notebooks/notebooks.png?raw=true" style="bottom: 00px" class="title-inset">
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## What are Velociraptor Notbooks?
-       
-       * Interactive evaluation environment
-       * Collaborative
-       * Allows for drilling into data
-       * Central place to document investigation
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Creating a notebook
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Creating a notebook
-       ### Select the initial template
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook_template.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Creating a notebook
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/new_notebook.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Creating a custom template
-       
-       * Notebooks are built from a template
-       * Templates are just a special kind of artifact
-       * You can get the notebook for this workshop <a href="artifact.yaml">Here</a>
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise - Add notebook template
-       
-       * Copy the template for this workshop into the artifact editor.
-       * Make sure to save the file and open it in notepad
-           * Sometimes copy/paste does not work because the browser corrupts
-             the text
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise - Add notebook template
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/add_notebook_template.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise - Workshop template
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop_template.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       
-       ## Exercise - Workshop template
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Types of notebook
-       
-       1. Global Notebooks: Used to collect finished analysis cells
-           * Usually contains information from multiple hunts/collections.
-       
-       2. Flow Notebooks: Operate on the result of collections
-       3. Hunt Notebooks: Operate on the result of hunts.
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise: Copy cell from collection
-       
-       * Copy a cell from your collection to the global notebook.
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise: Copy cell from collection
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_2.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Exercise: Copy cell from collection
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_3.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       
-       ## Global notebooks
-       
-       * Use global notebooks as a central place to collate findings
-       * Share the notebook with specific collaborators or publically (to all
-         users on the server).
-       * When ready, export the notebook for evidentiary storage.
    - type: markdown
      template: |
        <!-- .slide: class="title" -->
