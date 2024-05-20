@@ -13,6 +13,9 @@ toc:
   - path: /modules/artifacts_and_vql_intro/
     name: "VQL: Our super power"
 
+  - path: /modules/triage_artifacts/
+    name: "Triaging at scale"
+
   - path: /modules/bit_log_disable_hunting/
     name: Detecting EventLogs Disabling
 
