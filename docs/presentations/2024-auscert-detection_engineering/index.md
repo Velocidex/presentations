@@ -7,11 +7,9 @@
 
 ## Advances in Detection Engineering
 
-### Mike Cohen, Digital Paleontologist
+### Mike Cohen, Digital Paleontologist, Rapid7
 
 </div>
-
-<img src="/resources/velo_bike.gif" class="fixed" style=" right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
 
 ---
 
@@ -36,7 +34,8 @@
 
 ## Traditional SIEM based detection
 
-![](edr_env.png)
+
+<img src="edr_env.png" style=" height: 90hv;"/>
 
 ---
 
@@ -74,7 +73,7 @@ Let's just define a new "Standard":
 
 ## New interchange format - Sigma
 
-![](sigma_architecture.png)
+<img src="sigma_architecture.png" style=" height: 60vh;"/>
 
 ---
 
@@ -365,7 +364,8 @@ detection:
 
 * Endpoint tools can directly evaluate Sigma rules on the event logs
 
-![](velociraptor_sigma_flow.png)
+
+<img src="velociraptor_sigma_flow.png" style=" height: 40vh;"/>
 
 
 ---
@@ -488,7 +488,7 @@ vql_args:
 
 * VQL is fully asynchronous - real time queries.
 
-![](client_events_arch.png)
+<img src="client_events_arch.png" style=" height: 50vh;"/>
 
 ---
 
@@ -563,3 +563,4 @@ vql_args:
 * [Velociraptor Sigma Compiler](https://sigma.velocidex.com/)
 * [Velociraptor Sigma Rules Github](https://github.com/Velocidex/velociraptor-sigma-rules)
 * [Sigma in Velociraptor](https://docs.velociraptor.app/blog/2023/2023-11-15-sigma_in_velociraptor/)
+* Graphics by Justin Welgemoed @predictiple
