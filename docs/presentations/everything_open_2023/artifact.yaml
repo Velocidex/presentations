@@ -93,7 +93,7 @@ sources:
            * Download Velociraptor from GitHub (.msi or .exe)
        
        ```
-       velociraptor-v0.6.6-2-windows-amd64.exe gui
+       velociraptor-v0.72.3-windows-amd64.exe gui
        ```
    - type: markdown
      template: |
@@ -319,7 +319,7 @@ sources:
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
-       ## Velociraptor uses expert knowledge to find the evidence
+       ## Velociraptor uses expert knowledge
        
        A key objective of Velociraptor is encapsulating DFIR knowledge into
        the platform, so you don’t need to be a DFIR expert.  We have high

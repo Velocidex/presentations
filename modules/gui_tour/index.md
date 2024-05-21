@@ -15,7 +15,7 @@
     * Download Velociraptor from GitHub (.msi or .exe)
 
 ```
-velociraptor-v0.6.6-2-windows-amd64.exe gui
+velociraptor-v0.72.3-windows-amd64.exe gui
 ```
 
 ---

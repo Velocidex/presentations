@@ -34,8 +34,6 @@
 
 </div>
 
-<img src="/resources/velo_bike.gif" class="fixed" style=" right: 0px;  bottom: 00px; height: 300px; z-index: -10;"/>
-
 ---
 
 <!-- .slide: class="content" -->
@@ -145,7 +143,7 @@ Current recommendations
     * Download Velociraptor from GitHub (.msi or .exe)
 
 ```
-velociraptor-v0.6.6-2-windows-amd64.exe gui
+velociraptor-v0.72.3-windows-amd64.exe gui
 ```
 
 ---
@@ -409,7 +407,7 @@ Velociraptor is just a VQL engine!
 
 
 <!-- .slide: class="content" -->
-## Velociraptor uses expert knowledge to find the evidence
+## Velociraptor uses expert knowledge
 
 A key objective of Velociraptor is encapsulating DFIR knowledge into
 the platform, so you don’t need to be a DFIR expert.  We have high
@@ -621,6 +619,153 @@ DFIR is often about finding files on the endpoint
 ## Exercise
 
 Find all executables in the user's home directory
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="title" -->
+# Velociraptor Notebooks
+
+## Post processing
+
+<img src="notebooks.png" style="bottom: 00px" class="title-inset">
+
+---
+
+<!-- .slide: class="content" -->
+
+## What are Velociraptor Notbooks?
+
+* Interactive evaluation environment
+* Collaborative
+* Allows for drilling into data
+* Central place to document investigation
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+
+![](create_new_notebook.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+### Select the initial template
+
+![](create_new_notebook_template.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a notebook
+
+![](new_notebook.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Creating a custom template
+
+* Notebooks are built from a template
+* Templates are just a special kind of artifact
+* You can get the notebook for this workshop <a href="artifact.yaml">Here</a>
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Add notebook template
+
+* Copy the template for this workshop into the artifact editor.
+* Make sure to save the file and open it in notepad
+    * Sometimes copy/paste does not work because the browser corrupts
+      the text
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Add notebook template
+
+![](add_notebook_template.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise - Workshop template
+
+![](workshop_template.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+## Exercise - Workshop template
+
+![](workshop.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Types of notebook
+
+1. Global Notebooks: Used to collect finished analysis cells
+    * Usually contains information from multiple hunts/collections.
+
+2. Flow Notebooks: Operate on the result of collections
+3. Hunt Notebooks: Operate on the result of hunts.
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+* Copy a cell from your collection to the global notebook.
+
+![](copy_cell.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+![](copy_cell_2.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Exercise: Copy cell from collection
+
+![](copy_cell_3.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Global notebooks
+
+* Use global notebooks as a central place to collate findings
+* Share the notebook with specific collaborators or publicly (to all
+  users on the server).
+* When ready, export the notebook for evidentiary storage.
 
 </textarea>
 </section>
@@ -974,232 +1119,6 @@ detection:
 <textarea data-template>
 
 <!-- .slide: class="title" -->
-
-# Querying the registry
-
-## Detecting event log modifications
-
----
-
-
-<!-- .slide: class="content" -->
-## The Windows Registry
-
-* Windows uses the registry to store configuration data.
-* Many attackers modify system configuration to achieve persistence
-* It is very useful to be able to query the registry!
-* Velociraptor has two types of registry accessors:
-    * "registry" uses the APIs
-    * "raw_reg" parses the registry hives themselves
-
-
----
-
-
-<!-- .slide: class="content" -->
-## Example: Disable event logs
-
-* Windows event logs are crucial for detection
-* Many detection solutions rely on forwarding event logs to a backend
-* It is trivial to enable/disable event log collection
-* Let's look at disabling the BITS client events
-
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## What is BITS? Why should we care?
-
-![](bits-mitre.png)
-
----
-
-<!-- .slide: class="content" -->
-## What is BITS?
-
-<div class="container">
-<div class="col">
-
-BITS activity is visible in the logs
-
-```text
-bitsadmin.exe /transfer
-  /download /priority
-  foreground https://www.google.com
-  c:\Users\test\test.ps1
-```
-
-</div>
-<div class="col">
-<img src="bits-log.png" style="width: 50%" class="title-inset">
-</div>
-</div>
-
----
-
-<!-- .slide: class="full_screen_diagram" -->
-## Disable event logs
-
-![](disable-bits-log.png)
-
-Note:
-It is easy to disable log collections - from the GUI or programmatically
-Try this yourself - disable the Bits-Client logs, clear the logs and repeat the previous step
-
----
-
-<!-- .slide: class="content" -->
-## Query the registry for event log config
-
-* Disabling the event logs actually results in a configuration change in the registry.
-    * The relevant keys are discussed in [Disabled Event Log Files](https://docs.velociraptor.app/blog/2021/2021-01-29-disabled-event-log-files-a3529a08adbe/)
-    * We can use `Windows.EventLogs.Modifications` to query log state
-
----
-
-<!-- .slide: class="content" -->
-## We can get a snapshot of all event logs
-
-![](log-enable-snapshot.png)
-
----
-
-<!-- .slide: class="content" -->
-## Being more targeted in collection
-
-<div class="container">
-<div class="col">
-
-* Most artifacts have parameters that allow us to be more targeted in
-  collection
-* Being targeted is good because it reduces the amount of data we
-  collect!
-
-</div>
-<div class="col">
-<img src="bits-targeted-collection.png" class="title-inset">
-</div>
-</div>
-
----
-
-<!-- .slide: class="content" -->
-## More targeted in collection
-* Treat the endpoint as the ultimate source of truth - need more
-  data? go back and re-fetch it from the endpoint.
-
-![](Windows.EventLogs.Modifications.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Post processing with notebooks
-
-* Another alternative is to collect all the data and then post-process using the GUI
-    * Helps us drill into the data and understand what is going on.
-
-![](bits-post-process.png)
-
----
-
-<!-- .slide: class="title" -->
-# Hunting at scale
-
----
-
-<!-- .slide: class="content" -->
-## Hunting - mass collections
-
-Hunting is Velociraptor's strength - collect the same artifact from thousands of endpoints in minutes!
-
-* Two types of hunts:
-   * Detection hunts are very targeted aimed at yes/no answer
-   * Collection hunts collect a lot more data and can be used to
-     build a baseline.
-
----
-
-<!-- .slide: class="content" -->
-## Exercise - baseline event logs
-
-For this exercise we start a few more clients.
-
-```text
-c:\Users\test>cd c:\Users\test\AppData\Local\Temp\
-
-c:\Users\test\AppData\Local\Temp>Velociraptor.exe
-   --config client.config.yaml pool_client --number 100
-```
-
-This starts 100 virtual clients so we can hunt them
-* We use pool clients to simulate load on the server
-
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## Pool clients
-Simply multiple instances of the same client
-
-![](pool_clients.png)
-
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## Create a hunt
-
-![](create-hunt_2.png)
-
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## Select hunt artifacts
-
-![](create-hunt_3.png)
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## Collect results
-
-![](create-hunt.png)
-
----
-
-
-<!-- .slide: class="content" -->
-## Exercise - Stacking
-
-* The previous collection may be considered the baseline
-* For this exercise we want to create a few different clients.
-    * Stop the pool client
-    * Disable a log channel
-    * Start the pool client with an additional number of clients
-
-```
-Velociraptor.exe --config client.config.yaml pool_client --number 110
-```
-
----
-
-
-<!-- .slide: class="full_screen_diagram" -->
-## Stacking can reveal results that stand out
-
-![](stacking-a-hunt.png)
-
-</textarea>
-</section>
-
-<section data-markdown
-  data-transition="fade"
-  data-separator="^---+\n\n"
-  data-separator-vertical="^>+\n\n">
-<textarea data-template>
-
-<!-- .slide: class="title" -->
 # The process tracker
 
 ## Complimenting forensic analysis with monitoring...
@@ -1473,8 +1392,8 @@ fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
 
 ## 4. Create a process dumpOpen calculator (calc.exe)
 calc.exe ; start-sleep 2
-C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
-get-process | where-object { $_.Name -like "*calc*" } | Stop-Process
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
 
 ## 5. Create a zip file in staging folder
 Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest

@@ -130,7 +130,7 @@ Current recommendations
     * Download Velociraptor from GitHub (.msi or .exe)
 
 ```
-velociraptor-v0.6.6-2-windows-amd64.exe gui
+velociraptor-v0.72.3-windows-amd64.exe gui
 ```
 
 ---
@@ -394,7 +394,7 @@ Velociraptor is just a VQL engine!
 
 
 <!-- .slide: class="content" -->
-## Velociraptor uses expert knowledge to find the evidence
+## Velociraptor uses expert knowledge
 
 A key objective of Velociraptor is encapsulating DFIR knowledge into
 the platform, so you don’t need to be a DFIR expert.  We have high
@@ -674,8 +674,8 @@ fsutil file setshortname C:\PerfLogs\psexec64.exe fake.exe
 
 ## 4. Create a process dumpOpen calculator (calc.exe)
 calc.exe ; start-sleep 2
-C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
-get-process | where-object { $_.Name -like "*calc*" } | Stop-Process
+C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
 
 ## 5. Create a zip file in staging folder
 Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest

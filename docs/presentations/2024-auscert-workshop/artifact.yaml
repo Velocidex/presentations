@@ -18,8 +18,6 @@ sources:
        ### Rapid 7 Inc
        
        </div>
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master//resources/velo_bike.gif?raw=true" class="fixed" style=" right: 0px;  bottom: 00px; height: 300px; z-index: -10;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -102,7 +100,7 @@ sources:
            * Download Velociraptor from GitHub (.msi or .exe)
        
        ```
-       velociraptor-v0.6.6-2-windows-amd64.exe gui
+       velociraptor-v0.72.3-windows-amd64.exe gui
        ```
    - type: markdown
      template: |
@@ -328,7 +326,7 @@ sources:
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
-       ## Velociraptor uses expert knowledge to find the evidence
+       ## Velociraptor uses expert knowledge
        
        A key objective of Velociraptor is encapsulating DFIR knowledge into
        the platform, so you don’t need to be a DFIR expert.  We have high
@@ -506,6 +504,130 @@ sources:
        ## Exercise
        
        Find all executables in the user's home directory
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       # Velociraptor Notebooks
+       
+       ## Post processing
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/notebooks/notebooks.png?raw=true" style="bottom: 00px" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## What are Velociraptor Notbooks?
+       
+       * Interactive evaluation environment
+       * Collaborative
+       * Allows for drilling into data
+       * Central place to document investigation
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       ### Select the initial template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/create_new_notebook_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/new_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Creating a custom template
+       
+       * Notebooks are built from a template
+       * Templates are just a special kind of artifact
+       * You can get the notebook for this workshop <a href="artifact.yaml">Here</a>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Add notebook template
+       
+       * Copy the template for this workshop into the artifact editor.
+       * Make sure to save the file and open it in notepad
+           * Sometimes copy/paste does not work because the browser corrupts
+             the text
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Add notebook template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/add_notebook_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise - Workshop template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop_template.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       ## Exercise - Workshop template
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/workshop.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Types of notebook
+       
+       1. Global Notebooks: Used to collect finished analysis cells
+           * Usually contains information from multiple hunts/collections.
+       
+       2. Flow Notebooks: Operate on the result of collections
+       3. Hunt Notebooks: Operate on the result of hunts.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       * Copy a cell from your collection to the global notebook.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_2.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Exercise: Copy cell from collection
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/notebooks/copy_cell_3.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Global notebooks
+       
+       * Use global notebooks as a central place to collate findings
+       * Share the notebook with specific collaborators or publicly (to all
+         users on the server).
+       * When ready, export the notebook for evidentiary storage.
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -810,196 +932,6 @@ sources:
    - type: markdown
      template: |
        <!-- .slide: class="title" -->
-       
-       # Querying the registry
-       
-       ## Detecting event log modifications
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## The Windows Registry
-       
-       * Windows uses the registry to store configuration data.
-       * Many attackers modify system configuration to achieve persistence
-       * It is very useful to be able to query the registry!
-       * Velociraptor has two types of registry accessors:
-           * "registry" uses the APIs
-           * "raw_reg" parses the registry hives themselves
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Example: Disable event logs
-       
-       * Windows event logs are crucial for detection
-       * Many detection solutions rely on forwarding event logs to a backend
-       * It is trivial to enable/disable event log collection
-       * Let's look at disabling the BITS client events
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## What is BITS? Why should we care?
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/bits-mitre.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## What is BITS?
-       
-       <div class="container">
-       <div class="col">
-       
-       BITS activity is visible in the logs
-       
-       ```text
-       bitsadmin.exe /transfer
-         /download /priority
-         foreground https://www.google.com
-         c:\Users\test\test.ps1
-       ```
-       
-       </div>
-       <div class="col">
-       <img src="https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/bits-log.png?raw=true" style="width: 50%" class="title-inset">
-       </div>
-       </div>
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Disable event logs
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/disable-bits-log.png?raw=true)
-       
-       Note:
-       It is easy to disable log collections - from the GUI or programmatically
-       Try this yourself - disable the Bits-Client logs, clear the logs and repeat the previous step
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Query the registry for event log config
-       
-       * Disabling the event logs actually results in a configuration change in the registry.
-           * The relevant keys are discussed in [Disabled Event Log Files](https://docs.velociraptor.app/blog/2021/2021-01-29-disabled-event-log-files-a3529a08adbe/)
-           * We can use `Windows.EventLogs.Modifications` to query log state
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## We can get a snapshot of all event logs
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/log-enable-snapshot.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Being more targeted in collection
-       
-       <div class="container">
-       <div class="col">
-       
-       * Most artifacts have parameters that allow us to be more targeted in
-         collection
-       * Being targeted is good because it reduces the amount of data we
-         collect!
-       
-       </div>
-       <div class="col">
-       <img src="https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/bits-targeted-collection.png?raw=true" class="title-inset">
-       </div>
-       </div>
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## More targeted in collection
-       * Treat the endpoint as the ultimate source of truth - need more
-         data? go back and re-fetch it from the endpoint.
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/Windows.EventLogs.Modifications.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content small-font" -->
-       ## Post processing with notebooks
-       
-       * Another alternative is to collect all the data and then post-process using the GUI
-           * Helps us drill into the data and understand what is going on.
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/bits-post-process.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="title" -->
-       # Hunting at scale
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Hunting - mass collections
-       
-       Hunting is Velociraptor's strength - collect the same artifact from thousands of endpoints in minutes!
-       
-       * Two types of hunts:
-          * Detection hunts are very targeted aimed at yes/no answer
-          * Collection hunts collect a lot more data and can be used to
-            build a baseline.
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Exercise - baseline event logs
-       
-       For this exercise we start a few more clients.
-       
-       ```text
-       c:\Users\test>cd c:\Users\test\AppData\Local\Temp\
-       
-       c:\Users\test\AppData\Local\Temp>Velociraptor.exe
-          --config client.config.yaml pool_client --number 100
-       ```
-       
-       This starts 100 virtual clients so we can hunt them
-       * We use pool clients to simulate load on the server
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Pool clients
-       Simply multiple instances of the same client
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/pool_clients.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Create a hunt
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/create-hunt_2.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Select hunt artifacts
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/create-hunt_3.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Collect results
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/create-hunt.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="content" -->
-       ## Exercise - Stacking
-       
-       * The previous collection may be considered the baseline
-       * For this exercise we want to create a few different clients.
-           * Stop the pool client
-           * Disable a log channel
-           * Start the pool client with an additional number of clients
-       
-       ```
-       Velociraptor.exe --config client.config.yaml pool_client --number 110
-       ```
-   - type: markdown
-     template: |
-       <!-- .slide: class="full_screen_diagram" -->
-       ## Stacking can reveal results that stand out
-       
-       ![](https://github.com/Velocidex/presentations/blob/master//modules/bit_log_disable_hunting/stacking-a-hunt.png?raw=true)
-   - type: markdown
-     template: |
-       <!-- .slide: class="title" -->
        # The process tracker
        
        ## Complimenting forensic analysis with monitoring...
@@ -1244,8 +1176,8 @@ sources:
        
        ## 4. Create a process dumpOpen calculator (calc.exe)
        calc.exe ; start-sleep 2
-       C:\PerfLogs\procdump64.exe -accepteula -ma calc C:\PerfLogs\calc.dmp
-       get-process | where-object { $_.Name -like "*calc*" } | Stop-Process
+       C:\PerfLogs\procdump64.exe -accepteula -ma win32calc C:\PerfLogs\calc.dmp
+       get-process | where-object { $_.Name -like "*win32calc*" } | Stop-Process
        
        ## 5. Create a zip file in staging folder
        Compress-Archive -Path C:\PerfLogs\* -DestinationPath C:\PerfLogs\exfil.zip -CompressionLevel Fastest
