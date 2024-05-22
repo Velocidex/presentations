@@ -46,7 +46,8 @@
 1. Parses certain raw event logs on the endpoint
 2. Applies normalization of fields
 3. Forwards events to SIEM
-4. Queries are run on SIEM using a specialized query landscape to detect anomalies.
+4. Queries are run on SIEM using a specialized query language to
+   detect anomalies.
 
 * But we have many different types of SIEM and incompatible schemas,
   query languages and type of data collected
