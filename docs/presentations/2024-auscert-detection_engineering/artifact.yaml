@@ -14,11 +14,9 @@ sources:
        
        ## Advances in Detection Engineering
        
-       ### Mike Cohen, Digital Paleontologist
+       ### Mike Cohen, Digital Paleontologist, Rapid7
        
        </div>
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master//resources/velo_bike.gif?raw=true" class="fixed" style=" right: 0px;  bottom: 0px; height: 300px; z-index: -10;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -41,7 +39,8 @@ sources:
        
        ## Traditional SIEM based detection
        
-       ![](https://github.com/Velocidex/presentations/blob/master/edr_env.png?raw=true)
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/edr_env.png?raw=true" style=" height: 90hv;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content small-font" -->
@@ -76,7 +75,7 @@ sources:
        
        ## New interchange format - Sigma
        
-       ![](https://github.com/Velocidex/presentations/blob/master/sigma_architecture.png?raw=true)
+       <img src="https://github.com/Velocidex/presentations/blob/master/sigma_architecture.png?raw=true" style=" height: 60vh;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content small-font" -->
@@ -353,7 +352,8 @@ sources:
        
        * Endpoint tools can directly evaluate Sigma rules on the event logs
        
-       ![](https://github.com/Velocidex/presentations/blob/master/velociraptor_sigma_flow.png?raw=true)
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/velociraptor_sigma_flow.png?raw=true" style=" height: 40vh;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content small-font" -->
@@ -465,7 +465,7 @@ sources:
        
        * VQL is fully asynchronous - real time queries.
        
-       ![](https://github.com/Velocidex/presentations/blob/master/client_events_arch.png?raw=true)
+       <img src="https://github.com/Velocidex/presentations/blob/master/client_events_arch.png?raw=true" style=" height: 50vh;"/>
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -533,3 +533,4 @@ sources:
        * [Velociraptor Sigma Compiler](https://sigma.velocidex.com/)
        * [Velociraptor Sigma Rules Github](https://github.com/Velocidex/velociraptor-sigma-rules)
        * [Sigma in Velociraptor](https://docs.velociraptor.app/blog/2023/2023-11-15-sigma_in_velociraptor/)
+       * Graphics by Justin Welgemoed @predictiple
