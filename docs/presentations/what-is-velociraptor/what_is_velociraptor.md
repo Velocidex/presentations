@@ -149,6 +149,115 @@ processes.
 
 ![](/modules/tracking_processes/powershell_pstree.png)
 
+---
+
+<!-- .slide: class="content" -->
+
+## Triaging Using Sigma
+
+* Endpoint tools can directly evaluate Sigma rules on the event logs
+
+
+<img src="velociraptor_sigma_flow.png" style=" height: 40vh;"/>
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+##  Collecting the sigma artifact
+
+![](collecting_sigma_rules.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Triaging an endpoint
+
+![](query_logs.png)
+
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Stacking rules by title
+
+![](stacking_a_column.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Viewing the stacking stats
+
+![](viewing_column_stack.png)
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Viewing common rows
+
+![](viewing_common_rows.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Detection vs. Forensics
+
+* VQL Sigma rules bridge detection with forensics.
+* Forensics: `What happened here?`
+    * Recover all the information - relevant or not
+    * Get a full picture.
+
+* Detection: `What bad things happened here?`
+    * Take the forensic information and rapidly zero in on obvious bad
+      signals.
+    * Not designed to be exhaustive! Triage oriented
+
+* Complimentary capabilities
+
+---
+
+<!-- .slide: class="content" -->
+
+## Real Time Sigma alerting
+
+* VQL is fully asynchronous - real time queries.
+
+<img src="client_events_arch.png" style=" height: 50vh;"/>
+
+---
+
+<!-- .slide: class="content" -->
+
+## Real Time Sigma alerting
+
+### Configuring Velociraptor's client monitoring
+
+![](configuring_client_monitoring.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Real Time Sigma alerting
+
+### Configuring Velociraptor's client monitoring
+
+![](configuring_client_monitoring_logs.png)
+
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Live detection with Sigma
+
+![](live_sigma_detection.png)
+
 
 ---
 
