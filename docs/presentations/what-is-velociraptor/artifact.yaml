@@ -143,6 +143,102 @@ sources:
        ![](https://github.com/Velocidex/presentations/blob/master//modules/tracking_processes/powershell_pstree.png?raw=true)
    - type: markdown
      template: |
+       <!-- .slide: class="content" -->
+       
+       ## Triaging Using Sigma
+       
+       * Endpoint tools can directly evaluate Sigma rules on the event logs
+       
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/velociraptor_sigma_flow.png?raw=true" style=" height: 40vh;"/>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ##  Collecting the sigma artifact
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/collecting_sigma_rules.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Triaging an endpoint
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/query_logs.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Stacking rules by title
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/stacking_a_column.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Viewing the stacking stats
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/viewing_column_stack.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Viewing common rows
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/viewing_common_rows.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Detection vs. Forensics
+       
+       * VQL Sigma rules bridge detection with forensics.
+       * Forensics: `What happened here?`
+           * Recover all the information - relevant or not
+           * Get a full picture.
+       
+       * Detection: `What bad things happened here?`
+           * Take the forensic information and rapidly zero in on obvious bad
+             signals.
+           * Not designed to be exhaustive! Triage oriented
+       
+       * Complimentary capabilities
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Real Time Sigma alerting
+       
+       * VQL is fully asynchronous - real time queries.
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/client_events_arch.png?raw=true" style=" height: 50vh;"/>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Real Time Sigma alerting
+       
+       ### Configuring Velociraptor's client monitoring
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/configuring_client_monitoring.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## Real Time Sigma alerting
+       
+       ### Configuring Velociraptor's client monitoring
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/configuring_client_monitoring_logs.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Live detection with Sigma
+       
+       ![](https://github.com/Velocidex/presentations/blob/master/live_sigma_detection.png?raw=true)
+   - type: markdown
+     template: |
        <!-- .slide: class="content small-font" -->
        ## Administration through VQL
        
