@@ -101,27 +101,6 @@ Pre-programmed binary collecting, packaging and uploading collection
 ---
 
 <!-- .slide: class="content small-font" -->
-## Monitoring endpoint autonomously with VQL
-
-Event artifacts are never-ending VQL queries that watch for events on
-clients and stream those events to the server.
-
-![](/modules/event_monitoring/event-queries.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## System changes relayed to server
-
-Detections can be written to alert about suspicious changes to system
-configuration
-
-![](/modules/event_monitoring/Windows.Events.EventLogModifications_results.png)
-
-
----
-
-<!-- .slide: class="content small-font" -->
 ## Tracking processes on endpoint
 
 * One of the critical questions we ask is `Where did this process come
