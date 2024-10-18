@@ -40,3 +40,6 @@ toc:
 
   - name: "Auscert 2024: Advances in detection engineering"
     path: presentations/2024-auscert-detection_engineering/
+
+  - name: "DFRWS APAC 2024: Digital Forensics is dead! Long live Digital Forensics!"
+    path: presentations/dfrws_apac_2024/
