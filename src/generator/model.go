@@ -34,6 +34,8 @@ type Module struct {
 	Path string `yaml:"path"` // The name of the markdown file
 
 	Topics []*Topic `yaml:"toc" json:"topics,omitempty"`
+
+	Head string `yaml:"head" json:"head,omitempty"`
 }
 
 // A Topic is collection of slides in a single markdown file.

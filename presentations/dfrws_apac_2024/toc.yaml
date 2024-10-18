@@ -1,0 +1,30 @@
+head: |
+  <style>
+    section.title, section.content {
+      background-image: none;
+     }
+    section.content h2 {
+      margin-right: 0px;
+    }
+  </style>
+
+toc:
+  - path: index.md
+
+  - name: A trip down memory lane...
+    path: memory_lane.md
+
+  - name: Is Digital Forensics Dead?
+    path: dead.md
+
+  - name: Is Digital Forensics Good enough?
+    path: triage.md
+
+  - name: "Windows Event Logs"
+    path: ../sans_apac_2023/eventlogs.md
+
+  - name: "Filesystem Forensics"
+    path: ../sans_apac_2023/filebased.md
+
+  - name: Conclusions
+    path: conclusions.md

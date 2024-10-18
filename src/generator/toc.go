@@ -23,7 +23,7 @@ var (
 		} `command:"serve"`
 	}
 
-	copy_regex   = regexp.MustCompile("\\.(png|md|css|js|svg|woff2|ttf|woff|ttf|gif)$")
+	copy_regex   = regexp.MustCompile("\\.(png|pdf|md|css|js|svg|woff2|ttf|woff|ttf|gif)$")
 	asset_regex  = regexp.MustCompile(`src="([^"]+)"`)
 	asset_regex2 = regexp.MustCompile(`!\[.*?\]\(([^\)]+)\)`)
 )
@@ -97,7 +97,7 @@ func GenerateSite(
 		// Create a HTML for the whole module
 		output_manager.WriteFile(
 			filepath.Join(module.Path, "index.html"),
-			buildIndexHtml(module))
+			buildIndexHtml(module, presentation))
 
 		// Copy all the files over
 		output_manager.CopyDirectory(module.Path, module.Path)
@@ -118,7 +118,8 @@ func GenerateSite(
 					topic.Link,
 					buildIndexHtml(&Module{
 						Topics: []*Topic{topic},
-					}))
+						Head:   module.Head,
+					}, presentation))
 			}
 
 			// Copy all the assets into the module directory.

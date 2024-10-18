@@ -34,12 +34,13 @@ func ParsePresentation() (*Presentation, error) {
 			return nil, err
 		}
 
-		tmp := &Module{}
-		err = yaml.Unmarshal(serialized, tmp)
+		tmp := Module{}
+		err = yaml.Unmarshal(serialized, &tmp)
 		if err != nil {
 			return nil, fmt.Errorf("While processing %v: %w", module.Path, err)
 		}
 
+		module.Head = tmp.Head
 		module.Topics = nil
 
 		for _, topic := range tmp.Topics {
