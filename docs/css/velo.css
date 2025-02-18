@@ -78,6 +78,17 @@ section.content.optional {
     font-size: 2ex;
 }
 
+
+div.hilight h3 {
+    color: var(--subtitle-color);
+    text-shadow: 5px 5px 5px var(--subtitle-shadow);
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+    font-size: 2ex;
+}
+
+
 .title .inset {
     border-left: solid;
     border-width: 5px;
