@@ -236,3 +236,11 @@ TLS
 VPN
 ---------------------------------------------------------
 Scalable
+
+<url-free> ./presentations/2025-cybersecurity/index.md
+--------------------------------------------------------------------------------
+ASD
+BEC
+CYBR
+Cybersecurity
+Ironside
