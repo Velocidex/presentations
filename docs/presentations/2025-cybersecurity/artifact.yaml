@@ -104,7 +104,7 @@ sources:
        Common vulnerabilities include [SQL Injection](https://pentest-tools.com/blog/sql-injection-attacks)
        *  This vulnerability leads to complete server take over
        
-       ![SQL Injection code](https://github.com/Velocidex/presentations/blob/master/sql_injection_code.png?raw=true)
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/sql_injection_code.png?raw=true" />
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -123,13 +123,13 @@ sources:
        <!-- .slide: class="full_screen_diagram" -->
        ## Today: Not messing around
        
-       <img style="height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_splashscreen.png?raw=true" />
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_splashscreen.png?raw=true" />
    - type: markdown
      template: |
        <!-- .slide: class="full_screen_diagram" -->
        ## Ransomware Negotiators
        
-       <img style="height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_negotiator.png?raw=true" />
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_negotiator.png?raw=true" />
        
        https://www.darkreading.com/cyberattacks-data-breaches/meet-the-ransomware-negotiators
    - type: markdown
@@ -137,7 +137,7 @@ sources:
        <!-- .slide: class="full_screen_diagram" -->
        ## Impact of software vulnerabilities today
        
-       <img style="height: 60vh; margin-left: 10vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_report.png?raw=true" />
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/ransomware_report.png?raw=true" />
        
        https://www.rapid7.com/globalassets/_pdfs/2024-rapid7-ransomware-radar-report-final.pdf
    - type: markdown
@@ -250,9 +250,31 @@ sources:
    - type: markdown
      template: |
        <!-- .slide: class="full_screen_diagram" -->
+       ## Inoteq vs Mobius Group
+       
+       <a href="https://www.abc.net.au/news/2025-01-16/court-orders-inoteq-to-pay-190k-after-fraudulent-invoice/104783454">
+       
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/innotec_1.png?raw=true" />
+       
+       </a>
+       
+       https://www.abc.net.au/news/2025-01-16/court-orders-inoteq-to-pay-190k-after-fraudulent-invoice/104783454
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       ## Inoteq vs Mobius Group
+       
+       <a href="https://www.abc.net.au/news/2025-01-16/court-orders-inoteq-to-pay-190k-after-fraudulent-invoice/104783454">
+       
+       <img style="max-height: 70vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/innotec_2.png?raw=true" />
+       
+       </a>
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
        ## Business Email Compromise (BEC)
        
-       <img style="height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/bec_losses.png?raw=true" />
+       <img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="https://github.com/Velocidex/presentations/blob/master/bec_losses.png?raw=true" />
        
        https://www.itnews.com.au/news/australian-businesses-lose-227-million-to-bec-like-scams-582162
    - type: markdown
@@ -285,7 +307,7 @@ sources:
        <!-- .slide: class="content" -->
        ## Dwell time is getting shorter
        
-       <img style="height: 60vh; margin-top: -40px; margin-left: 10vw; margin-bottom: 0;" src="https://github.com/Velocidex/presentations/blob/master/dwell_time.png?raw=true" />
+       <img style="max-height: 60vh; margin-top: -40px; margin-left: 10vw; margin-bottom: 0;" src="https://github.com/Velocidex/presentations/blob/master/dwell_time.png?raw=true" />
        
        <div class="ref">
        

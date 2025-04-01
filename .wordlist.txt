@@ -244,3 +244,5 @@ BEC
 CYBR
 Cybersecurity
 Ironside
+Inoteq
+Mobius
