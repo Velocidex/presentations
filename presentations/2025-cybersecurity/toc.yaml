@@ -1,0 +1,10 @@
+head: |
+      <style>
+        body section.content, body section.title { background-image: none; }
+        .ref a { font-size: medium; }
+        h2 { width: 100%; }
+      </style>
+
+toc:
+   - path: index.md
+     name: Cybersecurity
