@@ -21,6 +21,48 @@ sources:
      template: |
        <!-- content -->
        
+       ## Overview
+       
+       * This workshop will discuss Detection Engineering on Velociraptor
+       * What you actually can do depends on your detection platform
+       * We will use Velociraptor as an example platform
+          * Not everything we show will be possible on all platforms
+          * Nevertheless it is useful to see what is possible!
+          * Think about the additional detections that can be implemented
+            with better capabilities!
+   - type: markdown
+     template: |
+       <!-- content -->
+       ## Create a local server
+       
+       * Create a local server on your windows system.
+       * We will use this server's notebook feature to learn about windows artifacts
+       * Run Velociraptor on your machine
+           * Download Velociraptor from the
+             [Download](https://docs.velociraptor.app/downloads/) page (`.msi`
+             or `.exe`)
+       
+       ```
+       velociraptor-v0.74.2-windows-amd64.exe gui
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       The "gui" command creates an instant temporary server/client with self
+         signed SSL and a hard coded admin/password.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/velociraptor-gui.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       ## Your Velociraptor is ready to use!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/GUI.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- content -->
+       
        ## Why detection?
        
        * Attackers dwell time is getting quicker
@@ -70,6 +112,7 @@ sources:
        <!-- full_screen_diagram small-font -->
        
        ## The detection pipeline
+       ### The traditional EDR-SIEM pipeline
        
        ![](https://github.com/Velocidex/presentations/blob/master/edr_env.svg?raw=true)
    - type: markdown
@@ -329,7 +372,7 @@ sources:
      template: |
        <!-- .slide: class="title" -->
        
-       ## Sigma Rules - Vibe detection
+       ## Sigma Rules - Vibe detection 🧘
        
        ```yaml
        title: PsExec Service Start
@@ -447,7 +490,10 @@ sources:
        * A Project to maintain and curate:
        
           * Useful set of `Sigma Models` for different situations
-          * A Curated set of `Sigma Rules` taylored for use in the models.
+          * A Curated set of `Sigma Rules` tailored for use in the models.
+       
+       * Main goal is to separate the `maintainance of the Model` and the
+         `writing of the rules`!
        
        > https://sigma.velocidex.com/
    - type: markdown
@@ -507,13 +553,6 @@ sources:
        > It's just the vibe of the thing!
        
        <iframe width="560" height="315" src="https://www.youtube.com/embed/97IiPli_uXw?si=VLrvR1K82vKOt5OG&amp;start=48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-   - type: markdown
-     template: |
-       <!-- content -->
-       
-       ## Recap: What is Sigma ?
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master/vibe_detection.png?raw=true">
    - type: markdown
      template: |
        <!-- .slide: class="title" -->
@@ -687,10 +726,10 @@ sources:
           * Endpoint must be online
        
        * On endpoint evaluation:
-          * Can access obscure or very noisy event logs
-          * Can be done at scale
-          * Efficient network transfers
-          * Susceptible to log file erasure!
+          * Can access obscure or very noisy event logs 🙂
+          * Can be done at scale 🙂
+          * Efficient network transfers 🙂
+          * Susceptible to log file erasure! 😟
    - type: markdown
      template: |
        <!-- content -->
@@ -808,6 +847,31 @@ sources:
        
        ## Event Tracing for Windows
        ### Bring in the big guns!
+   - type: markdown
+     template: |
+       <!-- full_screen_diagram small-font -->
+       ## Exercise: Preparations
+       ### Enable the event artifact Windows.Events.TrackProcesses
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring.svg?raw=true">
+   - type: markdown
+     template: |
+       -
+       
+       <!-- full_screen_diagram small-font -->
+       ## Exercise: Preparations
+       ### Enable the event artifact Windows.Events.TrackProcesses
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring_2.svg?raw=true">
+   - type: markdown
+     template: |
+       -
+       
+       <!-- full_screen_diagram small-font -->
+       ## Exercise: Preparations
+       ### Enable the event artifact Windows.Events.TrackProcesses
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring_3.svg?raw=true">
    - type: markdown
      template: |
        <!-- .slide: class="content" -->
@@ -962,38 +1026,122 @@ sources:
           * Continuous integration tests ensure rules are applied to recorded events.
    - type: markdown
      template: |
+       <!-- content -->
+       ## Recap: Event Tracing For Windows
        
+       * Real time events can be read from various software components
+       * Introspecting low level software functionality
+       * Can write more powerful detections
+       * In the next section we will see how to enrich these events with Forensics!
    - type: markdown
      template: |
        <!-- .slide: class="title" -->
        
-       ## Forensic Detection
-       ### Enriching events with forensics...
+       ## Forensic Enrichment
+       ### Enriching events with endpoint state
+   - type: markdown
+     template: |
+       <!-- content -->
+       
+       ## Enrichment with endpoint state
+       
+       * So far we only applied detection on event logs
+       * Usually endpoint state provides important context
+          * Helps us to triage hits to eliminate false positives
+       
+       * Many SOC workflows rely on a detection/response loop
+          * Analysts need to respond to the detection to retrieve more
+            endpoint context
+       
+       * Velociraptor allows direct enrichment
+         * Forensic enrichment adds data outside the pure log source directly
+           to the detected event.
+   - type: markdown
+     template: |
+       <!-- content small-font -->
+       ## The Velociraptor Sigma Engine Extensions
+       ### Pre-evaluation enrichment
+       
+       * Prior to evaluating the rule, the Velociraptor Sigma engine can
+         transform the original event using VQL functions.
+       * This allows us to add additional fields from the live system.
+       * In this case we add the field `CallChain` to be the [full call
+         chain](https://docs.velociraptor.app/vql_reference/other/process_tracker_callchain/)
+         of the process mentioned in the event.
+          * Velociraptor's process tracker is extremely efficient way to
+            calculate process lineage
+       * Let's try this detection logic:
+          * A file is created in the Windows directory
+          * The process that created the file is launched interactively
+   - type: markdown
+     template: |
+       <!-- content small-font -->
+       ## Exercise: Enrich data with Process Call Chain
+       
+       ```sql
+       LET SigmaRules = '''
+       title: Test Sigma Rule
+       logsource:
+         category: etw
+         product: windows
+         service: file
+       
+       detection:
+         selection_event_type:
+           EventType: CreateNewFile
+         selection_filename:
+           FileName|re: ^C:\\Windows
+         selection_callchain_interactive:
+           EventData.CallChain|re: cmd.exe|powershell.exe
+       
+         condition: selection_event_type and selection_filename and selection_callchain_interactive
+       
+       vql: |
+         x=>dict(
+           EventData=x.EventData + dict(
+             CallChain=process_tracker_callchain(id=x.System.ProcessID).Data.Exe))
+       '''
+       SELECT *
+       FROM Artifact.Windows.Sigma.ETWBase(SigmaRules=SigmaRules)
+       ```
+   - type: markdown
+     template: |
+       <!-- content small-font -->
+       ## Enriching detection with endpoint state
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master/enriched_detection.svg?raw=true" style="">
+   - type: markdown
+     template: |
+       <!-- content small-font -->
+       ## Post Evaluation Enrichment
+       
+       * Enriching events before evaluation can be expensive - it happens on
+         all events, even the ones that do not match.
+       
+       * Sometimes we just want to get additional information when the rule
+         fires!
+         * This is much cheaper as it only happens when the rule fires 🙂
+         * But you can not use that enrichment in a detection condition! 🤨
+   - type: markdown
+     template: |
+       <!-- content small-font -->
+       ## Post Evaluation Enrichment
+       
+       * Expensive enrichment can be added to the `enrichment` section of the rule
+       * When the rule fires, the enrichment will be added to the results
+           * This allows us to capture this state in the event itself!
+           * If the file is removed subsequently we still have important context!
+       
+       ```sql
+       
+       enrichment: |
+          x=>dict(PEInfo=parse_pe(file=x.EventData.ProcInfo.Exe))
+       
+       ```
    - type: markdown
      template: |
        <!-- full_screen_diagram small-font -->
-       ## Exercise: Preparations
-       ### Enable the event artifact Windows.Events.TrackProcesses
        
-       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring.svg?raw=true">
-   - type: markdown
-     template: |
-       -
+       ## Post Evaluation Enrichment
        
-       <!-- full_screen_diagram small-font -->
-       ## Exercise: Preparations
-       ### Enable the event artifact Windows.Events.TrackProcesses
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring_2.svg?raw=true">
-   - type: markdown
-     template: |
-       -
-       
-       <!-- full_screen_diagram small-font -->
-       ## Exercise: Preparations
-       ### Enable the event artifact Windows.Events.TrackProcesses
-       
-       <img src="https://github.com/Velocidex/presentations/blob/master/enabling_client_monitoring_3.svg?raw=true">
-   - type: markdown
-     template: |
-       
+       <img src="https://github.com/Velocidex/presentations/blob/master/post_detection_enrichment.svg?raw=true" style="">

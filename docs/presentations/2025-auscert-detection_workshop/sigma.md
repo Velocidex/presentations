@@ -1,6 +1,6 @@
 <!-- .slide: class="title" -->
 
-## Sigma Rules - Vibe detection
+## Sigma Rules - Vibe detection 🧘
 
 ```yaml
 title: PsExec Service Start
@@ -126,7 +126,10 @@ detection:
 * A Project to maintain and curate:
 
    * Useful set of `Sigma Models` for different situations
-   * A Curated set of `Sigma Rules` taylored for use in the models.
+   * A Curated set of `Sigma Rules` tailored for use in the models.
+
+* Main goal is to separate the `maintainance of the Model` and the
+  `writing of the rules`!
 
 > https://sigma.velocidex.com/
 
@@ -194,11 +197,3 @@ detection:
 > It's just the vibe of the thing!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/97IiPli_uXw?si=VLrvR1K82vKOt5OG&amp;start=48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
----
-
-<!-- content -->
-
-## Recap: What is Sigma ?
-
-<img src="vibe_detection.png">

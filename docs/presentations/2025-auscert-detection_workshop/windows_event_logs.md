@@ -187,10 +187,10 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
    * Endpoint must be online
 
 * On endpoint evaluation:
-   * Can access obscure or very noisy event logs
-   * Can be done at scale
-   * Efficient network transfers
-   * Susceptible to log file erasure!
+   * Can access obscure or very noisy event logs 🙂
+   * Can be done at scale 🙂
+   * Efficient network transfers 🙂
+   * Susceptible to log file erasure! 😟
 
 ---
 

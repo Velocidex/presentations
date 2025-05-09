@@ -5,6 +5,30 @@
 
 ---
 
+<!-- full_screen_diagram small-font -->
+## Exercise: Preparations
+### Enable the event artifact Windows.Events.TrackProcesses
+
+<img src="enabling_client_monitoring.svg">
+
+----
+
+<!-- full_screen_diagram small-font -->
+## Exercise: Preparations
+### Enable the event artifact Windows.Events.TrackProcesses
+
+<img src="enabling_client_monitoring_2.svg">
+
+----
+
+<!-- full_screen_diagram small-font -->
+## Exercise: Preparations
+### Enable the event artifact Windows.Events.TrackProcesses
+
+<img src="enabling_client_monitoring_3.svg">
+
+---
+
 <!-- .slide: class="content" -->
 
 ## Event Tracing for Windows (ETW)
@@ -168,3 +192,11 @@ psexec.exe /s cmd.exe
    * Continuous integration tests ensure rules are applied to recorded events.
 
 ---
+
+<!-- content -->
+## Recap: Event Tracing For Windows
+
+* Real time events can be read from various software components
+* Introspecting low level software functionality
+* Can write more powerful detections
+* In the next section we will see how to enrich these events with Forensics!
