@@ -6,6 +6,9 @@ head: |
     section.content h2 {
       margin-right: 0px;
     }
+    img {
+      box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+    }
   </style>
 
 toc:
@@ -21,11 +24,11 @@ toc:
   - path: windows_event_logs.md
     name: The Windows Event Logs
 
-  - path: event_log_triage.md
-    name: Event Log triage
-
   - path: live_detection.md
     name: Live detection on the endpoint
+
+  - path: event_tracing.md
+    name: Event Tracing For Windows
 
   - path: forensic_detection.md
     name: Forensics and Detection

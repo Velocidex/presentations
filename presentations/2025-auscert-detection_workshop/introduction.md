@@ -70,30 +70,6 @@ https://cyb3rops.medium.com/about-detection-engineering-44d39e0755f0
 
 ----
 
-<!-- full_screen_diagram small-font -->
-## Exercise: Preparations
-### Enable the event artifact Windows.Events.TrackProcesses
-
-<img src="enabling_client_monitoring.svg">
-
-----
-
-<!-- full_screen_diagram small-font -->
-## Exercise: Preparations
-### Enable the event artifact Windows.Events.TrackProcesses
-
-<img src="enabling_client_monitoring_2.svg">
-
-----
-
-<!-- full_screen_diagram small-font -->
-## Exercise: Preparations
-### Enable the event artifact Windows.Events.TrackProcesses
-
-<img src="enabling_client_monitoring_3.svg">
-
----
-
 <!-- content small-font -->
 ## Anatomy of an attack
 
