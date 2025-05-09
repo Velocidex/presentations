@@ -246,3 +246,27 @@ Cybersecurity
 Ironside
 Inoteq
 Mobius
+
+iteratively
+detections
+PsExec
+discoverability
+
+ECS
+EventLogs
+PsExec
+RPC
+
+proc
+psexesvc
+sysinternals
+yml
+
+
+tradeoffs
+triaged
+SIEMs
+eBPF
+scalable
+utilised
+>>>>>>> 79992b2 (More live detection with ETW)
