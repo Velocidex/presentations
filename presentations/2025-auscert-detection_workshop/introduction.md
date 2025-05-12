@@ -329,13 +329,13 @@ nothing.exe -r nothing -s cmd.exe
 
 <!-- content small-font -->
 
-## Recap: what have we learnt?
+## Recap: what have we learned?
 
 * Detection requires an event source
 * Event sources are usually normalized to an internal schema "shape"
 * Detection matches events against a "rule"
     * A match is a "hit"
-* Attackers can change their methodologies to bypadd detection rules
+* Attackers can change their methodologies to bypass detection rules
 * Rules can be improved by adding data points!
 
 * Communicating a detection is difficult!

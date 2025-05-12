@@ -151,7 +151,7 @@ detection:
 ## The Velociraptor Sigma Architecture
 
 * Velociraptor has a built in Sigma engine
-    * Sigma is the prefered built in method for scallable detection and triaging!
+    * Sigma is the preferred built in method for scalable detection and triaging!
 * Accepts a model definition:
     * Log sources are VQL queries that generate events
     * Field mappings are VQL Lambda functions that resolve fields in the rule.
