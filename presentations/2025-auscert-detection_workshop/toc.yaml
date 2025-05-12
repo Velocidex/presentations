@@ -32,3 +32,6 @@ toc:
 
   - path: forensic_detection.md
     name: Forensics and Detection
+
+  - path: conclusions.md
+    name: Conclusions

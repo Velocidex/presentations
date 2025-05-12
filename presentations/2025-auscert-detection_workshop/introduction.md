@@ -91,6 +91,14 @@ curl -o psexec.exe https://live.sysinternals.com/psexec.exe
 
 ---
 
+<!-- full_screen_diagram small-font -->
+## Exercise: Installing Sysmon
+### Collect the Windows.Sysinternals.SysmonInstall artifact
+
+<img src="install_sysmon.png" style="">
+
+---
+
 <!-- content small-font -->
 ## Exercise: Sysmon and ECS
 
@@ -229,7 +237,7 @@ Service is launched by the service manager so runs as SYSTEM
 
 * What could go wrong?
     * Different pre-filtering might exclude the relevant events
-    * Different fields might be collected
+    * Different fields might be collected, e.g. [Command line process auditing](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing)
     * Data shape is different in different data storage systems.
 
 * We will come back to this!

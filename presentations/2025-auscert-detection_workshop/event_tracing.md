@@ -80,7 +80,7 @@ https://docs.microsoft.com/en-us/windows-hardware/test/weg/instrumenting-your-co
 
 ## The Windows Base ETW Model
 
-<img src="etw_base_model.svg" style=""  />
+<img src="etw_base_model.svg" style="max-height: 60vh"  />
 
 ---
 

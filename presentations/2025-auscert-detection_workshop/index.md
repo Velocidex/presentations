@@ -4,9 +4,11 @@
 
 <div class="inset">
 
-## The art and science of catching intrusions!
+## The art and science of detecting intrusions!
 
 ### Mike Cohen, Digital Paleontologist, Rapid7
+
+> [Link to Presentation](https://present.velocidex.com/presentations/2025-auscert-detection_workshop/)
 
 </div>
 
@@ -16,13 +18,13 @@
 
 ## Overview
 
-* This workshop will discuss Detection Engineering on Velociraptor
-* What you actually can do depends on your detection platform
+* This workshop will discuss Detection Engineering with Velociraptor
 * We will use Velociraptor as an example platform
    * Not everything we show will be possible on all platforms
    * Nevertheless it is useful to see what is possible!
    * Think about the additional detections that can be implemented
      with better capabilities!
+* We also introduce the Sigma detection "standard"
 
 ---
 
@@ -47,7 +49,7 @@ velociraptor-v0.74.2-windows-amd64.exe gui
 The "gui" command creates an instant temporary server/client with self
   signed SSL and a hard coded admin/password.
 
-![](/modules/gui_tour/velociraptor-gui.png)
+<img src="/modules/gui_tour/velociraptor-gui.png" style="height: 60vh">
 
 ---
 

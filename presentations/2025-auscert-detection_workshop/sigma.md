@@ -39,7 +39,7 @@ detection:
 <!-- content -->
 ## Sigma Rules
 
-* The Sigma standard does not define:
+* The Sigma standard does not define
    * What log sources are actually available
    * The specific structure of each event
    * What fields are available and what they are called.
@@ -47,6 +47,54 @@ detection:
 * The intention is to convey the "vibe" of a detection.
    * A Sigma Compiler for the target SIEM is used to convert this
      "vibe" to a concrete detection for a particular engine.
+
+---
+
+<!-- content small-font -->
+
+## Sigma Rule Syntax
+
+* Covered in details [in the Sigma HQ documentation site](https://sigmahq.io/docs/basics/rules.html)
+    * Based on YAML
+* Detections are written in YAML
+    * Include Selections and Condition clause
+    * Selections can be OR or AND
+    * Condition combine selection logically
+
+```
+detection:
+  selection_and:
+    displaymessage: Max sign in attempts exceeded
+  selection_or:
+    field_name:
+      - this # or
+      - that
+  condition: selection_and and selection_or
+```
+
+---
+
+<!-- content small-font -->
+
+## Sigma Rule Syntax
+
+* Modifiers apply to the field to allow transformation for matching.
+* Although it looks like they can be applied in any order, only a few
+  combinations make sense.
+* Velociraptor `vql` modifier allows running arbitrary VQL code on a field.
+
+```
+detection:
+  selection:
+     - TargetFilename|endswith: '.cmdline'
+     - fieldname|base64offset|contains:
+         - /bin/bash
+     - fieldname|contains: needle
+     - fieldname|re: .*needle$
+     - fieldname|startswith: needle
+     - EventData|vql:
+         x=>hash(path=x.Filename).MD5 =~ '12345'
+```
 
 ---
 
@@ -64,7 +112,7 @@ detection:
 
 ### Converting a Vibe to a concrete detection
 
-* To convert a Sigma rule to a concrete detection:
+* To convert a Sigma rule to a concrete detection
     * **Field Mappings**: Mapping between abstract field names and
       concrete field names.
 
@@ -99,14 +147,17 @@ detection:
 
 ---
 
-<!-- content -->
+<!-- content small-font -->
 ## The Velociraptor Sigma Architecture
 
-* Velociraptor has a built in Sigma engine:
+* Velociraptor has a built in Sigma engine
+    * Sigma is the prefered built in method for scallable detection and triaging!
 * Accepts a model definition:
     * Log sources are VQL queries that generate events
     * Field mappings are VQL Lambda functions that resolve fields in the rule.
-* Rules are pushed to the endpoint for direct evaluation
+* Velociraptor terminology
+    * `Sigma Model` == `Sigma Compiler`
+* Rules and Models are pushed to the endpoint for direct evaluation
 * Only Matches are forwarded to the server.
 
 ---
@@ -140,6 +191,21 @@ detection:
 ## The Velociraptor Curated Sigma Project
 
 <img src="sigma_site_models.svg" style="">
+
+---
+
+<!-- content small-font -->
+
+## The Windows Base Model
+
+* Most public Sigma Rules address Windows Event Logs
+* Designed to be compatible with Sigma Rules in the wild.
+    * Usually this model will work with most Sigma Rules out there.
+    * Log sources are compatible with [Sigma HQ](https://sigmahq.io/docs/basics/log-sources.html) Windows Event Logs
+* This Sigma Model is used by the `Windows.Hayabusa.Rules` artifact
+    * Many projects out there use a similar model (e.g. `Hayabusa`,
+      `ChainSaw` etc).
+    * This model defines
 
 ---
 
@@ -197,3 +263,17 @@ detection:
 > It's just the vibe of the thing!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/97IiPli_uXw?si=VLrvR1K82vKOt5OG&amp;start=48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+<!-- content -->
+
+## Recap: Sigma traps
+
+* You can not just blindly copy Sigma Rules from one system to another
+* You have to carefully check that the sigma models are compatible
+   * Log sources refer to the same events
+   * Field mappings have corresponding mappings in the two models.
+
+* E.g. Sigma rules written for Sysmon EID 1 can not be reliably used
+  by Windows Audit EID 4688

@@ -48,7 +48,7 @@
 ## Exercise
 ### Add a new VQL Cell
 
-<img src="add_cell.svg" style="">
+<img src="add_cell.svg" style="max-height: 60vh">
 
 ---
 
@@ -57,7 +57,7 @@
 ## Exercise
 ### Write a Sigma rule to target PsExec!
 
-<img src="writing_sigma_rule.svg" style="">
+<img src="writing_sigma_rule.svg" style="max-height: 60vh">
 
 ---
 
@@ -212,7 +212,7 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
 ## Exercise: Create your own custom pack!
 ### Download the artifact pack for the `Windows.Hayabusa.Rules` artifact
 
-<img src="customizing_artifact_1.svg" style="">
+<img src="customizing_artifact_1.svg" style="max-height: 60vh">
 
 ---
 
@@ -222,7 +222,7 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
 ### Unpack it on the disk
 ### Create a new directory, add your new custom rule into it.
 
-<img src="customizing_artifact_2.svg" style="">
+<img src="customizing_artifact_2.svg" style="max-height: 60vh">
 
 ---
 
@@ -230,7 +230,7 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
 ## Exercise: Create your own custom pack!
 ### Repack the artifact into a new artifact.
 
-<img src="customizing_artifact_3.svg" style="">
+<img src="customizing_artifact_3.svg" style="max-height: 60vh">
 
 ---
 
@@ -238,7 +238,7 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
 ## Exercise: Create your own custom pack!
 ### Import the new artifact
 
-<img src="import_custom_artifact.png" style="">
+<img src="import_custom_artifact.png" style="max-height: 60vh">
 
 
 ---
@@ -247,4 +247,4 @@ SELECT * FROM Artifact.Windows.Sigma.Base(SigmaRules=Rules)
 ## Exercise: Create your own custom pack!
 ### Collect new artifact
 
-<img src="custom_artifact_results.png" style="">
+<img src="custom_artifact_results.png" style="max-height: 60vh">
