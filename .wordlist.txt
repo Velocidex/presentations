@@ -269,4 +269,5 @@ SIEMs
 eBPF
 scalable
 utilised
->>>>>>> 79992b2 (More live detection with ETW)
+
+SysmonInstall
