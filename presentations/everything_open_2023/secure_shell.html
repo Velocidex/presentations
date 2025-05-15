@@ -1,0 +1,211 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+        
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="title" -->
+
+## Secure Shell
+###  Linux remote access
+
+![](../../modules/secure_shell/openssh_logo.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Secure Shell
+###  Linux remote access
+
+On Unix like systems, remote administration is usually done using
+Secure Shell (SSH)
+* Authentication is usually decentralized:
+  * Username/Password based
+  * Public/Private key based
+
+---
+
+<!-- .slide: class="content" -->
+## Secure Shell
+###  Linux remote access
+
+* Authorization is usually achieved in a decentralized way
+  * `~/.ssh/authorized_keys` file lists all keys allowed to log in to this machine.
+  * `~/.ssh/known_hosts` file list all hosts known to this user (that the user has logged into previously).
+
+---
+
+<!-- .slide: class="content" -->
+## Typical SSH based attacks
+
+1. A user account with password auth is compromized on an endpoint.
+2. This gives the attacker a foothold on that host.
+3. Unsecured ssh keys can be used on that host to log into other hosts
+4. When the attacker logs into the other hosts they may change their user account
+
+---
+
+<!-- .slide: class="content" -->
+## Typical SSH escalation path
+
+![](../../modules/secure_shell/ssh_attack_outline.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps
+### Search for password login
+
+Search the SSH logs for successful login using a password. This should
+   not be common in practice!
+
+![](../../modules/secure_shell/finding_ssh_logs.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps
+### Find successful password logins
+
+![](../../modules/secure_shell/password_authenticated.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps
+### Did any of our hosts have unsecured keys?
+
+![](../../modules/secure_shell/unsecured_ssh_keys.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps
+### Which machines trust the unsecured key?
+
+SSH uses the `authorized_keys` file to grant access to trusted keys.
+
+To find all machines that might grant access to this key we need to check that file everywhere.
+
+This is called a `Hunt`
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Hunt for Authorized Keys
+
+![](../../modules/secure_shell/create_hunt.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Select artifact to collect
+
+![](../../modules/secure_shell/select_hunt_artifacts.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Start hunt
+
+![](../../modules/secure_shell/launch_hunt.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Post process hunt in VQL Notebook
+
+![](../../modules/secure_shell/postprocess_hunt.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps
+### Did the key actually get used?
+
+We can determine if any machine account was used to log into another
+host using the `known_hosts` file.
+
+This file records the hostname and host public key that were used in the past
+
+If we find the vulneable machine was logged into this might mean the
+vulnerable key was used.
+
+Unfortunately the hostname is hashed!!!
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Hunt for known hosts
+
+![](../../modules/secure_shell/known_hosts_hunt.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Post-process hunt to match hostnames
+
+![](../../modules/secure_shell/postprocess_suggestions.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+## Investigative steps - Hunt
+### Establishing peer relationships
+
+![](../../modules/secure_shell/known_hosts.png)
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>
