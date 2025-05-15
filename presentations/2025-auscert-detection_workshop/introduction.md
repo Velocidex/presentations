@@ -105,7 +105,7 @@ curl -o psexec.exe https://live.sysinternals.com/psexec.exe
 * Generate some interesting events
 
 ```
-psexec.exe /s cmd.exe
+psexec.exe /s \\WIN-SJE0CKQO83P\ cmd.exe
 ```
 
 * Privilege escalate to `SYSTEM` user!
