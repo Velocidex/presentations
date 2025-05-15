@@ -271,3 +271,21 @@ scalable
 utilised
 
 SysmonInstall
+
+ETWBase
+EventData
+EventType
+FileName
+FileOpen
+JSONDump
+MatchingRule
+ProcessName
+ReplayTestSet
+SigmaRules
+endswith
+etw
+json
+logsource
+startswith
+timespan
+uncomment
