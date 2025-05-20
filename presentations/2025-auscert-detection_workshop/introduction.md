@@ -86,7 +86,7 @@ https://cyb3rops.medium.com/about-detection-engineering-44d39e0755f0
 * Download psexec.exe
 
 ```bash
-curl -o psexec.exe https://live.sysinternals.com/psexec.exe
+curl -o psexec.exe https://live.sysinternals.com/psexec64.exe
 ```
 
 ---
@@ -105,7 +105,7 @@ curl -o psexec.exe https://live.sysinternals.com/psexec.exe
 * Generate some interesting events
 
 ```
-psexec.exe /s \\WIN-SJE0CKQO83P\ cmd.exe
+psexec.exe /s \\127.0.0.1 cmd.exe
 ```
 
 * Privilege escalate to `SYSTEM` user!
@@ -202,7 +202,7 @@ Service is launched by the service manager so runs as SYSTEM
 
 ## How would we detect this "attack"?
 
-* Let's detect: Spawning of the `psexecsvc.exe` service
+* Let's detect: Spawning of the `psexesvc.exe` service
 
 * Filter the raw Windows Event Log collection by adding a WHERE clause
   to isolate the attack.
