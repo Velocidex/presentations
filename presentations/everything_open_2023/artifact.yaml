@@ -1,0 +1,939 @@
+
+name: Notebooks.Presentation
+type: NOTEBOOK
+
+sources:
+- notebook:
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       <h1 style="font-size: 4ex">Incident Response with Velociraptor</h1>
+       
+       <div class="inset">
+       
+       ## Everything Open 2023
+       
+       ### Mike Cohen, Digital Paleontologist
+       ### Rapid 7 Inc
+       
+       </div>
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//resources/velo_bike.gif?raw=true" class="fixed" style=" right: 0px;  bottom: 00px; height: 300px; z-index: -10;"/>
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Overview
+       
+       This workshop introduces Velociraptor - an advanced endpoint
+       visibility tool for DFIR.
+       
+       * We focus on Linux systems
+       * Two main scenarios:
+       
+         1. SSH key compromise leading to lateral movement and privilege escalation.
+         2. Webshell detection.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Requirements
+       
+       This workshop will use Linux!
+       You should run on a Linux VM or system.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## What is Velociraptor?
+       * Velociraptor is a unique Free and Open Source DFIR tool, giving you
+         power and flexibility through the Velociraptor Query Language
+       * VQL is used to drive a powerful set of forensic capabilities:
+       * Using VQL we can write custom "Artifacts" to identify emerging threats quickly and safely
+       * Hunt for artifacts at scale over thousands of end points within
+         minutes!
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       ## Deployment overview
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/overview/deployment_overview.svg?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Typical deployments
+       
+       * Support Linux, Windows, MacOS, FreeBSD …
+       * Server simply collects the results of queries - clients do all the heavy lifting.
+       * Client memory and CPU usage is controlled via throttling and active cancellations.
+       * Server is optimized for speed and scalability
+       * Concurrency control ensures stability
+       * Bandwidth limits ensure network stability
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Typical deployments
+       
+       Current recommendations
+       * 10k-15k clients - single server with file based data store (usually cloud VM).
+       * SSL load is the biggest load - TLS offloading helps a lot!
+       * 8 GB RAM/8 cores is generous towards the top of the range.
+       * We recommend Ubuntu/Debian server
+           * 15-20k to 150k endpoints we recommend a multi-frontend setup.
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       # Velociraptor Installation and GUI tour
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Create a local server
+       
+       * Create a local server on your windows system.
+       * We will use this server's notebook feature to learn about windows artifacts
+       * Run Velociraptor on your machine
+           * Download Velociraptor from GitHub (.msi or .exe)
+       
+       ```
+       velociraptor-v0.72.3-windows-amd64.exe gui
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       The "gui" command creates an instant temporary server/client with self
+         signed SSL and a hard coded admin/password.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/velociraptor-gui.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       ## Your Velociraptor is ready to use!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/GUI.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       # A Velociraptor GUI tour
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/tour-bus.png?raw=true" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## The Dashboard
+       
+       * The Dashboard shows the current state of the installation:
+           * How many clients are connected
+           * Current CPU load and memory footprint on the server.
+           * When running hunts or intensive processing, memory and CPU requirements will increase but not too much.
+           * You can customize the dashboard - it’s also just an artifact.
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       
+       ## The Dashboard
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/dashboard.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## User Preferences
+       
+       You can customize the interface to your liking
+       
+       
+       <div class="container small-font">
+       <div class="col">
+       
+       * Themes
+       
+       </div>
+       <div class="col">
+       
+       * Languages
+       * Timezones
+       
+       </div>
+       </div>
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/user_preferences.png?raw=true" style="bottom: inherit" class="" />
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       # Interactively investigate individual clients
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Searching for a client
+       
+       To work with a specific client we need to search for it.  Press the
+       **Search** or **Show All** button to see some clients. You can also
+       use the **Show recent hosts** to see your own clients.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/search_clients.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Search for clients
+       
+       ### hostname, label, or client ID.
+       
+       * You can start typing the hostname to auto-complete
+       * Some common terms:
+          * `host`: search by hostnames
+          * `mac`: Mac addresses
+          * `ip`: last seen IP address
+          * `label`: Search by labels
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Client Overview
+       
+       * Internally the client id is considered the most accurate source of
+       endpoint identity
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/client_overview.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Shell commands
+       
+       * Velociraptor allows running shell commands on the endpoint using
+         `Powershell`/`Cmd`/`Bash`
+           * Only Velociraptor users with the administrator role are allowed to
+         do this!
+           * Actions are logged and audited
+       
+       ```powershell
+       Get-LocalGroupMember -Group "Administrators"
+       ```
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/shell_commands.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       # Interactively fetching files from the endpoint
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/fetch.png?raw=true" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## The VFS View
+       
+       Remember that the VFS view is simply a server side cache of
+       information we know about the endpoint - it is usually out of date!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/vfs_view.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Navigating the interface
+       
+       * Click the “Refresh this directory” will schedule a directory listing
+         artifact and wait for the results (usually very quick if the
+         endpoint is online).
+       * The “Recursively refresh this directory” will schedule a recursive
+         refresh - this may take some time! After this operation a lot of the
+         VFS will be pre-populated already.
+       * “Collect from client” will retrieve the file data to the
+         server. After which, the floppy disk sign indicates that we have
+         file data available and you can click the “Download” link to get a
+         copy of the file.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## The VFS interface
+       
+       Previewing a file after download.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/vfs_view_2.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Previewing files
+       
+       The GUI allows close inpection of binary files
+       * Viewing in hex or text
+       * Paging - skipping to offset
+       * Searching using regex or hex strings
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/gui_tour/vfs_view_3.png?raw=true" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       # Velociraptor Artifacts
+       
+       ## Fast, Efficient, Surgical
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/surgical.png?raw=true" style="bottom: -200px" class="title-inset">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## Why a query language?
+       * Able to dynamically adapt to changing requirements - without needing to rebuild clients or servers.
+       * For example, a new IOC is released for detection of a specific threat
+           * Immediately write a VQL artifact for the threat, upload the artifact and hunt everywhere for it.
+           * Turn around from IOC to full hunt: A few minutes.
+           * Share artifacts with the community
+       * VQL Artifacts are simply YAML files with VQL queries.
+           * Can be easily shared and cross pollinate other Artifacts
+           * Can be customized by callers.
+           * [Public Artifact Reference](https://docs.velociraptor.app/artifact_references/)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## What is VQL?
+       
+       ```sql
+       SELECT X, Y, Z FROM plugin(arg=1) WHERE X = 1
+       ```
+       
+       * `X, Y, Z` are called Column Selectors
+       * `plugin(arg=1)` is termed a VQL Plugin with Args
+       * `X = 1` is the Filter Condition
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Velociraptor artifacts
+       
+       Velociraptor is just a VQL engine!
+       
+       * We package VQL queries in Artifacts:
+           * YAML files
+           * Include human description
+           * Package related VQL queries into “Sources”
+           * Take parameters for customization
+           * Can in turn be used in VQL as well...
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       
+       ## What does the VFS view do under the cover?
+       
+       * Refreshing the VFS simply schedules new artifacts to be collected - it is just a GUI convenience.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/vfs_collections.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Velociraptor uses expert knowledge
+       
+       A key objective of Velociraptor is encapsulating DFIR knowledge into
+       the platform, so you don’t need to be a DFIR expert.  We have high
+       level questions to answer We know where to look for evidence of user /
+       system activities
+       
+       We build artifacts to collect and analyze the evidence in order to answer our investigative questions.
+   - type: markdown
+     template: |
+       <!-- .slide: class="full_screen_diagram" -->
+       ## Anatomy of an artifact
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifacts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Collecting new artifacts
+       
+       To collect a new artifact, from the Collected Artifacts screen,
+       click Collect new artifact and search for it. Select Add to add it to
+       this collection. When finished, click Next.
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/new-collections.png?raw=true" class="mid-height">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Configuring the artifact collection
+       
+       * Many artifacts take parameters that can control the way they work.
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/configure_artifacts.png?raw=true" class="mid-height">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Configuring collection resource limits
+       
+       There are many safety limits implemented into the client to control endpoint impact.
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/configure_resources.png?raw=true" class="mid-height">
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## What do artifacts return?
+       
+       * All artifacts produce rows since they are just queries.
+       * Some artifacts also upload files. You can create a download zip to export all the uploaded files.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifact-results.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Uploaded files
+       
+       * The uploads tab shows the file's location on the server.
+       * You can download or preview each one individually.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifact-uploads.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Artifact query logs
+       
+       * As the query is running on the endpoint any log messages are sent to the server.
+       * Click the log tab to see if there were any errors and how many rows are expected.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifact-logs.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Artifacts return multiple tables (sources)
+       * `Source Selector`: Viewing the result tab shows the rows sent from
+         every artifact and source.
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/artifact-sources.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       ## Exporting artifact collections
+       
+       * Use the GUI to create a zip export of the collection
+       * Set a password in user preferences to export an encrypted Zip File
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_introduction/export-collection.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       ## Secure Shell
+       ###  Linux remote access
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/openssh_logo.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Secure Shell
+       ###  Linux remote access
+       
+       On Unix like systems, remote administration is usually done using
+       Secure Shell (SSH)
+       * Authentication is usually decentralized:
+         * Username/Password based
+         * Public/Private key based
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Secure Shell
+       ###  Linux remote access
+       
+       * Authorization is usually achieved in a decentralized way
+         * `~/.ssh/authorized_keys` file lists all keys allowed to log in to this machine.
+         * `~/.ssh/known_hosts` file list all hosts known to this user (that the user has logged into previously).
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Typical SSH based attacks
+       
+       1. A user account with password auth is compromized on an endpoint.
+       2. This gives the attacker a foothold on that host.
+       3. Unsecured ssh keys can be used on that host to log into other hosts
+       4. When the attacker logs into the other hosts they may change their user account
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Typical SSH escalation path
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/ssh_attack_outline.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps
+       ### Search for password login
+       
+       Search the SSH logs for successful login using a password. This should
+          not be common in practice!
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/finding_ssh_logs.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps
+       ### Find successful password logins
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/password_authenticated.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps
+       ### Did any of our hosts have unsecured keys?
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/unsecured_ssh_keys.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps
+       ### Which machines trust the unsecured key?
+       
+       SSH uses the `authorized_keys` file to grant access to trusted keys.
+       
+       To find all machines that might grant access to this key we need to check that file everywhere.
+       
+       This is called a `Hunt`
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Hunt for Authorized Keys
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/create_hunt.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Select artifact to collect
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/select_hunt_artifacts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Start hunt
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/launch_hunt.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Post process hunt in VQL Notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/postprocess_hunt.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps
+       ### Did the key actually get used?
+       
+       We can determine if any machine account was used to log into another
+       host using the `known_hosts` file.
+       
+       This file records the hostname and host public key that were used in the past
+       
+       If we find the vulneable machine was logged into this might mean the
+       vulnerable key was used.
+       
+       Unfortunately the hostname is hashed!!!
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Hunt for known hosts
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/known_hosts_hunt.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Post-process hunt to match hostnames
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/postprocess_suggestions.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Investigative steps - Hunt
+       ### Establishing peer relationships
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/secure_shell/known_hosts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       ## Web shell
+       ###  A hacker's favorite backdoor
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/webshell.jpg?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Web shell
+       ### A hacker's favorite backdoor
+       
+       A webshell is a way for an attacker to obtain a shell over the web
+       * Sometimes this is done by adding malicious active content (PHP,ASP,CGI)
+       * Often it is installed as an additional service that looks like a web service
+       * Can contain authentication and/or encryption.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Web shell
+       ### Exercise
+       
+       In this exercise we start an opensource web shell, typical of
+       malicious web shells.
+       
+       ```bash
+       $ git clone https://github.com/JiangKlijna/web-shell
+       $ cd web-shell
+       $ make
+       $ ./web-shell -s -P 2020 -u admin -p admin -cmd bash
+       ```
+       
+       This creates the server web shell. (Alternatively download the Github
+       release)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Web shell
+       ### The client
+       
+       Connect to the local webshell server using the client over HTTP (with
+       the above username and password for authentication.
+       
+       ```
+       $ ./web-shell -c -H localhost -P 2020 -u admin -p admin
+       $ ping www.google.com
+       PING www.google.com (172.217.24.36) 56(84) bytes of data.
+       64 bytes from hkg07s23-in-f4.1e100.net (172.217.24.36): icmp_seq=1 ttl=114 time=27.9 ms
+       64 bytes from hkg07s23-in-f36.1e100.net (172.217.24.36): icmp_seq=2 ttl=114 time=27.7 ms
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Detecting the web shell via network
+       
+       How would we detect this webshell?
+       
+       * Search for listening ports and enrich
+       
+       Use the `Linux.Network.NetstatEnriched` artifact to look for listening
+       ports.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Listening ports
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/netstat_enriched.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Listening ports
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/netstat_enriched_results.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Process Tree
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//process_tree.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Looking in memory
+       
+       Some attack tools do not have files on disk
+       1. File may be packed/encrypted
+       2. On Linux the file may be deleted (but process is running)
+       3. Malicious code may be injected into another process
+       
+       Scan in memory!  *Yara scan*
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Yara scan in memory
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/yara_scan_memory.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Detection
+       ### Yara scan in memory
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/yara_scan_hits.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="title" -->
+       
+       ## Custom Detection
+       ### Developing custom detection artifacts
+       
+       <img src="https://github.com/Velocidex/presentations/blob/master//modules/web_shell/detection.jpg?raw=true" style="height: 400px" >
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## What are we looking for?
+       
+       Ultimately a Web Shell is:
+       
+       1. A shell process (e.g. Bash or Powershell)
+       2. Spawned from another process along the call chain
+       3. One of the processes along the call chain is listening for network
+          connections.
+       
+       Examples:
+       ```
+           systemd -> screen -> bash -> mc -> bash -> web-shell -> bash
+           systemd -> sshd -> sshd -> bash
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Writing custom artifacts
+       ### Developing in VQL
+       
+       ```sql
+       -- Get all listening Pids and store in a lookup structure
+       LET ListeningPids <= memoize(
+       key="Pid",
+       query={
+           SELECT Laddr.ip AS IP,
+                Laddr.port AS Port,
+                str(str=Pid) AS Pid
+         FROM connections()
+         WHERE Status =~ "LISTEN"
+          AND Pid != "0"
+       })
+       
+       -- A Function to determine if any pid in the Pids list is listening
+       LET IsPidListening(Pids) = SELECT _value FROM foreach(row=Pids)
+         WHERE get(item=ListeningPids, field=str(str=_value))
+       
+       -- Get all bash processes and their callchain
+       LET CallChains = SELECT Pid,
+         Name,
+         CommandLine,
+         join(array=process_tracker_callchain(id=Pid).Data.Name, sep=" -> ") AS CallChain,
+         process_tracker_callchain(id=Pid).Data.Pid AS CallChainPids
+       FROM process_tracker_pslist()
+       WHERE Name =~ "bash"
+       
+       -- A Suspicious shell is one that is spawned from
+       -- any process which also has a listening port.
+       SELECT Pid, Name, CommandLine, CallChain,
+         {
+           SELECT process_tracker_get(id=_value).Data AS Details
+           FROM IsPidListening(Pids=CallChainPids)
+           LIMIT 1
+         } AS ListeningProcess
+       FROM CallChains
+       WHERE ListeningProcess
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Writing custom artifacts
+       ### Testing in a notebook
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/create_notebook.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Writing custom artifacts
+       ### Add a new VQL Cell
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/add_vql_cell.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Writing custom artifacts
+       ### Running test VQL on server
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/develop_vql_in_cell.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Writing custom artifacts
+       ### Create a new artifact
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/web_shell/create_new_artifact.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Artifact of Autumn 77
+       ### PAM abuse
+       
+       https://infosec.exchange/@weslambert/109475612494526691
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/description.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## The artifact exchange
+       ### Sharing the knowledge
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/import_exchange.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## The artifact exchange
+       ### Sharing the knowledge
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/imported_artifact.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Collecting the artifact
+       
+       What is normal?
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/pam_artifacts.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Hunting
+       ### Collecting artifacts from many hosts
+       
+       Hunting is Velociraptor's strength - collect the same artifact from
+       thousands of endpoints in minutes!
+       
+       * Two types of hunts:
+          * Detection hunts are very targeted aimed at yes/no answer
+          * Collection hunts collect a lot more data and can be used to
+            build a baseline.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Exercise
+       ### Baseline pam configuration
+       
+       For this exercise we start a few more clients. Velociraptor's pool
+       client can simulate multiple clients easily.
+       
+       ```text
+       $ cd /tmp/
+       $ velociraptor --config client.config.yaml pool_client --number 100
+       ```
+       
+       This starts 100 virtual clients so we can hunt them
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Exercise
+       ### Stacking hunt results.
+       
+       For this exercise, we simulate 100 clean machines, and 1 compromised
+       machine.
+       
+       1. Stop the webshell server
+       2. Start 100 pool clients
+       3. Create a hunt for `Exchange.Linux.System.PAM`
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Exercise
+       ### Hunting
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/hunting.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Exercise
+       ### Stacking hunt results.
+       
+       When the hunt completes:
+       
+       4. Stop the pool client
+       5. Add the following line to `/etc/pam/su-l`
+       
+       ```
+       auth sufficient pam_succeed_if.so uid >= 0
+       ```
+       
+       6. Start the pool client again with 101 clients.
+         * This causes the new client to join the hunt and detect the webshell.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Identifying anomalies.
+       
+       * Anomalies are things that are not usual compared to the rest of the
+         network.
+       * One tool for detecting anomalies is called `Stacking` - in VQL done
+         using the `GROUP BY` keyword.
+       * Stacking is useful when looking at something that should be common
+         across most systems (e.g. OS configuration)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Identifying anomalies.
+       ### Count and group by PAM config lines
+       
+       ```sql
+       SELECT *, count() AS Count
+       FROM source(artifact="Exchange.Linux.System.PAM")
+       GROUP BY Record
+       ORDER BY Count DESC
+       ```
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Identifying anomalies.
+       ### Count and group by PAM config lines
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/stacking.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Stacking
+       ### Identify the suspicious entries
+       
+       ![](https://github.com/Velocidex/presentations/blob/master//modules/artifacts_of_autumn/77/suspicious.png?raw=true)
+   - type: markdown
+     template: |
+       <!-- .slide: class="content small-font" -->
+       
+       ## What did we not cover?
+       
+       * Velociraptor has a lot more than we were able to cover here:
+       * Many more sources of data: Event logs, ETW, WMI eventing
+       * Multi-Platform: Linux, MacOS, Windows, FreeBSD
+       * Endpoint monitoring in real time: Detect and identify compromises in real time!
+       * Automatic remediation: Apply active remediation to remove the driver and ensure all endpoints are clean.
+       * Server automation and monitoring in real time with a python API.
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Conclusions
+       
+       * In this workshop we introduced Velociraptor - a powerful endpoint
+         visibility solution, as used in a typical DFIR exercise.
+       
+       * We introduced VQL and gave some examples…
+           * Searching for files,
+           * registry keys and other endpoint state Hunting everywhere
+   - type: markdown
+     template: |
+       <!-- .slide: class="content" -->
+       ## Conclusions
+       
+       We only scratched the surface of what Velociraptor can do!
+       
+       Check out the following links and join our community…
+       
+       <table class="noborder">
+       <tr>
+           <td>Docs</td><td>
+               <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Github</td><td>
+               <a href="https://github.com/Velocidex/velociraptor">https://github.com/Velocidex/velociraptor</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Discord</td><td>
+               <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+           </td>
+       </tr>
+       <tr>
+           <td>Mailing list</td><td>
+               <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+           </td>
+       </tr>
+       </table>

@@ -1,0 +1,408 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+        <style>
+  section.title, section.content {
+    background-image: none;
+   }
+  section.content h2 {
+    margin-right: 0px;
+  }
+  img {
+    box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+  }
+</style>
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="content" -->
+
+## Why detection?
+
+* Attackers dwell time is getting quicker
+* Detection coverage needs to increase to more endpoints.
+
+* Automation!
+
+* Ultimately detection is about:
+    * Maximize probability of detecting malicious action
+    * Minimize probability of false positives
+
+---
+
+<!-- .slide: class="content" -->
+
+## Why engineering?
+
+* Involves designing a better detection process
+    * Systematic - Clear process to follow.
+    * Iterative - increase accuracy, reduce false positive.
+    * Testable - Reduce chance of regressions
+
+* Engineering involves design
+    * Maximize the probability of detection
+    * Design new event sources to increase accuracy.
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Where does Detection Engineering fit?
+
+![](detection_engineering_roles.png)
+
+https://cyb3rops.medium.com/about-detection-engineering-44d39e0755f0
+
+---
+
+<!-- .slide: class="content" -->
+
+## Detection Engineering role
+
+* More than just typing queries into SIEM
+
+* More emphasis on the Engineering side.
+
+* Feedback cycle
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## The detection pipeline
+### The traditional EDR-SIEM pipeline
+
+![](edr_env.svg)
+
+---
+
+<!-- .slide: class="content" -->
+
+## The detection pipeline
+
+1. Event Generation on the endpoint
+2. Pre-filtering on the endpoint
+3. Data normalization and enrichment
+4. Transport and storage
+5. Detection
+
+----
+
+<!-- .slide: class="content small-font" -->
+## Anatomy of an attack
+
+* We will study the example of privilege escalation using `PsExec`
+
+* It is a very well known and well detected vector.
+
+* We just use it as an example.
+    * You may be very familiar with this, but...
+    * Let's think about how we can detect this attack
+    * Then lets think about how to make it more robust!
+
+* Download psexec.exe
+
+```bash
+curl -o psexec.exe https://live.sysinternals.com/psexec64.exe
+```
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+## Exercise: Installing Sysmon
+### Collect the Windows.Sysinternals.SysmonInstall artifact
+
+<img src="install_sysmon.png" style="">
+
+---
+
+<!-- .slide: class="content small-font" -->
+## Exercise: Sysmon and ECS
+
+* Generate some interesting events
+
+```
+psexec.exe /s \\127.0.0.1 cmd.exe
+```
+
+* Privilege escalate to `SYSTEM` user!
+
+* This will normally be done across the network (Lateral movement)
+    * For this demonstration we use it locally
+
+* Check the event viewer for the logs!
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Attack is launched
+
+![](psexec_attack_step1.svg)
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Setting the Eula
+
+PsExec helps detection by setting a `EULA` registry key!
+
+![](psexec_attack_step2.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Extract the payload and copy to the system
+
+This will normally be done remotely over RPC
+
+![](psexec_attack_step3.svg)
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Install the service
+
+This will normally be done remotely over RPC
+
+<img src="psexec_attack_step4.svg" style="width: 100%;">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Launch the service remotely.
+
+Service is launched by the service manager so runs as SYSTEM
+
+<img src="psexec_attack_step5.svg"  style="height: 500px;">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Collect the artifact Windows.EventLogs.Evtx
+### This artifact parses the raw event logs
+
+<img src="collecting_raw_events.png">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+## Collect the artifact Windows.EventLogs.Evtx
+### Event logs have a defined "shape"
+
+<img src="raw_windows_event.svg">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Collect the artifact Elastic.EventLogs.Sysmon
+
+<img src="collecting_ecs_events.png">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+## Collect the artifact Elastic.EventLogs.Sysmon
+### ECS Events have a defined "shape"
+
+<img src="ecs_event.svg">
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## How would we detect this "attack"?
+
+* Let's detect: Spawning of the `psexesvc.exe` service
+
+* Filter the raw Windows Event Log collection by adding a WHERE clause
+  to isolate the attack.
+
+* You can post process the collected data in the notebook
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## How would we detect this "attack"?
+
+<img src="filtering_event_logs.svg">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## How would we detect this "attack"?
+
+<img src="filtering_ecs_logs.svg">
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## How can we communicate this detection?
+
+* We could share queries with others
+   * Depending on which event collection system they use, the queries
+     are not easily interchanged
+
+* What could go wrong?
+    * Different pre-filtering might exclude the relevant events
+    * Different fields might be collected, e.g. [Command line process auditing](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/component-updates/command-line-process-auditing)
+    * Data shape is different in different data storage systems.
+
+* We will come back to this!
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Making the detection robust
+
+* Clear the event logs to start fresh.
+
+* Rename the `psexec.exe` file to `nothing.exe`.
+
+```
+copy psexec.exe nothing.exe
+```
+
+* Launch the service with a different service name
+
+```
+nothing.exe -r nothing -s cmd.exe
+```
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Renamed service file
+
+<img src="renamed_service.svg">
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Recollect our detection query
+### No hits!
+
+<img src="renamed_service_no_hit.png">
+
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## How can we make the detection more robust?
+
+* Consider other pieces of information!
+
+* Sysmon provides **some** metadata found in the executable file
+  itself.
+
+     * `OriginalFilename`
+     * `VersionInformation`
+     * `Product`
+     * `Description`
+
+* Simply renaming the binary does not change the data inside the file.
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Update the detection query
+### Adding extra data points can improve detection
+
+![](updated_query_with_extra_data.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram small-font" -->
+
+## Take it to the next level
+### Modify the Product string in the file
+
+<img src="modify_binary.svg">
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Event is missing this field!
+
+<img src="modified_event.svg">
+
+
+---
+
+<!-- .slide: class="content small-font" -->
+
+## Recap: what have we learned?
+
+* Detection requires an event source
+* Event sources are usually normalized to an internal schema "shape"
+* Detection matches events against a "rule"
+    * A match is a "hit"
+* Attackers can change their methodologies to bypass detection rules
+* Rules can be improved by adding data points!
+
+* Communicating a detection is difficult!
+    * Exact rules depend on the tech stack and specific configuration.
+    * Not portable
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>
