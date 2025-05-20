@@ -161,6 +161,36 @@ psexec.exe /s cmd.exe
 
 ---
 
+<!-- content small-font -->
+
+## Exercise: Replay ETW events for PsExec Attack
+
+```sql
+LET SigmaRules = '''
+title: Test Sigma Rule
+logsource:
+  category: etw
+  product: windows
+  service: file
+
+detection:
+  selection_event_type:
+     System.EventType: CreateNewFile
+  selection_filename:
+     EventData.FileName|re: PSEXESVC.EXE
+
+  condition: selection_filename and selection_event_type
+'''
+
+SELECT *
+FROM Artifact.Windows.Sigma.ETWBase.ReplayTestSet(
+   JSONDump="C:/Users/Administrator/Downloads/test.json",
+   SigmaRules=SigmaRules)
+```
+
+
+---
+
 <!-- content -->
 
 ## Sigma Rule development methodology
