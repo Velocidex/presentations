@@ -4,34 +4,28 @@
 
 <div class="inset">
 
-## What is Velociraptor?
+## Introducing Velociraptor
 
 ### Mike Cohen, Digital Paleontologist
 ### Rapid 7 Inc
 
 </div>
 
-<img src="/resources/velo_bike.gif" class="fixed" style=" right: 0px;  bottom: -100px; height: 300px; z-index: -10;"/>
-
 ---
 
-<!-- .slide: class="content" -->
+<!-- full_screen_diagram small-font -->
 ## What is Velociraptor?
+### A DFIR tool to handle every stage of the attack timeline
 
-Velociraptor is the premier endpoint visibility tool.
-
-* Driven by Velociraptor Query Language artifacts.
-* Primarily a DFIR tool.
-* Compliance/Vulnerability management.
-* Endpoint monitoring.
-* Open source with a strong community
+![](attack_timeline.svg)
 
 ---
 
-<!-- .slide: class="content" -->
-## Architecture
+<!-- full_screen_diagram small-font -->
+## How can I use Velociraptor?
+### Flexible tool to handle every use case
 
-![](/modules/overview/deployment_overview.svg)
+![](use_cases.svg)
 
 ---
 
@@ -39,8 +33,10 @@ Velociraptor is the premier endpoint visibility tool.
 ## Scalable, fast, accurate
 
 * Support Linux, Windows, MacOS, FreeBSD …
-* Server simply collects the results of queries - clients do all the heavy lifting.
-* Client memory and CPU usage is controlled via throttling and active cancellations.
+* Server simply collects the results of queries - clients do all the
+  heavy lifting.
+* Client memory and CPU usage is controlled via throttling and active
+  cancellations.
 * Server is optimized for speed and scalability
 * Concurrency control ensures stability
 * Bandwidth limits ensure network stability
@@ -59,8 +55,7 @@ Digital forensic plugins turn VQL into a high quality DFIR tool
 
 <!-- .slide: class="content small-font" -->
 ## Velociraptor Artifacts
-
-Artifacts encode VQL into user sharable code snippets
+### Artifacts encode VQL into user sharable code snippets
 
 ![](/modules/artifacts_introduction/artifacts.png)
 
@@ -68,8 +63,7 @@ Artifacts encode VQL into user sharable code snippets
 
 <!-- .slide: class="content small-font" -->
 ## Hunts - Collecting at scale
-
-Collecting artifacts at scale from multiple endpoints
+### Collecting artifacts at scale from multiple endpoints
 
 ![](/modules/secure_shell/select_hunt_artifacts.png)
 
@@ -77,56 +71,9 @@ Collecting artifacts at scale from multiple endpoints
 
 <!-- .slide: class="content small-font" -->
 ## Postprocessing using Notebooks
-
-Notebooks are collaborative shared VQL execution environments
+### Collaborative shared VQL execution environments
 
 ![](/modules/secure_shell/postprocess_hunt.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Offline collector
-
-Pre-programmed binary collecting, packaging and uploading collection
-
-![](/modules/offline_collector/offline_acquire.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Acquired file is encrypted
-
-![](/modules/offline_collector/offline_encrypted.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Tracking processes on endpoint
-
-* One of the critical questions we ask is `Where did this process come
-  from?`
-* Context of where the process came from is important in establishing
-  initial access vector!
-* Velociraptor can track processes locally on the endpoint at runtime.
-* If the need arises, we can enrich with process execution information.
-* This can be done **EVEN IF THE PROCESS EXITED**
-
----
-
-<!-- .slide: class="content" -->
-## View process tree
-
-![](/modules/tracking_processes/pstree.png)
-
----
-
-<!-- .slide: class="content small-font" -->
-## Inspect the process call chain
-
-Process tracker maintains historical view so we can see exited
-processes.
-
-![](/modules/tracking_processes/powershell_pstree.png)
 
 ---
 
@@ -203,10 +150,9 @@ processes.
 <!-- .slide: class="content" -->
 
 ## Real Time Sigma alerting
+### VQL is fully asynchronous - real time queries.
 
-* VQL is fully asynchronous - real time queries.
-
-<img src="client_events_arch.png" style=" height: 50vh;"/>
+<img src="client_events_arch.png" style=" height: 60vh;"/>
 
 ---
 
@@ -241,12 +187,19 @@ processes.
 ---
 
 <!-- .slide: class="content small-font" -->
-## Administration through VQL
+## Administration and automation
 
 * All server administration tasks can be automated with VQL artifacts
 * API access available for external automation
 * Automatic upload of data to Elastic/Slack/Discord
 * Open ended architecture enables novel use cases.
+
+---
+
+<!-- full_screen_diagram small-font -->
+## The Velociraptor Ecosystem
+
+<img src="ecosystem.svg" style="height: 70vh;">
 
 ---
 

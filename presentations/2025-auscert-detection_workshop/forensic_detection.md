@@ -69,6 +69,9 @@ vql: |
 '''
 SELECT *
 FROM Artifact.Windows.Sigma.ETWBase(SigmaRules=SigmaRules)
+
+// Run the attack
+// psexec.exe /s cmd.exe
 ```
 
 ---
@@ -165,7 +168,7 @@ WHERE EventData.FileName =~ "testme.exe"
 * Start the attack across the network.
 
 ```
-PsExec.exe -s -c -r testme -f \\WIN-SJE0CKQO83P\ cmd.exe
+PsExec.exe -s -c -r testme -f \\127.0.0.1 cmd.exe
 ```
 
 ---
