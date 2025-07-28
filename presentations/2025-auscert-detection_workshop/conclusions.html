@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+        <style>
+  section.title, section.content {
+    background-image: none;
+   }
+  section.content h2 {
+    margin-right: 0px;
+  }
+  img {
+    box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+  }
+</style>
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: class="title" -->
+
+## Conclusions
+### What have we learned?
+
+* Detection engineering is an exciting field of Cyber Security
+    * More than just typing queries into the SIEM!
+* Thinking about improving odds of detection strategically
+    * Has an engineering and design component.
+
+---
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+* Attackers can change their attack to subvert detection!
+* Perfect is the enemy of the good!
+   * Detections do not have to be perfect!
+   * Different detections can cover off on each other
+   * By adding a lot of different detections it makes it very
+     difficult to bypass.
+
+ > We only need one rule to hit for the adversaries to have a bad day!
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>
