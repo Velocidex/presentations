@@ -139,23 +139,41 @@ https://www.darkreading.com/cyberattacks-data-breaches/meet-the-ransomware-negot
 ---
 
 <!-- .slide: class="full_screen_diagram" -->
-## Impact of software vulnerabilities today
-
-<img style="max-height: 60vh; margin-left: 0vw; margin-bottom: -20px;" src="ransomware_report.png" />
-
-https://www.rapid7.com/globalassets/_pdfs/2024-rapid7-ransomware-radar-report-final.pdf
-
----
-
-<!-- .slide: class="full_screen_diagram" -->
 ## Impact of software vulnerability today
 
 * Such a vulnerability **will** result in a ransomware attack.
 
 <img style="max-height: 50vh; margin-left: 0vw; margin-bottom: -20px;" src="ransomware_payments.png" />
 
-
 https://www.theguardian.com/technology/2023/may/10/ransomware-payments-nearly-double-in-one-year
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## How hard is it to exploit today?
+### AI makes it much easier to exploit
+
+<img style="max-height: 60vh; margin-left: 0vw; margin-bottom: 20px;" src="ai-hack.png" />
+
+https://www.abc.net.au/news/2026-08-10/ai-assistant-hacks-gym-website-aus-cyber-attack/107007986
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## How hard is it to exploit today?
+### Advanced models have autonomy and initiative
+
+<img style="max-height: 60vh; margin-left: 0vw; margin-bottom: 20px;" src="openai-hack.png" />
+
+https://www.abc.net.au/news/2026-08-19/openai-slows-development-pauses-testing-after-hugging-face-hack/107053332
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## AI Powered security reviews
+### AI makes it much easier to audit large quantities of code
+
+<img style="max-height: 60vh; margin-left: 0vw; margin-bottom: 20px;" src="velociraptor-vulns.png" />
 
 
 ---
@@ -438,6 +456,19 @@ https://rapid7.com/fundamentals/what-is-a-red-team/
    * Streamline SOC operations
    * Enhance logging and auditing from custom systems
    * Tuning and automating
+
+* AI Awareness and training
+   * AI is getting good at writing code
+   * But security is an afterthought!
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## What about Vibe coding?
+
+<img style="max-height: 60vh; margin-top: -0px; margin-left: 0vw; margin-bottom: 0;" src="vibe-coding-risks.png" />
+
+https://theconversation.com/vibe-coding-is-fun-and-easy-but-theres-a-major-catch-287693
 
 ---
 
