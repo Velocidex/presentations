@@ -1,0 +1,609 @@
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Velociraptor Deployment</title>
+        <link rel="stylesheet" href="../../css/fontawesome-all.min.css?1688344844">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../../css/velo.css">
+        <link rel="stylesheet" href="../../plugin/highlight/vs.css">
+        
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+<!-- .slide: data-background="/themes/default_velo/title.svg" class="title" -->
+# Digging Deeper...
+
+<div class="inset">
+
+## SANS DFIR Summit 2022
+
+### Mike Cohen, Digital Paleontologist
+
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## What is Velociraptor?
+
+Velociraptor is a unique Free and Open Source DFIR tool, giving you power and flexibility through the Velociraptor Query Language
+
+VQL is used to drive a powerful set of forensic capabilities
+* Using VQL we can write custom "Artifacts" to identify emerging threats quickly and safely
+* Hunt for artifacts at scale over thousands of end points within minutes!
+
+
+---
+
+<!-- .slide: class="content" -->
+## Deployment overview
+![](../../modules/overview/deployment_overview.svg)
+
+
+---
+
+<!-- .slide: class="content" -->
+## Traditional DFIR
+
+* Traditional process
+1. Acquisition - fetch raw data from end point (MFT, EVTX)
+
+2. Transport - Move the data off the endpoint (e.g. Cloud upload, VHDX)
+
+3. Analysis - Parse data centrally (Use standalone tools, timelines etc)
+
+---
+
+<!-- .slide: class="content" -->
+## The Velociraptor way
+
+* Parse and analyze on the endpoint
+* Targeted collections
+* Pivot with further collections as needed.
+* Scale up collection
+* Flexible query language allows quickly creating new analysis
+
+---
+
+<!-- .slide: class="content" -->
+## VQL - Query Language
+### Velociraptor's magic source
+
+Rather than having specific analysis modules, VQL allows generic
+capabilities to be combined in novel creative ways
+
+* NTFS/MFT/USN/Glob file system analysis
+* File parsers - Grok, Sqlite etc
+* Built in powerful parser framework for novel binary parsers
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Incident Response on Linux
+
+### An example of responding to Linux systems.
+1. Parsing Syslog for SSH login attempts.
+2. Identifying weak or unsecured keys.
+
+### Common compromise sequence
+* Attackers compromise one machine through a vulnerability, or password guessing
+* Due to unsecured ssh keys, they can laterally move to other machines in the network.
+
+
+---
+
+<!-- .slide: class="content" -->
+
+<div class="container">
+<div class="col">
+
+## Traditional approach
+
+1. Collect all Syslog files in the environment
+
+2. Parse them into a data mining server (e.g. OpenSearch, Elastic)
+
+3. Query server for suspicious login attempts/success
+   (e.g. Log2Timeline)
+
+</div>
+
+<div class="col">
+
+## Velociraptor approach
+
+1. Write a (reusable) artifact to parse Syslog for SSH login.
+
+2. Collect from the entire environment (Hunt)
+
+3. Identify successful logins.
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## Parsing SSH login events
+
+Linux systems typically use syslog for logging
+* Line based unstructured logs
+* Difficult to query across systems.
+* events are stored in /var/log/auth.log
+
+Looks similar to
+
+```text
+Dec 29 07:03:41 devbox sshd[1810143]: Accepted publickey
+  for mic from 192.168.1.2 port 52454 ssh2:
+  RSA SHA256:rD/zo+7DjJsbOdevPv20Q04Iri6GCoy0GvenkLbxTLA
+```
+
+---
+
+<!-- .slide: class="content" -->
+## Grok for parsing syslogs
+
+Grok is a way of applying regular expressions to extract structured information from log files.
+* Used by many log forwarding platforms such as Elastic for example:
+
+```sh
+%{SYSLOGTIMESTAMP:Timestamp} %{SYSLOGHOST:logsource} %{SYSLOGPROG}:
+%{DATA:event} %{DATA:method} for (invalid user )?%{DATA:user}
+from %{IPORHOST:ip} port %{NUMBER:port} ssh2(:
+%{GREEDYDATA:system.auth.ssh.signature})?
+```
+---
+
+<!-- .slide: class="content"  -->
+## Let's use VQL to parse ssh events
+Read the first 50 lines from the auth log
+
+![](vql_for_ssh.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+## Filter lines and apply Grok
+
+* Grok is a way of applying regular expressions to extract structured information from log files.
+    * Used by many log forwarding platforms such as Elastic
+    * Grok expressions are well published
+    * Can be incorporated into VQL.
+
+![](grok_for_ssh.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Artifacts: Encapsulating VQL
+
+Once we developed our VQL query - how do we make it easily accessible?
+* Wrap it in an "Artifact"
+    * A YAML file with metadata around the query.
+    * Can be shared with the community
+    * Can be easily discovered by users - without needing to understand VQL!
+
+---
+
+<!-- .slide: class="content" -->
+## Linux.Syslog.SSHLogin artifact
+
+![](artifact_view.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Collecting the artifact
+![](ssh_login_artifact.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+## The Velociraptor Community
+
+### The Artifact Exchange
+
+The Velociraptor artifact exchange is a place for the community to
+publish useful VQL artifacts for reuse.
+
+* A searchable resource
+* Users can improve on other artifacts
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+
+Notes: The artifact exchange is the place to fetch new artifacts
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Automatically Import Exchange Artifacts
+
+![Automatically import exchange artifacts](import_exchange.png)
+
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Hunt and Post Process
+![](hunt_post_process.png)
+
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Post process using VQL in Notebook
+![](notebook_postprocessing.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Example 2
+### Unsecured SSH keys
+
+<div class="container">
+<div class="col">
+
+A common mechanism of privilege escalation is compromise of SSH keys without password
+* Can be immediately leveraged to gain access to other hosts
+* e.g. AWS by default does not have password!
+
+</div>
+
+<div class="col">
+
+![](ssh_keys_aws.png)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+
+<div class="container">
+<div class="col">
+
+## Traditional approach
+
+1. Collect all ssh private key files in the environment.
+
+2. Store them in a central locations.
+
+3. Run specialized parser to determine if they keys are protected
+
+</div>
+
+<div class="col">
+
+## Velociraptor approach
+
+1. Write a (reusable) artifact to parse SSH private key files -
+   determine if they are protected.
+
+2. Hunt across the environment for unprotected files.
+
+3. Remediate or focus on weak keys.
+
+</div>
+</div>
+
+
+---
+
+<!-- .slide: class="content" -->
+
+## How can I tell if a file is protected?
+### Parsing SSH private key files.
+
+<div class="container">
+<div class="col">
+
+* Private key files come in various formats and types
+* Let's develop some VQL to parse it
+
+**Velociraptor contains a powerful binary parser driven by VQL**
+
+</div>
+<div class="col">
+
+![](ssh_keys_format.png)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## Parsing files with VQL
+
+We can read the file using a VQL query.
+
+![](read_file.png)
+
+---
+
+<!-- .slide: class="content" -->
+## Parsing binary data
+* Much of Digital Forensics is about parsing binary data.
+* Velociraptor comes with a powerful binary parser
+* Write a "Profile" and apply it to the binary data to extract fields.
+* Because the parser is an integral part of VQL you can push new profiles and parsers to clients as part of the VQL query
+    * No need to recompile/rebuild/redeploy
+
+---
+
+<!-- .slide: class="content" -->
+## Binary parser built in VQL
+
+<div class="container">
+<div class="col">
+
+* Declare struct layout as a data driven "profile".
+
+* We can update the profile at any time without rebuilding the client.
+
+</div>
+<div class="col">
+
+![](binary_parser.png)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+**Full SSH Private key parser**
+
+*Uses binary parser, regular expression and file search*
+
+![](private_key_artifact.png)
+
+---
+
+<!-- .slide: class="full_screen_diagram" -->
+## Hunting for unprotected keys
+
+![](private_key_hunt.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## Hunt all systems…
+
+The advantage of parsing the PEM files on the endpoint is that we do
+not need to retrieve the entire ssh private key - this would be a
+security issue!
+
+* We can now let users know they need to secure their keys!!!
+* We can focus on weak keys in compromise assessment.
+
+---
+
+<!-- .slide: class="content" -->
+## Enriching information
+### Some data is only available on the endpoint
+
+* Velociraptor provides access to OS APIs via VQL plugins
+* Some information is only available via APIs
+    * Not enough to collect files
+    * e.g. Process information
+
+**Example: Enrich with process information**
+
+---
+
+<!-- .slide: class="content" -->
+## PSExec attack
+
+<div class="container">
+<div class="col">
+
+For this example we use the classic PSExec method of running as
+SYSTEM.
+* Launch a background notepad.exe
+* After the attack we will close the terminal.
+
+</div>
+
+<div class="col">
+
+![](psexec_attack.png)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+## Suspicious Notepad?
+
+<div class="container">
+<div class="col">
+
+Looking at a suspicious `notepad.exe` with Process Hacker
+* Runs as SYSTEM User
+* Has no parent?
+* Where did it come from?
+
+</div>
+
+<div class="col">
+
+![](process_hacker.png)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+
+## Velociraptor's PSTree
+
+Velociraptor's PSTree shows the call chain from tracked data! We can
+see exited processes.
+
+![](pstree.png)
+
+---
+
+<!-- .slide: class="content" -->
+
+## What lead to this process?
+
+If we could only see the commands before this process launch...
+![](ProcessSiblings.png)
+
+
+---
+
+<!-- .slide: class="content" -->
+## The process tracker...
+
+<div class="container">
+<div class="col">
+
+* The process tracker maintains a state machine of process metadata.
+* Optionally use Sysmon as event source or `pslist()`
+* Can be configured to run automatically on monitored endpoints
+* Invaluable for IR
+
+</div>
+
+<div class="col">
+
+![](process_tracker.svg)
+
+</div>
+</div>
+
+---
+
+<!-- .slide: class="content" -->
+
+<div class="container">
+<div class="col">
+
+## Traditional approach
+
+1. Collect all Sysmon process start events in the environment
+
+2. Forward events into a cloud data mining server (e.g. OpenSearch, Elastic)
+
+3. Query server for parent/child relationships (Call Chain)
+
+</div>
+
+<div class="col">
+
+## Velociraptor approach
+
+1. Write a (reusable) artifact to track processes on the endpoint.
+
+2. During collection, query the tracker for enrichment (Call Chain)
+
+3. Escalate only high value call chains or provide enrichment of high value data.
+
+</div>
+</div>
+
+</textarea>
+</section>
+
+<section data-markdown
+  data-transition="fade"
+  data-separator="^---+\n\n"
+  data-separator-vertical="^>+\n\n">
+<textarea data-template>
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+* Velociraptor's approach moves more of the analysis logic to the endpoint
+* Rather than collecting vast quantities of data, only high value enrichments
+* Made possible by
+    * powerful endpoint query language
+    * Always connected endpoints allow for quick pivot.
+
+---
+
+<!-- .slide: class="content" -->
+## Conclusions
+
+We only scratched the surface of what Velociraptor can do!
+
+Check out the following links and join our community…
+
+<table class="noborder">
+<tr>
+    <td>Docs</td><td>
+        <a href="https://docs.velociraptor.app/">https://docs.velociraptor.app/</a>
+    </td>
+</tr>
+<tr>
+    <td>Github</td><td>
+        <a href="https://github.com/Velocidex/velociraptor">https://github.com/Velocidex/velociraptor</a>
+    </td>
+</tr>
+<tr>
+    <td>Discord</td><td>
+        <a href="https://docs.velociraptor.app/discord/">https://docs.velociraptor.app/discord/</a>
+    </td>
+</tr>
+<tr>
+    <td>Mailing list</td><td>
+        <a href="mailto:velociraptor-discuss@googlegroups.com">velociraptor-discuss@googlegroups.com</a>
+    </td>
+</tr>
+</table>
+
+</textarea>
+</section>
+
+            </div>
+        </div>
+        <div class="footer"><a href="../../"><i class="fa fa-home"></i></a></div>
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/zoom/zoom.js"></script>
+        <script src="../../js/jquery-3.3.1.min.js?1688344844"></script>
+        <script src="../../js/slides.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                hash: true,
+                center: false,
+                slideNumber: true,
+
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            }).then(initializeSlides);
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="148mm" height="148mm" viewBox="0 0 148 148">
+  <defs>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#787878"/>
+      <stop offset="1" stop-color="#272727"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="d" x1="76.7" x2="130" y1="77.2" y2="213" gradientTransform="matrix(.899 0 0 1.06 -12.8 -74.3)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="i" x1="17.7" x2="193" y1="61" y2="236" gradientTransform="matrix(.847 0 0 .846 -8.16 -44.7)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="e" x1="130" x2="76.7" y1="213" y2="77.1" gradientTransform="matrix(2.11 0 0 1.09 -137 -239)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="f" x1="6.81" x2="155" y1="6.81" y2="155" gradientTransform="matrix(.737 0 0 .737 21.3 21.3)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="g" x1="6.81" x2="155" y1="6.81" y2="155" gradientTransform="matrix(1.31 0 0 1.31 -25.1 -25.1)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="h" x1="6.81" x2="155" y1="6.81" y2="155" gradientTransform="matrix(.694 0 0 .694 24.7 24.7)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="c" x1="9.63" x2="219" y1=".00000442" y2="-.0000128" gradientTransform="matrix(1.01 0 0 1.01 -.698 -.728)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="b" x1="31.7" x2="180" y1="75.2" y2="223" gradientTransform="translate(-1.03 .451)" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <g transform="translate(-31.7 -75.2)">
+    <ellipse cx="-106" cy="-149" fill="#e8d276" fill-rule="evenodd" rx="63" ry="62.8" transform="scale(-1)"/>
+    <circle cx="71.4" cy="127" r="7.41" fill="#fff" stroke="url(#b)" stroke-width="2.8"/>
+  </g>
+  <g fill="#fff" transform="translate(.00000749 .000295)">
+    <path fill-rule="evenodd" d="M112 30.6a55 54 0 0 0-38.4-15.8l-.525 54z"/>
+    <path fill-rule="evenodd" d="M51.9 20.5a19.5 31.8 90 0 1 22.2-5.72l.304 19.5z"/>
+    <path d="m53.9 19.4-9.97 6.04 19.5 5.6-20.7 10 20.6-3.54-7.74 10.7h14.8l-9.77 6.77 8.92-.785-3.46 6.26 8.25 5.26.347-46.6z"/>
+  </g>
+  <g fill-rule="evenodd" transform="translate(-6.81 -6.81)">
+    <path fill="url(#c)" stroke="url(#c)" stroke-width="2.47" d="M114-58.7v58z" transform="scale(.994 1.007) rotate(45)"/>
+    <path fill="url(#d)" d="M79.3 7.65h1.71v144H79.3z" transform="matrix(2.34 0 0 1.03 -107 -1.06)"/>
+    <path fill="url(#e)" d="M78.8-155h4V-7h-4z" transform="rotate(90)"/>
+    <circle cx="80.9" cy="80.9" r="5" fill="url(#f)"/>
+    <g fill="none">
+      <circle cx="80.8" cy="80.8" r="48.6" stroke="url(#g)" stroke-width="2.88"/>
+      <circle cx="80.8" cy="80.8" r="25.7" stroke="url(#h)" stroke-width="1.53"/>
+      <ellipse cx="80.8" cy="80.8" stroke="url(#i)" stroke-width="12.3" rx="67.9" ry="67.8" style="mix-blend-mode:normal" transform="skewX(.00011)"/>
+    </g>
+  </g>
+</svg>
